@@ -22,9 +22,11 @@ function MediaItem({ filename, altText, imageSrc }: MediaItemProps) {
         loop
         muted
         playsInline
-        style={{ width: '100%', borderRadius: 10, border: '1px solid var(--line)' }}
-        src={src}
-      />
+        preload="auto"
+        style={{ width: '100%', borderRadius: 10, border: '1px solid var(--line)', display: 'block' }}
+      >
+        <source src={src} type="video/mp4" />
+      </video>
     );
   }
 
@@ -88,11 +90,13 @@ export default function KlenzaaCaseStudy() {
             So I ran my own teardown, not at the business or positioning level, but at the interaction level: was the dashboard clear with minimal steps, did the tool offer real automation for checklists and scheduling, or did navigation quietly turn admin heavy. I compared Turno, Breezeway, TIDY, Properly, ResortCleaning, Cleanster, and HostHive against those three questions.
           </p>
           <figure className={styles.figure}>
-            <MediaItem
-              filename="competitor-teardown.png"
-              altText="UX teardown comparing Turno, Breezeway, TIDY, Properly and others"
-            />
-            <figcaption className={styles.figcaption}>
+            <div style={{ width: '90%', margin: '0 auto' }}>
+              <MediaItem
+                filename="competitor-teardown.png"
+                altText="UX teardown comparing Turno, Breezeway, TIDY, Properly and others"
+              />
+            </div>
+            <figcaption className={styles.figcaption} style={{ textAlign: 'center' }}>
               My own pattern level teardown of seven competitor tools
             </figcaption>
           </figure>
@@ -250,24 +254,26 @@ export default function KlenzaaCaseStudy() {
           <span className={styles.kicker}>Checklists</span>
           <h2>The checklists have to work in a way that users can create separate checklists, edit them easily, and understand their modules so that when automated, the checklists are easily assigned to the properties.</h2>
 
-          <div className={styles.v3Answers}>
-            <div className={styles.decisionAnswer}>
-              <p className={styles.q}>One checklist with a toggle, or two separate checklists?</p>
-              <p className={styles.a}>
-                Two separate checklists. The host checklist covers personal management tasks, while the cleaner checklist (tagged For Cleaners) covers job-specific cleaning items. They are built and owned independently rather than filtered from a single shared list.
-              </p>
-            </div>
-            <div className={styles.decisionAnswer}>
-              <p className={styles.q}>Why organize checklist items into modules?</p>
-              <p className={styles.a}>
-                Different properties require unique task combinations. Modular room blocks like Kitchen, Bedroom, and Bathroom—plus a General module—allow hosts to compose exact checklists per property rather than repeatedly editing one long master list.
-              </p>
-            </div>
-            <div className={styles.decisionAnswer}>
-              <p className={styles.q}>Why give individual items a priority tag?</p>
-              <p className={styles.a}>
-                So the items that matter most don&apos;t get lost inside a longer module. A task like Broom hall can be marked High Priority inside the General module, so a cleaner moving quickly through the list still sees what can&apos;t be skipped.
-              </p>
+          <div className={styles.v3AnswersWrap}>
+            <div className={styles.v3Answers}>
+              <div className={styles.decisionAnswer}>
+                <p className={styles.q}>One checklist with a toggle, or two separate checklists?</p>
+                <p className={styles.a}>
+                  Two separate checklists. The host checklist covers personal management tasks, while the cleaner checklist (tagged For Cleaners) covers job-specific cleaning items. They are built and owned independently rather than filtered from a single shared list.
+                </p>
+              </div>
+              <div className={styles.decisionAnswer}>
+                <p className={styles.q}>Why organize checklist items into modules?</p>
+                <p className={styles.a}>
+                  Different properties require unique task combinations. Modular room blocks like Kitchen, Bedroom, and Bathroom—plus a General module—allow hosts to compose exact checklists per property rather than repeatedly editing one long master list.
+                </p>
+              </div>
+              <div className={styles.decisionAnswer}>
+                <p className={styles.q}>Why give individual items a priority tag?</p>
+                <p className={styles.a}>
+                  So the items that matter most don&apos;t get lost inside a longer module. A task like Broom hall can be marked High Priority inside the General module, so a cleaner moving quickly through the list still sees what can&apos;t be skipped.
+                </p>
+              </div>
             </div>
           </div>
 

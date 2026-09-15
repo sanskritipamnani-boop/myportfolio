@@ -67,27 +67,29 @@
   .version-block p:last-child { margin-bottom: 0; }
   .broke { color: var(--amber); font-weight: 600; }
   .version-block .decision-answer { padding: 1.1rem 1.25rem; margin-top: 0.85rem; }
-  .v3-answers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 1.75rem; margin-bottom: 2.5rem; width: 100%; }
+  .v3-answers-wrap { width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; display: flex; justify-content: center; margin-top: 1.75rem; margin-bottom: 2.5rem; }
+  .v3-answers { max-width: 1160px; width: 100%; padding: 0 1.5rem; box-sizing: border-box; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; align-items: stretch; }
   .v3-answers .decision-answer {
     margin-top: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 1.5rem 1.35rem;
+    padding: 2rem 1.75rem;
     border: 1px solid var(--line);
     border-left: 4px solid var(--teal);
-    border-radius: 12px;
+    border-radius: 14px;
     background: var(--surface);
-    box-shadow: 0 4px 12px rgba(22, 48, 44, 0.04);
+    box-shadow: 0 4px 16px rgba(22, 48, 44, 0.05);
     box-sizing: border-box;
+    min-height: 250px;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
   .v3-answers .decision-answer:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 24px rgba(22, 48, 44, 0.08);
+    box-shadow: 0 12px 28px rgba(22, 48, 44, 0.09);
   }
-  .v3-answers .decision-answer .q { font-size: 15px; font-weight: 600; line-height: 1.35; margin-bottom: 0.65rem; color: var(--teal-deep); }
-  .v3-answers .decision-answer .a { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0; }
+  .v3-answers .decision-answer .q { font-size: 16px; font-weight: 600; line-height: 1.35; margin-bottom: 0.85rem; color: var(--teal-deep); }
+  .v3-answers .decision-answer .a { font-size: 14.5px; line-height: 1.65; color: var(--ink-soft); margin: 0; }
   .v3-bullet-list { margin: 1.25rem 0 1.5rem; padding-left: 1.25rem; color: var(--ink-soft); }
   .v3-bullet-list li { margin-bottom: 0.75rem; font-size: 15px; line-height: 1.6; }
   .v3-bullet-list li strong { color: var(--teal-deep); }
@@ -159,8 +161,10 @@
     <h2>The client's research told us who Klenzaa was competing with. It didn't tell us what we can improve on.</h2>
     <p class="body">So I ran my own teardown, not at the business or positioning level, but at the interaction level: was the dashboard clear with minimal steps, did the tool offer real automation for checklists and scheduling, or did navigation quietly turn admin heavy. I compared Turno, Breezeway, TIDY, Properly, ResortCleaning, Cleanster, and HostHive against those three questions.</p>
     <figure>
-      <img src="images/competitor-teardown.png" alt="UX teardown comparing Turno, Breezeway, TIDY, Properly and others">
-      <figcaption>My own pattern level teardown of seven competitor tools</figcaption>
+      <div style="width: 90%; margin: 0 auto;">
+        <img src="images/competitor-teardown.png" alt="UX teardown comparing Turno, Breezeway, TIDY, Properly and others">
+      </div>
+      <figcaption style="text-align: center;">My own pattern level teardown of seven competitor tools</figcaption>
     </figure>
   </section>
 
@@ -186,17 +190,23 @@
     <div style="display: flex; flex-direction: column; gap: 2.25rem; margin-top: 2rem;">
       <figure>
         <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 0.6rem; color: var(--teal-deep);">Dashboard Walkthrough</h3>
-        <video autoplay loop muted playsinline style="width:100%; border-radius:10px; border:1px solid var(--line);" src="images/dashboard-final-walkthrough.mp4"></video>
+        <video autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:10px; border:1px solid var(--line); display:block;">
+          <source src="images/dashboard-final-walkthrough.mp4" type="video/mp4">
+        </video>
       </figure>
 
       <figure>
         <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 0.6rem; color: var(--teal-deep);">Checklists &amp; Modules Walkthrough</h3>
-        <video autoplay loop muted playsinline style="width:100%; border-radius:10px; border:1px solid var(--line);" src="images/checklist-modules.mp4"></video>
+        <video autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:10px; border:1px solid var(--line); display:block;">
+          <source src="images/checklist-modules.mp4" type="video/mp4">
+        </video>
       </figure>
 
       <figure>
         <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 0.6rem; color: var(--teal-deep);">Properties &amp; Property Details Panel Walkthrough</h3>
-        <video autoplay loop muted playsinline style="width:100%; border-radius:10px; border:1px solid var(--line);" src="images/property-panel.mp4"></video>
+        <video autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:10px; border:1px solid var(--line); display:block;">
+          <source src="images/property-panel.mp4" type="video/mp4">
+        </video>
       </figure>
     </div>
   </section>
@@ -243,7 +253,9 @@
         </ul>
 
         <figure style="margin-top:1.25rem;">
-          <video autoplay loop muted playsinline style="width:100%; border-radius:10px; border:1px solid var(--line);" src="images/dashboard-final-walkthrough.mp4"></video>
+          <video autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:10px; border:1px solid var(--line); display:block;">
+            <source src="images/dashboard-final-walkthrough.mp4" type="video/mp4">
+          </video>
         </figure>
       </div>
     </div>
@@ -254,23 +266,27 @@
     <span class="kicker">Checklists</span>
     <h2>The checklists have to work in a way that users can create separate checklists, edit them easily, and understand their modules so that when automated, the checklists are easily assigned to the properties.</h2>
 
-    <div class="v3-answers">
-      <div class="decision-answer">
-        <p class="q">One checklist with a toggle, or two separate checklists?</p>
-        <p class="a">Two separate checklists. The host checklist covers personal management tasks, while the cleaner checklist (tagged For Cleaners) covers job-specific cleaning items. They are built and owned independently rather than filtered from a single shared list.</p>
-      </div>
-      <div class="decision-answer">
-        <p class="q">Why organize checklist items into modules?</p>
-        <p class="a">Different properties require unique task combinations. Modular room blocks like Kitchen, Bedroom, and Bathroom—plus a General module—allow hosts to compose exact checklists per property rather than repeatedly editing one long master list.</p>
-      </div>
-      <div class="decision-answer">
-        <p class="q">Why give individual items a priority tag?</p>
-        <p class="a">So the items that matter most don't get lost inside a longer module. A task like Broom hall can be marked High Priority inside the General module, so a cleaner moving quickly through the list still sees what can't be skipped.</p>
+    <div class="v3-answers-wrap">
+      <div class="v3-answers">
+        <div class="decision-answer">
+          <p class="q">One checklist with a toggle, or two separate checklists?</p>
+          <p class="a">Two separate checklists. The host checklist covers personal management tasks, while the cleaner checklist (tagged For Cleaners) covers job-specific cleaning items. They are built and owned independently rather than filtered from a single shared list.</p>
+        </div>
+        <div class="decision-answer">
+          <p class="q">Why organize checklist items into modules?</p>
+          <p class="a">Different properties require unique task combinations. Modular room blocks like Kitchen, Bedroom, and Bathroom—plus a General module—allow hosts to compose exact checklists per property rather than repeatedly editing one long master list.</p>
+        </div>
+        <div class="decision-answer">
+          <p class="q">Why give individual items a priority tag?</p>
+          <p class="a">So the items that matter most don't get lost inside a longer module. A task like Broom hall can be marked High Priority inside the General module, so a cleaner moving quickly through the list still sees what can't be skipped.</p>
+        </div>
       </div>
     </div>
 
     <figure>
-      <video autoplay loop muted playsinline style="width:100%; border-radius:10px; border:1px solid var(--line);" src="images/checklist-modules.mp4"></video>
+      <video autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:10px; border:1px solid var(--line); display:block;">
+        <source src="images/checklist-modules.mp4" type="video/mp4">
+      </video>
       <figcaption>A cleaner's checklist, built from modules, with priority tags and recommended modules to add</figcaption>
     </figure>
 
