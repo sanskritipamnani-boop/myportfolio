@@ -124,7 +124,7 @@ export const projects: Project[] = [
     categories: ['Brand Identity', 'Visual Design'],
     thumbnail: {
       type: 'image',
-      src: '/title-screen.png',
+      src: '/images/tablet.png',
       alt: 'Klenzaa thumbnail',
       aspectRatio: '16/9',
     },
