@@ -246,10 +246,12 @@ export default function KlenzaaCaseStudy() {
                 </figure>
 
                 <figure style={{ marginTop: '1.25rem' }} className={styles.figure}>
-                  <MediaItem
-                    filename="product-card.png"
-                    altText="Klenzaa product card design"
-                  />
+                  <div style={{ width: '50%', margin: '0 auto' }}>
+                    <MediaItem
+                      filename="product-card.png"
+                      altText="Klenzaa product card design"
+                    />
+                  </div>
                 </figure>
               </div>
             </div>
@@ -303,10 +305,12 @@ export default function KlenzaaCaseStudy() {
           </div>
 
           <figure className={styles.figure}>
-            <MediaItem
-              filename="checklist-additional-item.png"
-              altText="Adding a one off additional item to a scheduled clean checklist"
-            />
+            <div style={{ width: '60%', margin: '0 auto' }}>
+              <MediaItem
+                filename="checklist-additional-item.png"
+                altText="Adding a one off additional item to a scheduled clean checklist"
+              />
+            </div>
           </figure>
         </section>
 
