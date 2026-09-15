@@ -305,7 +305,7 @@ export default function KlenzaaCaseStudy() {
           </div>
 
           <figure className={styles.figure}>
-            <div style={{ width: '60%', margin: '0 auto' }}>
+            <div style={{ maxWidth: '480px', width: '100%', margin: '0 auto' }}>
               <MediaItem
                 filename="checklist-additional-item.png"
                 altText="Adding a one off additional item to a scheduled clean checklist"
