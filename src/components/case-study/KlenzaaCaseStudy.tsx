@@ -336,12 +336,6 @@ export default function KlenzaaCaseStudy() {
           <p className={styles.body}>
             Buttons, cards, status chips, side panels, nothing more. Building a bigger system ahead of real feedback is a bet on assumptions that haven&apos;t been tested yet. Klenzaa&apos;s component set stayed deliberately lean so it could evolve once real hosts and cleaners had used it, instead of locking in decisions before there was proof they were the right ones.
           </p>
-          <figure className={styles.figure} style={{ marginTop: '1.5rem' }}>
-            <MediaItem
-              filename="design-system.png"
-              altText="Klenzaa Design System component library"
-            />
-          </figure>
         </section>
 
         {/* WHAT'S NEXT SECTION */}
