@@ -162,7 +162,7 @@
     <p class="body">So I ran my own teardown, not at the business or positioning level, but at the interaction level: was the dashboard clear with minimal steps, did the tool offer real automation for checklists and scheduling, or did navigation quietly turn admin heavy. I compared Turno, Breezeway, TIDY, Properly, ResortCleaning, Cleanster, and HostHive against those three questions.</p>
     <figure>
       <div style="width: 90%; margin: 0 auto;">
-        <img src="images/competitor-teardown.png" alt="UX teardown comparing Turno, Breezeway, TIDY, Properly and others">
+        <img src="/images/competitor-teardown.png" alt="UX teardown comparing Turno, Breezeway, TIDY, Properly and others">
       </div>
       <figcaption style="text-align: center;">My own pattern level teardown of seven competitor tools</figcaption>
     </figure>
@@ -191,21 +191,21 @@
       <figure>
         <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 0.6rem; color: var(--teal-deep);">Dashboard Walkthrough</h3>
         <video autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:10px; border:1px solid var(--line); display:block;">
-          <source src="images/dashboard-final-walkthrough.mp4" type="video/mp4">
+          <source src="/images/dashboard-final-walkthrough.mp4" type="video/mp4">
         </video>
       </figure>
 
       <figure>
         <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 0.6rem; color: var(--teal-deep);">Checklists &amp; Modules Walkthrough</h3>
         <video autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:10px; border:1px solid var(--line); display:block;">
-          <source src="images/checklist-modules.mp4" type="video/mp4">
+          <source src="/images/checklist-modules.mp4" type="video/mp4">
         </video>
       </figure>
 
       <figure>
         <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 0.6rem; color: var(--teal-deep);">Properties &amp; Property Details Panel Walkthrough</h3>
         <video autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:10px; border:1px solid var(--line); display:block;">
-          <source src="images/property-panel.mp4" type="video/mp4">
+          <source src="/images/property-panel.mp4" type="video/mp4">
         </video>
       </figure>
     </div>
@@ -227,7 +227,7 @@
         <h3>A calendar grid, color coded by property</h3>
         <p>Each property got its own color, plotted across a shared calendar view. It looked complete and communicated everything at a glance, in theory.</p>
         <figure>
-          <img src="images/dashboard-v1-color-coded.png" alt="Version 1 calendar grid color coded by property">
+          <img src="/images/dashboard-v1-color-coded.png" alt="Version 1 calendar grid color coded by property">
         </figure>
         <p style="margin-top:1rem;"><span class="broke">What broke:</span> past a handful of properties, hosts couldn't remember which color belonged to which property.</p>
       </div>
@@ -237,7 +237,7 @@
         <h3>Each property becomes its own row</h3>
         <p>Every property got a row, with its schedule laid out across the timeline. Reading the dashboard stopped requiring memorization.</p>
         <figure>
-          <img src="images/dashboard-self-critique.png" alt="Version 2 of the dashboard, annotated with open questions">
+          <img src="/images/dashboard-self-critique.png" alt="Version 2 of the dashboard, annotated with open questions">
         </figure>
         <p style="margin-top:1rem;"><span class="broke">What was still unresolved:</span> Color for task type too? What about same day conflicts? How can I help users see updates and proof directly from the dashboard and not wander around?</p>
       </div>
@@ -254,8 +254,12 @@
 
         <figure style="margin-top:1.25rem;">
           <video autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:10px; border:1px solid var(--line); display:block;">
-            <source src="images/dashboard-final-walkthrough.mp4" type="video/mp4">
+            <source src="/images/dashboard-final-walkthrough.mp4" type="video/mp4">
           </video>
+        </figure>
+
+        <figure style="margin-top:1.25rem;">
+          <img src="/images/product-card.png" alt="Klenzaa product card design">
         </figure>
       </div>
     </div>
@@ -285,7 +289,7 @@
 
     <figure>
       <video autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:10px; border:1px solid var(--line); display:block;">
-        <source src="images/checklist-modules.mp4" type="video/mp4">
+        <source src="/images/checklist-modules.mp4" type="video/mp4">
       </video>
       <figcaption>A cleaner's checklist, built from modules, with priority tags and recommended modules to add</figcaption>
     </figure>
@@ -297,16 +301,17 @@
     </div>
 
     <figure>
-      <img src="images/checklist-additional-item.png" alt="Adding a one off additional item to a scheduled clean checklist">
+      <img src="/images/checklist-additional-item.png" alt="Adding a one off additional item to a scheduled clean checklist">
     </figure>
   </section>
 
   <section>
-    <span class="kicker">Properties Tab</span>
+    <span class="kicker">Properties</span>
     <h2>Properties &amp; Property Details Panel</h2>
-    <p class="body">A property-centric management tab that gives hosts full visibility over their properties, active turnover schedules, assigned cleaners, and specific property details in a single clean panel.</p>
     <figure>
-      <video autoplay loop muted playsinline style="width:100%; border-radius:10px; border:1px solid var(--line);" src="images/property-panel.mp4"></video>
+      <video autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:10px; border:1px solid var(--line); display:block;">
+        <source src="/images/property-panel.mp4" type="video/mp4">
+      </video>
     </figure>
   </section>
 
@@ -315,7 +320,7 @@
     <h2>The component library was kept small on purpose.</h2>
     <p class="body">Buttons, cards, status chips, side panels, nothing more. Building a bigger system ahead of real feedback is a bet on assumptions that haven't been tested yet. Klenzaa's component set stayed deliberately lean so it could evolve once real hosts and cleaners had used it, instead of locking in decisions before there was proof they were the right ones.</p>
     <figure style="margin-top: 1.5rem;">
-      <img src="images/design-system.png" alt="Klenzaa Design System component library">
+      <img src="/images/design-system.png" alt="Klenzaa Design System component library">
     </figure>
   </section>
 

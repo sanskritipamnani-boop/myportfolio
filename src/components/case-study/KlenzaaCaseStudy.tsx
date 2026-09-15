@@ -244,6 +244,13 @@ export default function KlenzaaCaseStudy() {
                     altText="Final Klenzaa dashboard, walked through end to end"
                   />
                 </figure>
+
+                <figure style={{ marginTop: '1.25rem' }} className={styles.figure}>
+                  <MediaItem
+                    filename="product-card.png"
+                    altText="Klenzaa product card design"
+                  />
+                </figure>
               </div>
             </div>
           </div>
