@@ -67,30 +67,27 @@
   .version-block p:last-child { margin-bottom: 0; }
   .broke { color: var(--amber); font-weight: 600; }
   .version-block .decision-answer { padding: 1.1rem 1.25rem; margin-top: 0.85rem; }
-  .version-block .decision-answer .q { font-size: 14.5px; }
-  .v3-answers-wrap { width: 100vw; position: relative; left: 50%; margin-left: -50vw; display: flex; justify-content: center; margin-top: 1.75rem; margin-bottom: 2.5rem; }
-  .v3-answers { max-width: 1160px; width: 100%; padding: 0 1.5rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; align-items: stretch; }
+  .v3-answers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 1.75rem; margin-bottom: 2.5rem; width: 100%; }
   .v3-answers .decision-answer {
     margin-top: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 2.25rem 1.85rem;
+    padding: 1.5rem 1.35rem;
     border: 1px solid var(--line);
     border-left: 4px solid var(--teal);
-    border-radius: 14px;
+    border-radius: 12px;
     background: var(--surface);
-    box-shadow: 0 4px 16px rgba(22, 48, 44, 0.05);
-    aspect-ratio: 1 / 1;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 4px 12px rgba(22, 48, 44, 0.04);
     box-sizing: border-box;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
   .v3-answers .decision-answer:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 28px rgba(22, 48, 44, 0.09);
+    box-shadow: 0 10px 24px rgba(22, 48, 44, 0.08);
   }
-  .v3-answers .decision-answer .q { font-size: 16px; font-weight: 600; line-height: 1.35; margin-bottom: 0.85rem; color: var(--teal-deep); }
-  .v3-answers .decision-answer .a { font-size: 14.5px; line-height: 1.65; color: var(--ink-soft); margin: 0; }
+  .v3-answers .decision-answer .q { font-size: 15px; font-weight: 600; line-height: 1.35; margin-bottom: 0.65rem; color: var(--teal-deep); }
+  .v3-answers .decision-answer .a { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0; }
   .v3-bullet-list { margin: 1.25rem 0 1.5rem; padding-left: 1.25rem; color: var(--ink-soft); }
   .v3-bullet-list li { margin-bottom: 0.75rem; font-size: 15px; line-height: 1.6; }
   .v3-bullet-list li strong { color: var(--teal-deep); }
@@ -232,13 +229,12 @@
         <figure>
           <img src="images/dashboard-self-critique.png" alt="Version 2 of the dashboard, annotated with open questions">
         </figure>
-        <p style="margin-top:1rem;"><span class="broke">What was still unresolved:</span> questions marked directly on the screen. Color for task type too? What about same day conflicts?</p>
+        <p style="margin-top:1rem;"><span class="broke">What was still unresolved:</span> Color for task type too? What about same day conflicts? How can I help users see updates and proof directly from the dashboard and not wander around?</p>
       </div>
 
       <div class="version-block">
         <span class="v-label">Version 3</span>
-        <h3>Each open question gets a specific answer</h3>
-        <p>Version 2 with each flagged question resolved on purpose, not a visual overhaul.</p>
+        <h3>How the final version was improvised answering all design decisions</h3>
 
         <ul class="v3-bullet-list">
           <li><strong>Color for task type too?</strong> Yes. Properties are unbounded, which is why their colors failed. Task types are a small, fixed set, so a fixed palette keeps working.</li>
@@ -256,22 +252,20 @@
 
   <section>
     <span class="kicker">Checklists</span>
-    <h2>The same checklist has to work for a host and a cleaner, without either one running into the other's problem.</h2>
+    <h2>The checklists have to work in a way that users can create separate checklists, edit them easily, and understand their modules so that when automated, the checklists are easily assigned to the properties.</h2>
 
-    <div class="v3-answers-wrap">
-      <div class="v3-answers">
-        <div class="decision-answer">
-          <p class="q">One checklist with a toggle, or two separate checklists?</p>
-          <p class="a">Two separate checklists. The host checklist covers what the host needs to personally complete or confirm. The cleaner checklist, tagged For Cleaners, covers the cleaning tasks assigned to whoever is doing the job that day. They're not two views filtered from one shared list, they're built and owned separately, which is why the checklist itself carries a For Cleaners tag rather than a toggle switch.</p>
-        </div>
-        <div class="decision-answer">
-          <p class="q">Why organize checklist items into modules?</p>
-          <p class="a">Because different properties need different combinations of tasks. Recommended modules like Kitchen, Main Room, Bedroom, and Bathroom can be added to a checklist or skipped depending on the property, plus a General module for tasks that don't belong to a specific room. A host builds the checklist a property actually needs instead of editing one long master list every time.</p>
-        </div>
-        <div class="decision-answer">
-          <p class="q">Why give individual items a priority tag?</p>
-          <p class="a">So the items that matter most don't get lost inside a longer module. A task like Broom hall can be marked High Priority inside the General module, so a cleaner moving quickly through the list still sees what can't be skipped.</p>
-        </div>
+    <div class="v3-answers">
+      <div class="decision-answer">
+        <p class="q">One checklist with a toggle, or two separate checklists?</p>
+        <p class="a">Two separate checklists. The host checklist covers personal management tasks, while the cleaner checklist (tagged For Cleaners) covers job-specific cleaning items. They are built and owned independently rather than filtered from a single shared list.</p>
+      </div>
+      <div class="decision-answer">
+        <p class="q">Why organize checklist items into modules?</p>
+        <p class="a">Different properties require unique task combinations. Modular room blocks like Kitchen, Bedroom, and Bathroom—plus a General module—allow hosts to compose exact checklists per property rather than repeatedly editing one long master list.</p>
+      </div>
+      <div class="decision-answer">
+        <p class="q">Why give individual items a priority tag?</p>
+        <p class="a">So the items that matter most don't get lost inside a longer module. A task like Broom hall can be marked High Priority inside the General module, so a cleaner moving quickly through the list still sees what can't be skipped.</p>
       </div>
     </div>
 

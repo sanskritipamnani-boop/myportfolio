@@ -219,15 +219,14 @@ export default function KlenzaaCaseStudy() {
                   />
                 </figure>
                 <p style={{ marginTop: '1rem' }}>
-                  <span className={styles.broke}>What was still unresolved:</span> questions marked directly on the screen. Color for task type too? What about same day conflicts?
+                  <span className={styles.broke}>What was still unresolved:</span> Color for task type too? What about same day conflicts? How can I help users see updates and proof directly from the dashboard and not wander around?
                 </p>
               </div>
 
               {/* VERSION 3 */}
               <div className={styles.versionBlock}>
                 <span className={styles.vLabel}>Version 3</span>
-                <h3>Each open question gets a specific answer</h3>
-                <p>Version 2 with each flagged question resolved on purpose, not a visual overhaul.</p>
+                <h3>How the final version was improvised answering all design decisions</h3>
 
                 <ul className={styles.v3BulletList}>
                   <li><strong>Color for task type too?</strong> Yes. Properties are unbounded, which is why their colors failed. Task types are a small, fixed set, so a fixed palette keeps working.</li>
@@ -249,28 +248,26 @@ export default function KlenzaaCaseStudy() {
         {/* CHECKLISTS SECTION */}
         <section className={styles.section}>
           <span className={styles.kicker}>Checklists</span>
-          <h2>The same checklist has to work for a host and a cleaner, without either one running into the other&apos;s problem.</h2>
+          <h2>The checklists have to work in a way that users can create separate checklists, edit them easily, and understand their modules so that when automated, the checklists are easily assigned to the properties.</h2>
 
-          <div className={styles.v3AnswersWrap}>
-            <div className={styles.v3Answers}>
-              <div className={styles.decisionAnswer}>
-                <p className={styles.q}>One checklist with a toggle, or two separate checklists?</p>
-                <p className={styles.a}>
-                  Two separate checklists. The host checklist covers what the host needs to personally complete or confirm. The cleaner checklist, tagged For Cleaners, covers the cleaning tasks assigned to whoever is doing the job that day. They&apos;re not two views filtered from one shared list, they&apos;re built and owned separately, which is why the checklist itself carries a For Cleaners tag rather than a toggle switch.
-                </p>
-              </div>
-              <div className={styles.decisionAnswer}>
-                <p className={styles.q}>Why organize checklist items into modules?</p>
-                <p className={styles.a}>
-                  Because different properties need different combinations of tasks. Recommended modules like Kitchen, Main Room, Bedroom, and Bathroom can be added to a checklist or skipped depending on the property, plus a General module for tasks that don&apos;t belong to a specific room. A host builds the checklist a property actually needs instead of editing one long master list every time.
-                </p>
-              </div>
-              <div className={styles.decisionAnswer}>
-                <p className={styles.q}>Why give individual items a priority tag?</p>
-                <p className={styles.a}>
-                  So the items that matter most don&apos;t get lost inside a longer module. A task like Broom hall can be marked High Priority inside the General module, so a cleaner moving quickly through the list still sees what can&apos;t be skipped.
-                </p>
-              </div>
+          <div className={styles.v3Answers}>
+            <div className={styles.decisionAnswer}>
+              <p className={styles.q}>One checklist with a toggle, or two separate checklists?</p>
+              <p className={styles.a}>
+                Two separate checklists. The host checklist covers personal management tasks, while the cleaner checklist (tagged For Cleaners) covers job-specific cleaning items. They are built and owned independently rather than filtered from a single shared list.
+              </p>
+            </div>
+            <div className={styles.decisionAnswer}>
+              <p className={styles.q}>Why organize checklist items into modules?</p>
+              <p className={styles.a}>
+                Different properties require unique task combinations. Modular room blocks like Kitchen, Bedroom, and Bathroom—plus a General module—allow hosts to compose exact checklists per property rather than repeatedly editing one long master list.
+              </p>
+            </div>
+            <div className={styles.decisionAnswer}>
+              <p className={styles.q}>Why give individual items a priority tag?</p>
+              <p className={styles.a}>
+                So the items that matter most don&apos;t get lost inside a longer module. A task like Broom hall can be marked High Priority inside the General module, so a cleaner moving quickly through the list still sees what can&apos;t be skipped.
+              </p>
             </div>
           </div>
 

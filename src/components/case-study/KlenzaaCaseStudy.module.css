@@ -278,25 +278,13 @@
   margin: 0;
 }
 
-.v3AnswersWrap {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  margin-left: -50vw;
-  display: flex;
-  justify-content: center;
-  margin-top: 1.75rem;
-  margin-bottom: 2.5rem;
-}
-
 .v3Answers {
-  max-width: 1160px;
-  width: 100%;
-  padding: 0 1.5rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.75rem;
-  align-items: stretch;
+  gap: 1.25rem;
+  margin-top: 1.75rem;
+  margin-bottom: 2.5rem;
+  width: 100%;
 }
 
 .v3Answers .decisionAnswer {
@@ -304,33 +292,32 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 2.25rem 1.85rem;
+  padding: 1.5rem 1.35rem;
   border: 1px solid var(--line);
   border-left: 4px solid var(--teal);
-  border-radius: 14px;
+  border-radius: 12px;
   background: var(--surface);
-  box-shadow: 0 4px 16px rgba(22, 48, 44, 0.05);
-  aspect-ratio: 1 / 1;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 12px rgba(22, 48, 44, 0.04);
   box-sizing: border-box;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .v3Answers .decisionAnswer:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(22, 48, 44, 0.09);
+  box-shadow: 0 10px 24px rgba(22, 48, 44, 0.08);
 }
 
 .v3Answers .decisionAnswer .q {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   line-height: 1.35;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.65rem;
   color: var(--teal-deep);
 }
 
 .v3Answers .decisionAnswer .a {
-  font-size: 14.5px;
-  line-height: 1.65;
+  font-size: 14px;
+  line-height: 1.6;
   color: var(--ink-soft);
   margin: 0;
 }
