@@ -1,0 +1,20 @@
+.insight {
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(1.25rem, 4vw, 3rem);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  display: grid;
+  gap: var(--space-4);
+  background-color: var(--color-hover-bg);
+}
+
+.label {
+  /* inherits .label */
+}
+
+.text {
+  font-size: var(--text-lg);
+  font-weight: 300;
+  line-height: var(--leading-snug);
+  color: var(--color-text-primary);
+  max-width: 52ch;
+}

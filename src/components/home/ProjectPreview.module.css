@@ -1,0 +1,208 @@
+.project {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centered columns to prevent space-between layout stretching */
+  gap: 64px; /* Fixed horizontal gap between visual and text columns */
+  width: 100%;
+  position: relative;
+}
+
+/* Alternating rows: Text on Left (row-reverse), Image on Left (row) */
+.even {
+  flex-direction: row-reverse; /* Image Left, Text Right */
+}
+
+.odd {
+  flex-direction: row; /* Text Left, Image Right */
+}
+
+/* 1. Image Visual Column */
+.mediaLink {
+  display: block;
+  position: relative;
+  flex: 1 1 70%;
+  max-width: 780px; /* 70% visual ratio size */
+  min-width: 280px;
+  border-radius: 16px; /* User requested: corner radius 16px */
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.04);
+  transition: 
+    transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 1;
+}
+
+.mediaLink:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.08);
+}
+
+.mediaWrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--color-border-subtle);
+}
+
+.media {
+  width: 100%;
+  display: block;
+}
+
+/* 2. Text Content Column */
+.content {
+  display: flex;
+  flex: 1 1 30%;
+  max-width: 340px; /* 30% text ratio size */
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px; /* Vertical gap between statement, meta, and link */
+}
+
+/* Big Bold Statement Title (matches descriptive copy in reference) */
+.statement {
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem); /* Reduced size to prevent chunky overlapping visual presentation */
+  font-weight: 500; /* Lighter font weight for a cleaner, modern monospace look */
+  line-height: 1.4;
+  color: var(--color-text-primary);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.statementLink {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity var(--motion-fast) ease;
+}
+
+.statementLink:hover {
+  opacity: 0.75;
+}
+
+/* Meta description row (Year | Categories) */
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+.year {
+  font-family: var(--font-sans);
+}
+
+.pipe {
+  color: var(--color-border-subtle);
+  font-weight: 300;
+}
+
+.categories {
+  font-family: var(--font-sans);
+}
+
+/* Case study link */
+.viewLink {
+  color: var(--color-text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  border-bottom: 2px solid var(--color-border-subtle);
+  padding-bottom: 2px;
+  transition: 
+    border-color 0.2s ease,
+    transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.viewLink:hover {
+  border-color: var(--color-text-primary);
+  transform: translateX(2px);
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.viewLink:hover .arrow {
+  transform: translateX(2px);
+}
+
+/* Tablet Breakpoint Adjustments (1024px and down) */
+@media (max-width: 1024px) {
+  .project {
+    gap: 40px; /* Tighter gap on tablet screens */
+  }
+
+  .content {
+    padding-inline: 12px; /* Subtle padding inset on tablet */
+  }
+
+  .statement {
+    font-size: clamp(1.05rem, 1.8vw, 1.25rem); /* Scaled down header size on tablet */
+  }
+}
+
+/* Mobile Breakpoint Adjustments (768px and down): stack image on top, text below */
+@media (max-width: 768px) {
+  .project, .even, .odd {
+    flex-direction: column-reverse; /* Image (second child) goes to top, Content (first child) goes to bottom */
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .mediaLink {
+    width: 100%;
+    max-width: none;
+    border-radius: 12px;
+  }
+
+  .content {
+    width: 100%;
+    max-width: none;
+    gap: 12px;
+    padding-inline: 0; /* Aligned with image margins since parent list has container padding */
+    box-sizing: border-box;
+  }
+
+  .statement {
+    font-size: clamp(0.95rem, 4vw, 1.15rem); /* User requested: reduce statement font-size on mobile */
+    line-height: 1.45;
+  }
+
+  .meta {
+    font-size: 12px;
+  }
+}
+
+.cursorTip {
+  position: absolute;
+  transform: translate(12px, 12px); /* Offset from cursor */
+  background-color: var(--color-bg-panel);
+  border: 1px solid var(--color-text-primary);
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-family: var(--font-sans);
+  font-size: 8px; /* Very tiny note */
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-primary);
+  pointer-events: none; /* Make sure it doesn't block clicks */
+  z-index: 100;
+  box-shadow: 2px 2px 0 var(--color-text-primary); /* Retro block shadow */
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .cursorTip {
+    display: none; /* Hide on mobile devices */
+  }
+}

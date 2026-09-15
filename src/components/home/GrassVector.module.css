@@ -1,0 +1,155 @@
+.grassContainer {
+  position: absolute;
+  bottom: -125px; /* Moved downwards */
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  pointer-events: none; /* Let clicks pass through transparent space to the background/video */
+  overflow: hidden; /* Prevent horizontal scrollbars from centered SVG child overflow */
+}
+
+.grassSvg {
+  display: block;
+  width: 88%; /* Reduced grass size */
+  min-width: 1180px; /* Reduced min-width */
+  max-width: 1380px;
+  height: auto;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%); /* Center-aligns SVG and crops overflow equally on left/right */
+  pointer-events: auto; /* Enable pointer events on the image tag to trigger container hover */
+  cursor: pointer;
+  z-index: 10; /* Sits in front of the beaver */
+  transform-origin: bottom center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.grassSvg:hover {
+  transform: translateX(-50%) translateY(-4px) rotate(0.3deg);
+}
+
+.beaverWrapper {
+  position: absolute;
+  left: 50%;
+  bottom: 130px; /* Submerged and hidden behind the grass clumps by default */
+  z-index: 5; /* Sit behind the grass paths (z-index 10) */
+  width: 140px;
+  height: 140px;
+  transform: translateX(-50%);
+  pointer-events: none; /* Let clicks pass through to the beaverClickTarget overlay */
+  transition: 
+    margin-left 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+    bottom 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.beaver {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Invisible overlay mirroring the beaver position in front of the grass to capture clicks */
+.beaverClickTarget {
+  position: absolute;
+  left: 50%;
+  bottom: 130px; /* Submerged and hidden behind the grass clumps by default */
+  z-index: 15; /* Sits in front of the grass (z-index 10) to intercept pointer events */
+  width: 140px;
+  height: 140px;
+  transform: translateX(-50%);
+  cursor: pointer;
+  pointer-events: auto; /* Specifically enabled to capture interactive peeking clicks */
+  transition: 
+    margin-left 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+    bottom 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Hover-peek trigger */
+.grassContainer:hover .beaverWrapper,
+.grassContainer:hover .beaverClickTarget,
+.grassContainer .beaverWrapper.popped,
+.grassContainer .beaverClickTarget.popped,
+.grassContainer:hover .beaverWrapper.popped,
+.grassContainer:hover .beaverClickTarget.popped {
+  bottom: 160px; /* Reduced pop height so beaver just peeks its head out slightly */
+}
+
+.speechBubble {
+  position: absolute;
+  left: 50%;
+  bottom: 305px; /* Positioned right above the peeked beaver */
+  transform: translateX(-50%);
+  background-color: var(--color-bg-panel);
+  border: 1.5px solid var(--color-text-primary);
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 9px;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  z-index: 20;
+  pointer-events: auto; /* Allow clicking to dismiss */
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--color-text-primary); /* Retro block shadow */
+  transition: 
+    margin-left 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  animation: 
+    popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+    float 2s ease-in-out infinite 0.3s;
+}
+
+.speechPointer {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-bg-panel);
+  border-right: 1.5px solid var(--color-text-primary);
+  border-bottom: 1.5px solid var(--color-text-primary);
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-6px);
+  }
+}
+
+@media (max-width: 768px) {
+  .grassContainer {
+    bottom: -90px;
+  }
+
+  .grassSvg {
+    width: 100%;
+    min-width: 900px;
+    max-width: none;
+  }
+
+  /* Make sure the speech bubble doesn't get clipped on very narrow screens */
+  .speechBubble {
+    font-size: 8px;
+    padding: 2px 4px;
+    bottom: 340px;
+    border-width: 1px;
+    box-shadow: 1.5px 1.5px 0 var(--color-text-primary);
+  }
+}
+

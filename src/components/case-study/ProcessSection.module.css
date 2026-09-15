@@ -1,0 +1,45 @@
+.section {
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 4vw, 3rem);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.heading {
+  margin-bottom: var(--space-10);
+}
+
+.steps {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.stepNumber {
+  /* inherits .label */
+  padding-top: 2px;
+}
+
+.stepContent {
+  display: grid;
+  gap: var(--space-2);
+  border-top: 1px solid var(--color-border-subtle);
+  padding-top: var(--space-3);
+}
+
+.stepLabel {
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.stepDescription {
+  font-size: var(--text-sm);
+  font-weight: 300;
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}

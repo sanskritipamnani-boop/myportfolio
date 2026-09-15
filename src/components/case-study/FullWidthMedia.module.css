@@ -1,0 +1,10 @@
+.figure {
+  margin: 0;
+}
+
+.caption {
+  padding: var(--space-4) clamp(1.25rem, 4vw, 3rem);
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+  line-height: var(--leading-relaxed);
+}

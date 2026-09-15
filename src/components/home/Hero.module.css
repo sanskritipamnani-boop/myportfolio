@@ -1,0 +1,128 @@
+.hero {
+  position: fixed; /* Fixed background layer for smooth parallax scroll */
+  top: var(--nav-height);
+  left: 0;
+  overflow: hidden; /* Prevent vertical overflow-y scrollbars from spawning internally */
+  width: 100%;
+  height: calc(100svh - var(--nav-height)); /* Full viewport height below navigation bar */
+  padding-inline: clamp(1rem, 5vw, 4rem);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center; /* Center the graphics vertically in viewport */
+  justify-content: center; /* Center the graphics horizontally in viewport */
+  z-index: 1; /* Sits in background behind contentSection (z-index 10) */
+}
+
+.heroGraphicContainer {
+  width: 100%;
+  max-width: 1120px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(30px); /* Moved down */
+  box-sizing: border-box;
+}
+
+.mainGroupWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.typewriterHeading {
+  font-size: clamp(22px, 3.2vw, 36px);
+  text-align: center;
+  color: #F3C583;
+  font-family: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  margin-top: 48px;                   /* Positioned more down */
+  margin-bottom: 16px;                /* Exactly 16px gap to Group 16 */
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: -0.01em;
+  font-weight: 500;
+}
+
+.typewriterCursor {
+  display: inline-block;
+  margin-left: 4px;
+  font-weight: 400;
+  animation: blink 0.8s infinite;
+  color: #F3C583;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cloudsSvg {
+  position: absolute;
+  top: calc(12% - 34px);              /* Positioned above title graphic */
+  left: 0;
+  right: 0;
+  margin: 0 auto;                     /* True horizontal centre */
+  width: 70%;
+  max-width: 900px;
+  height: auto;
+  pointer-events: none;
+  z-index: 0;                         /* Behind title graphic */
+  display: block;
+}
+
+.heroSvg {
+  position: relative;
+  width: 102%;
+  max-width: 1140px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  z-index: 2;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    padding-inline: var(--container-padding);
+  }
+
+  .cloudsSvg {
+    width: 80%;
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    height: calc(100svh - var(--nav-height));
+    padding-inline: var(--container-padding);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .heroGraphicContainer {
+    transform: translateY(-10px);
+  }
+
+  .cloudsSvg {
+    top: 18%;
+    width: 95%;
+    max-width: none;
+  }
+
+  .heroSvg {
+    width: 100%;
+    max-height: 216px;
+  }
+
+  .typewriterHeading {
+    margin-bottom: 10px;
+    min-height: 32px;
+  }
+}

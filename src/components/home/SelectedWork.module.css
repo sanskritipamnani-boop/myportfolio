@@ -1,0 +1,54 @@
+.section {
+  padding-top: var(--space-6); /* Shifted header further up closer to the grass base clumps */
+  padding-bottom: var(--space-20); /* Leave bottom space for layout breathing room */
+  margin: 0;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: var(--space-8); /* 32px spacing before the projects list begins */
+  width: 100%;
+}
+
+/* Single line heading style styling */
+.sectionHeading {
+  font-size: var(--text-base); /* Increased heading label size */
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: var(--leading-none);
+  color: var(--color-text-primary);
+  text-align: center; /* Symmetrical centering aligned with projects */
+}
+
+.sectionLabel {
+  /* inherits .label styles */
+}
+
+.introInline {
+  font-weight: 300;
+  color: var(--color-text-secondary);
+  text-transform: none; /* Keep caption lowercase/sentence case */
+  letter-spacing: 0;
+  font-size: var(--text-base); /* Increased inline caption size */
+  display: inline;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16); /* 64px gap between stacked project items */
+  width: 100%;
+  padding-inline: clamp(1.25rem, 5vw, 4rem); /* Match container padding */
+  box-sizing: border-box;
+}
+
+.listItem {
+  width: 100%;
+  height: auto;
+  position: relative;
+}

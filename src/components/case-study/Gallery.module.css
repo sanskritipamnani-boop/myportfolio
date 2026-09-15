@@ -1,0 +1,22 @@
+.gallery {
+  display: grid;
+  gap: var(--space-3);
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 4vw, 3rem);
+}
+
+.cols2 { grid-template-columns: repeat(2, 1fr); }
+.cols3 { grid-template-columns: repeat(3, 1fr); }
+.cols4 { grid-template-columns: repeat(4, 1fr); }
+
+.item {
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+@media (max-width: 1024px) {
+  .cols3, .cols4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .cols2, .cols3, .cols4 { grid-template-columns: 1fr; }
+}

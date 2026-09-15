@@ -1,0 +1,187 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-bg);
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative; /* Context for absolute centering of infoWidget */
+}
+
+.logo {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-text-primary);
+  transition: opacity var(--motion-fast) ease;
+}
+
+.logo:hover {
+  opacity: 0.6;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.navLink {
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  transition: color var(--motion-fast) ease;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  letter-spacing: var(--tracking-normal);
+}
+
+.navLink:hover {
+  color: var(--color-text-primary);
+}
+
+.resumeLink {
+  color: var(--color-text-primary);
+}
+
+/* Mobile hamburger */
+.menuToggle {
+  display: none;
+  padding: var(--space-2);
+  color: var(--color-text-primary);
+}
+
+.hamburger {
+  display: block;
+  width: 20px;
+  height: 1px;
+  background-color: currentColor;
+  position: relative;
+  transition: background-color var(--motion-fast) ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  position: absolute;
+  left: 0;
+  transition: transform var(--motion-standard) var(--ease-out);
+}
+
+.hamburger::before { top: -6px; }
+.hamburger::after  { top: 6px; }
+
+/* Mobile styles */
+@media (max-width: 640px) {
+  .menuToggle {
+    display: flex;
+  }
+
+  .links {
+    display: none;
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-4) var(--container-padding);
+  }
+
+  .links.linksOpen {
+    display: flex;
+  }
+
+  .links li {
+    width: 100%;
+  }
+
+  .navLink {
+    display: block;
+    width: 100%;
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--color-border-subtle);
+    font-size: var(--text-base);
+    text-align: left;
+  }
+}
+
+/* Real-time Indian Time & Weather widget styles */
+.infoWidget {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.timeText {
+  font-family: var(--font-sans); /* Monospace font to prevent digits jittering */
+  font-weight: 500;
+}
+
+.amPm {
+  font-size: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-left: 2px;
+  vertical-align: super;
+}
+
+.separator {
+  color: var(--color-border-subtle);
+  font-weight: 700;
+  opacity: 0.8;
+}
+
+.location {
+  color: var(--color-text-secondary);
+}
+
+.temp {
+  font-family: var(--font-sans);
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.weatherIcon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+/* Hide location name on tablet and hide the whole widget on small mobile */
+@media (max-width: 768px) {
+  .location {
+    display: none; /* Hide 'Gandhinagar' label on tablets to save space */
+  }
+}
+
+@media (max-width: 520px) {
+  .infoWidget {
+    display: none; /* Hide completely on small mobile screens to prevent navigation bar overcrowding */
+  }
+}

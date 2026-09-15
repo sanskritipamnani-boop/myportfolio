@@ -1,0 +1,23 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 4vw, 3rem);
+}
+
+.item {
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

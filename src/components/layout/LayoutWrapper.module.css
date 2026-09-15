@@ -1,0 +1,17 @@
+.viewport {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--color-bg); /* Default matches body background */
+  transition: background-color var(--motion-panel) var(--ease-panel);
+}
+
+/* The entire home screen layout layer */
+.mainScreen {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-bg); /* matches body bg */
+  z-index: 1;
+}

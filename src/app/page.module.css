@@ -1,0 +1,49 @@
+.scrollableContent {
+  position: relative;
+  z-index: 10; /* Sits in front of the fixed background hero */
+  background-color: var(--color-bg); /* Solid page background color that covers the fixed hero on scroll */
+  width: 100%;
+  margin-top: calc(100svh - var(--nav-height)); /* Moves second section down to the true viewport bottom fold */
+}
+
+.contentSection {
+  padding-top: 0; /* Remove top padding since toggle floats at the bottom */
+  position: relative;
+  z-index: 10;
+}
+
+.toggleWrapper {
+  position: fixed;
+  bottom: 32px; /* Floating 32px above the bottom of the viewport */
+  left: 50%;
+  transform: translateX(-50%) translateY(20px); /* Start translated down slightly */
+  z-index: 100; /* Hover above all full screen scrolling cards */
+  display: flex;
+  justify-content: center;
+  opacity: 0; /* Hidden by default at the top */
+  pointer-events: none; /* Ignore click interactions when hidden */
+  transition: 
+    opacity 0.4s ease,
+    transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.toggleVisible {
+  opacity: 1; /* Fade in when scrolled past home */
+  transform: translateX(-50%) translateY(0); /* Slide up into position */
+  pointer-events: auto; /* Re-enable clicks */
+}
+
+@media (max-width: 768px) {
+  .contentSection {
+    padding-top: 0;
+  }
+
+  .toggleWrapper {
+    bottom: 24px; /* Lower slightly on mobile for thumb reachability */
+    transform: translateX(-50%) translateY(15px);
+  }
+
+  .toggleVisible {
+    transform: translateX(-50%) translateY(0);
+  }
+}

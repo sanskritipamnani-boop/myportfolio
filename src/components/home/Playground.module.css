@@ -1,0 +1,119 @@
+.section {
+  padding-bottom: var(--space-24);
+  padding-top: 0; /* Remove top padding since toggle section handles it */
+}
+
+.header {
+  display: grid;
+  gap: var(--space-3);
+  margin-bottom: var(--space-16);
+}
+
+.sectionLabel {
+  /* inherits .label */
+}
+
+.intro {
+  font-size: var(--text-md);
+  font-weight: 300;
+  color: var(--color-text-secondary);
+  max-width: 48ch;
+  line-height: var(--leading-relaxed);
+}
+
+/* Intentionally irregular grid — looser than Selected Work */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-6);
+  align-items: start;
+}
+
+/* Item 1 — spans 5 cols */
+.item1 { grid-column: span 5; }
+
+/* Item 2 — spans 7 cols */
+.item2 { grid-column: span 7; }
+
+/* Item 3 — spans 8 cols, pushed right */
+.item3 {
+  grid-column: 3 / span 8;
+}
+
+/* Item 4 — spans 4 cols */
+.item4 { grid-column: span 4; }
+
+.item {
+  display: flex;
+  flex-direction: column;
+}
+
+.itemLink {
+  display: block;
+  cursor: default;
+}
+
+a.itemLink {
+  cursor: pointer;
+}
+
+.cardMedia {
+  overflow: hidden;
+  border-radius: 16px; /* User requested: corner radius 16 */
+  transition: transform var(--motion-slow) var(--ease-out);
+}
+
+@media (hover: hover) {
+  a.itemLink:hover .cardMedia {
+    transform: scale(1.02);
+  }
+}
+
+.cardMeta {
+  padding-top: var(--space-4);
+  display: grid;
+  gap: var(--space-1);
+}
+
+.category {
+  /* inherits .label */
+}
+
+.title {
+  font-size: var(--text-base);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  margin-top: var(--space-1);
+}
+
+.description {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+/* Responsive — collapse to 2 col, then 1 col */
+@media (max-width: 1024px) {
+  .item1, .item2, .item3, .item4 {
+    grid-column: span 6;
+  }
+  .item3 {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+  .item1, .item2, .item3, .item4 {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cardMedia {
+    transition: none;
+  }
+}

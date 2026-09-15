@@ -1,0 +1,85 @@
+.toggleContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #DF9A97; /* Custom shade of pink */
+  padding: 5px; /* Symmetrical internal border padding */
+  border-radius: 11px; /* Scaled down container radius */
+  width: 210px; /* Reduced width for a more compact design */
+  position: relative;
+  box-sizing: border-box;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(0, 0, 0, 0.05); /* Softened drop shadow for compact layout */
+}
+
+.tabButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 7px; /* Reduced vertical padding */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 13px; /* Reduced font size for compact presentation */
+  color: #FFFFFF; /* White for inactive text on the pink background */
+  transition: color var(--motion-fast) ease;
+  user-select: none;
+}
+
+.tabButton:hover {
+  color: rgba(255, 255, 255, 0.85); /* Muted white hover state */
+}
+
+.activeText {
+  color: #5D7A42 !important; /* Active text color (dark olive green) on the off-white pill */
+  font-weight: 600;
+}
+
+/* The white active slide pill */
+.activeBg {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-bg); /* Match the page surface color dynamically */
+  border-radius: 7px; /* Scaled down border-radius matching outer container proportions */
+  z-index: 1;
+  pointer-events: none; /* Prevent blocking click/touch events on mobile */
+}
+
+/* Layer text above the slide pill */
+.buttonText {
+  position: relative;
+  z-index: 2;
+}
+
+/* Focus styles for keyboard accessibility */
+.tabButton:focus-visible::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border: 2px solid #5D7A42;
+  border-radius: 11px;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .toggleContainer {
+    width: 220px; /* Shrunk width for mobile */
+    padding: 4px; /* Shrunk outer margin padding */
+    border-radius: 10px;
+  }
+
+  .tabButton {
+    padding-block: 8px; /* Shrunk height */
+    font-size: var(--text-sm); /* Shrunk typography size */
+  }
+
+  .activeBg {
+    border-radius: 6px; /* Matched border radius */
+  }
+
+  .tabButton:focus-visible::after {
+    border-radius: 8px;
+  }
+}
