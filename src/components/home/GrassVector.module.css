@@ -162,3 +162,12 @@
   }
 }
 
+/* Hide beaver completely on phone breakpoint only (keep on desktop and tablet/iPad) */
+@media (max-width: 640px) {
+  .beaverWrapper,
+  .beaverClickTarget,
+  .speechBubble {
+    display: none !important;
+  }
+}
+
