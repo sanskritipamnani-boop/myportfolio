@@ -39,7 +39,7 @@
 }
 
 .text p {
-  font-size: var(--text-md);
+  font-size: var(--text-base);
   font-weight: 300;
   color: var(--color-text-secondary);
   line-height: var(--leading-relaxed);

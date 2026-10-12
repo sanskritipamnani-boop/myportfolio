@@ -45,21 +45,6 @@ export default function AboutPage() {
                   priority
                 />
               </div>
-
-              <div className={styles.details}>
-                <div className={styles.detailGroup}>
-                  <span className={`label ${styles.detailLabel}`}>Discipline</span>
-                  <p className={styles.detailValue}>Product Experience Design · UX · Systems</p>
-                </div>
-                <div className={styles.detailGroup}>
-                  <span className={`label ${styles.detailLabel}`}>Based</span>
-                  <p className={styles.detailValue}>Gandhinagar, India</p>
-                </div>
-                <div className={styles.detailGroup}>
-                  <span className={`label ${styles.detailLabel}`}>Available</span>
-                  <p className={styles.detailValue}>Open to new opportunities</p>
-                </div>
-              </div>
             </aside>
           </div>
 
