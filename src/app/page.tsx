@@ -115,7 +115,7 @@ export default function HomePage({ initialSlug }: HomePageProps) {
             )}
           </section>
 
-          <AboutPreview />
+          {activeTab === 'work' && <AboutPreview />}
         </div>
       </div>
 

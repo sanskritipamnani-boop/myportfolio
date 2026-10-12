@@ -1,7 +1,8 @@
 .section {
-  padding: clamp(3rem, 7vw, 5rem) clamp(1.25rem, 4vw, 3rem);
+  margin-top: 16px;
+  padding: 1rem clamp(1.25rem, 4vw, 3rem) 1.25rem;
   border-top: 1px solid var(--color-border);
-  background-color: var(--color-hover-bg);
+  background-color: transparent;
 }
 
 .inner {
@@ -22,11 +23,38 @@
   cursor: pointer;
   padding: var(--space-6);
   border-radius: 4px;
+  background-color: transparent;
+  position: relative;
   transition: background-color var(--motion-standard) ease;
 }
 
 .card:hover {
-  background-color: var(--color-border-subtle);
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Floating green cursor bubble */
+.cursorBubble {
+  position: absolute;
+  transform: translate(14px, 14px);
+  background-color: #728F4F;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  pointer-events: none;
+  z-index: 100;
+  box-shadow: 0 6px 18px rgba(114, 143, 79, 0.4);
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .cursorBubble {
+    display: none;
+  }
 }
 
 .cardMeta {

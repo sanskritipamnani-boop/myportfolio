@@ -14,7 +14,7 @@
 }
 
 .content {
-  padding-bottom: var(--space-32);
+  padding-bottom: var(--space-16);
 }
 
 @media (max-width: 1200px) {

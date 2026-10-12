@@ -1,35 +1,55 @@
 .project {
   display: flex;
   align-items: center;
-  justify-content: center; /* Centered columns to prevent space-between layout stretching */
-  gap: 64px; /* Fixed horizontal gap between visual and text columns */
+  justify-content: center;
+  gap: 72px;
   width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
   position: relative;
-}
-
-/* Alternating rows: Text on Left (row-reverse), Image on Left (row) */
-.even {
-  flex-direction: row-reverse; /* Image Left, Text Right */
-}
-
-.odd {
-  flex-direction: row; /* Text Left, Image Right */
+  flex-direction: row; /* Visuals on left side, text on right */
 }
 
 /* 1. Image Visual Column */
+.mediaColumnWrapper {
+  position: relative;
+  flex: 1 1 65%;
+  max-width: 880px; /* Scaled up visual ratio size restored */
+  min-width: 280px;
+  width: 100%;
+}
+
+.peekingBeaverWrapper {
+  position: absolute;
+  bottom: 24px;
+  right: -10px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.peekingBeaverImg {
+  width: 55px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  transition: filter 0.3s ease;
+}
+
+:global([data-theme='dark']) .peekingBeaverImg {
+  filter: brightness(0.55) contrast(0.95) saturate(0.8);
+}
+
 .mediaLink {
   display: block;
   position: relative;
-  flex: 1 1 70%;
-  max-width: 780px; /* 70% visual ratio size */
-  min-width: 280px;
+  width: 100%;
   border-radius: 16px; /* User requested: corner radius 16px */
   overflow: hidden;
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.04);
   transition: 
     transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
     box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-  z-index: 1;
+  z-index: 2;
 }
 
 .mediaLink:hover {
@@ -52,16 +72,16 @@
 /* 2. Text Content Column */
 .content {
   display: flex;
-  flex: 1 1 30%;
-  max-width: 340px; /* 30% text ratio size */
+  flex: 1 1 35%;
+  max-width: 420px; /* Scaled up text column width restored */
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px; /* Vertical gap between statement, meta, and link */
+  gap: 18px; /* Vertical gap between statement, meta, and link */
 }
 
 /* Big Bold Statement Title (matches descriptive copy in reference) */
 .statement {
-  font-size: clamp(1.1rem, 1.6vw, 1.35rem); /* Reduced size to prevent chunky overlapping visual presentation */
+  font-size: clamp(1.2rem, 1.8vw, 1.55rem); /* Scaled up statement title size */
   font-weight: 500; /* Lighter font weight for a cleaner, modern monospace look */
   line-height: 1.4;
   color: var(--color-text-primary);
@@ -84,7 +104,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
+  font-size: 15px;
   color: var(--color-text-secondary);
   font-weight: 400;
   opacity: 0.85;
@@ -152,10 +172,25 @@
 
 /* Mobile Breakpoint Adjustments (768px and down): stack image on top, text below */
 @media (max-width: 768px) {
-  .project, .even, .odd {
-    flex-direction: column-reverse; /* Image (second child) goes to top, Content (first child) goes to bottom */
+  .project {
+    flex-direction: column; /* Image (first child) goes to top, Content (second child) goes to bottom */
     gap: 20px;
     align-items: flex-start;
+  }
+
+  .mediaColumnWrapper {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .peekingBeaverWrapper {
+    bottom: 2px;
+    right: -4px;
+  }
+
+  .peekingBeaverImg {
+    width: 32px;
   }
 
   .mediaLink {

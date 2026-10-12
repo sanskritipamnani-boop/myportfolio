@@ -1,6 +1,6 @@
 .section {
   padding-top: var(--space-6); /* Shifted header further up closer to the grass base clumps */
-  padding-bottom: var(--space-20); /* Leave bottom space for layout breathing room */
+  padding-bottom: 0;
   margin: 0;
   width: 100%;
 }
@@ -41,9 +41,11 @@
 .list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-16); /* 64px gap between stacked project items */
+  gap: var(--space-20); /* Increased spacing between project items */
   width: 100%;
-  padding-inline: clamp(1.25rem, 5vw, 4rem); /* Match container padding */
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-inline: clamp(1.5rem, 5vw, 4rem); /* Match container padding */
   box-sizing: border-box;
 }
 
@@ -51,4 +53,18 @@
   width: 100%;
   height: auto;
   position: relative;
+}
+
+@media (max-width: 768px) {
+  .list {
+    padding-inline: 1rem;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .list {
+    padding-inline: 0.75rem;
+    gap: 2.5rem;
+  }
 }

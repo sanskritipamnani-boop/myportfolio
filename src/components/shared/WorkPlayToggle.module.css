@@ -37,11 +37,11 @@
   font-weight: 600;
 }
 
-/* The white active slide pill */
+/* The off-white active slide pill */
 .activeBg {
   position: absolute;
   inset: 0;
-  background-color: var(--color-bg); /* Match the page surface color dynamically */
+  background-color: #F9FAF5; /* Keep off-white surface for the active pill in both light and night mode */
   border-radius: 7px; /* Scaled down border-radius matching outer container proportions */
   z-index: 1;
   pointer-events: none; /* Prevent blocking click/touch events on mobile */

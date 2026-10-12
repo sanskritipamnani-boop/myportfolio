@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Container from '@/components/layout/Container';
 import styles from './about.module.css';
 
 export const metadata: Metadata = {
-  title: 'About',
-  description: 'About Your Name — product designer focused on interaction and systems.',
+  title: 'About | Sanskriti Pamnani',
+  description: 'About Sanskriti Pamnani — Product Experience Designer studying at NIFT Gandhinagar.',
 };
 
 export default function AboutPage() {
@@ -13,46 +14,50 @@ export default function AboutPage() {
       <Container>
         <div className={styles.inner}>
           <header className={styles.header}>
-            <span className={`label ${styles.eyebrow}`}>About</span>
-            <h1 id="about-heading" className={styles.heading}>
-              Placeholder headline about who you are and what you care about.
-            </h1>
+            <h1 id="about-heading" className={`label ${styles.eyebrow}`}>About</h1>
           </header>
 
           <div className={styles.body}>
             <div className={styles.text}>
               <p>
-                Placeholder bio paragraph one. Describe your background, how you got into design,
-                and what drives your practice. This should feel personal and specific, not generic.
+                Hello! My name is Sanskriti, and I’m currently studying Product Experience Design at NIFT, Gandhinagar. I work <mark className={styles.highlight}>across research, product and UX thinking, visual design, and prototyping</mark>, and I also enjoy <mark className={styles.highlight}>experimenting with code and AI</mark> as tools to explore ideas and bring them to life. In my last internship, I gained experience in <mark className={styles.highlight}>product strategy, visual &amp; art direction, and website design.</mark>
               </p>
               <p>
-                Placeholder bio paragraph two. Talk about your approach to design —
-                how you think, what you value, and the kind of problems you find most interesting.
+                I’m drawn to work that explores how physical and digital experiences come together <mark className={styles.highlight}>through interaction, understanding, and technology.</mark> I’ve always been curious about the little things people do, the choices they make, and the problems they work around. Design gives me a way to turn that curiosity into something tangible, whether it’s a digital product, a physical object, or an experience.
               </p>
               <p>
-                Placeholder bio paragraph three. Mention what you are currently working on,
-                available for, or looking for in your next role.
+                I’m now looking for opportunities where I can learn from real-world projects, contribute to a design team, and continue developing my approach as a product designer.
+              </p>
+              <p>
+                Other than that, I like making toys, playing games, reading, and travelling!
               </p>
             </div>
 
             <aside className={styles.sidebar}>
-              {/* Portrait placeholder */}
-              <div className={styles.portrait} aria-hidden="true">
-                <span className={styles.portraitLabel}>[ Portrait ]</span>
+              {/* Portrait */}
+              <div className={styles.portrait}>
+                <Image
+                  src="/images/passport.png"
+                  alt="Sanskriti Pamnani"
+                  width={380}
+                  height={380}
+                  className={styles.portraitImg}
+                  priority
+                />
               </div>
 
               <div className={styles.details}>
                 <div className={styles.detailGroup}>
                   <span className={`label ${styles.detailLabel}`}>Discipline</span>
-                  <p className={styles.detailValue}>Product Design · UX · Systems</p>
+                  <p className={styles.detailValue}>Product Experience Design · UX · Systems</p>
                 </div>
                 <div className={styles.detailGroup}>
                   <span className={`label ${styles.detailLabel}`}>Based</span>
-                  <p className={styles.detailValue}>[City, Country]</p>
+                  <p className={styles.detailValue}>Gandhinagar, India</p>
                 </div>
                 <div className={styles.detailGroup}>
                   <span className={`label ${styles.detailLabel}`}>Available</span>
-                  <p className={styles.detailValue}>Open to new work</p>
+                  <p className={styles.detailValue}>Open to new opportunities</p>
                 </div>
               </div>
             </aside>
@@ -61,8 +66,8 @@ export default function AboutPage() {
           {/* Contact */}
           <footer className={styles.contact}>
             <span className={`label ${styles.contactLabel}`}>Get in touch</span>
-            <a href="mailto:your@email.com" className={styles.email}>
-              your@email.com
+            <a href="mailto:sanskriti28052005@gmail.com" className={styles.email}>
+              sanskriti28052005@gmail.com
             </a>
           </footer>
         </div>

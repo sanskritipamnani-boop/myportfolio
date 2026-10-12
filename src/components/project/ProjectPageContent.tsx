@@ -2,8 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import type { Project } from '@/data/projects';
-import ProjectHeader from './ProjectHeader';
-import ProjectRenderer from './ProjectRenderer';
+import ProjectCaseStudy from './ProjectCaseStudy';
 import styles from './ProjectPageContent.module.css';
 
 type ProjectPageContentProps = {
@@ -22,15 +21,11 @@ export default function ProjectPageContent({ project, totalProjects }: ProjectPa
   return (
     <div className={styles.page}>
       <div className={styles.wrapper}>
-        <ProjectHeader
+        <ProjectCaseStudy
           project={project}
           totalProjects={totalProjects}
           onClose={handleClose}
         />
-
-        <div className={styles.content}>
-          <ProjectRenderer project={project} />
-        </div>
       </div>
     </div>
   );

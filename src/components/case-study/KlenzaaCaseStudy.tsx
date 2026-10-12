@@ -1,32 +1,58 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import styles from './KlenzaaCaseStudy.module.css';
 
 interface MediaItemProps {
   filename: string;
   altText?: string;
   imageSrc?: string;
+  fit?: boolean;
 }
 
 /**
  * MediaItem helper component.
  * Automatically handles PNG/JPG images and MP4 video walkthroughs.
  */
-function MediaItem({ filename, altText, imageSrc }: MediaItemProps) {
+function MediaItem({ filename, altText, imageSrc, fit }: MediaItemProps) {
   const src = imageSrc || `/images/${filename}`;
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (!src.endsWith('.mp4') || !videoRef.current) return;
+    const video = videoRef.current;
+    video.pause();
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, [src]);
 
   if (src.endsWith('.mp4')) {
+    const isFit = fit || filename.includes('property-panel');
     return (
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        style={{ width: '100%', borderRadius: 10, border: '1px solid var(--line)', display: 'block' }}
-      >
-        <source src={src} type="video/mp4" />
-      </video>
+      <div className={styles.videoFrame}>
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className={isFit ? styles.fitVideo : styles.croppedVideo}
+        >
+          <source src={src} type="video/mp4" />
+        </video>
+      </div>
     );
   }
 
@@ -34,7 +60,14 @@ function MediaItem({ filename, altText, imageSrc }: MediaItemProps) {
     <img
       src={src}
       alt={altText || filename}
-      style={{ display: 'block', width: '100%', borderRadius: 10, border: '1px solid var(--line)' }}
+      style={{
+        display: 'block',
+        maxWidth: '100%',
+        height: 'auto',
+        margin: '0 auto',
+        borderRadius: 10,
+        border: '1px solid var(--line)',
+      }}
     />
   );
 }
@@ -45,12 +78,6 @@ export default function KlenzaaCaseStudy() {
       <div className={styles.page}>
         {/* HERO SECTION */}
         <div className={styles.hero}>
-          <p className={styles.tag}>Case study</p>
-          <h1>Designing Klenzaa</h1>
-          <hr className={styles.rule} />
-          <p className={styles.lede}>
-            A host side MVP for a two sided STR cleaning marketplace, designed from scratch as the sole UX and UI designer on a freelance engagement.
-          </p>
           <div className={styles.metaGrid}>
             <div className={styles.metaItem}>
               <p className={styles.label}>Role</p>
@@ -69,10 +96,13 @@ export default function KlenzaaCaseStudy() {
               <p className={styles.value}>Host side product, end to end</p>
             </div>
           </div>
+          <div className={styles.heroImage}>
+            <MediaItem filename="klenzaa-animation.mp4" altText="Klenzaa animation preview" />
+          </div>
         </div>
 
         {/* OVERVIEW SECTION */}
-        <section className={styles.section}>
+        <section id="overview" className={styles.section}>
           <span className={styles.kicker}>Overview</span>
           <h2>Klenzaa needed a working MVP before it could become a business.</h2>
           <p className={styles.body}>
@@ -81,7 +111,7 @@ export default function KlenzaaCaseStudy() {
         </section>
 
         {/* COMPETITIVE RESEARCH SECTION */}
-        <section className={styles.section}>
+        <section id="competitive-research" className={styles.section}>
           <span className={styles.kicker}>Competitive Research</span>
           <h2>
             The client&apos;s research told us who Klenzaa was competing with. It didn&apos;t tell us what we can improve on.
@@ -103,7 +133,7 @@ export default function KlenzaaCaseStudy() {
         </section>
 
         {/* PAIN POINTS SECTION */}
-        <section className={styles.section}>
+        <section id="pain-points" className={styles.section}>
           <span className={styles.kicker}>Pain Points</span>
           <h2>Three problems came out of that teardown.</h2>
           <div className={styles.cardRow}>
@@ -126,14 +156,16 @@ export default function KlenzaaCaseStudy() {
         </section>
 
         {/* SOLUTIONS SECTION */}
-        <section className={styles.section}>
+        <section id="solutions" className={styles.section}>
           <span className={styles.kicker}>Solutions</span>
           <h2>How I solved those three core problems.</h2>
           <div className={styles.cardRow}>
             <div className={styles.card}>
               <span className={styles.cardNum}>01</span>
               <h3>Structured task handoff</h3>
-              <p>Designed property-centric task assignment with role-specific views for hosts and cleaners.</p>
+              <p>
+                Designed property-centric task assignment, which means a host assigns a cleaner and a checklist straight from a property panel or while setting it up, the host does not have to wander or get confused for assigning or handing off proper instructions.
+              </p>
             </div>
             <div className={styles.card}>
               <span className={styles.cardNum}>02</span>
@@ -148,7 +180,17 @@ export default function KlenzaaCaseStudy() {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2.25rem', marginTop: '2rem' }}>
-            <figure className={styles.figure}>
+            <figure className={styles.walkthroughFigure}>
+              <h3 style={{ fontSize: '16px', fontWeight: 600, marginBottom: '0.6rem', color: 'var(--teal-deep)' }}>
+                Sign Up Page Walkthrough
+              </h3>
+              <MediaItem
+                filename="sign up page.mp4"
+                altText="Sign Up Page Walkthrough"
+              />
+            </figure>
+
+            <figure className={styles.walkthroughFigure}>
               <h3 style={{ fontSize: '16px', fontWeight: 600, marginBottom: '0.6rem', color: 'var(--teal-deep)' }}>
                 Dashboard Walkthrough
               </h3>
@@ -158,7 +200,7 @@ export default function KlenzaaCaseStudy() {
               />
             </figure>
 
-            <figure className={styles.figure}>
+            <figure className={styles.walkthroughFigure}>
               <h3 style={{ fontSize: '16px', fontWeight: 600, marginBottom: '0.6rem', color: 'var(--teal-deep)' }}>
                 Checklists &amp; Modules Walkthrough
               </h3>
@@ -168,7 +210,7 @@ export default function KlenzaaCaseStudy() {
               />
             </figure>
 
-            <figure className={styles.figure}>
+            <figure className={styles.walkthroughFigure}>
               <h3 style={{ fontSize: '16px', fontWeight: 600, marginBottom: '0.6rem', color: 'var(--teal-deep)' }}>
                 Properties &amp; Property Details Panel Walkthrough
               </h3>
@@ -181,7 +223,7 @@ export default function KlenzaaCaseStudy() {
         </section>
 
         {/* SCOPE & PRIORITIES SECTION */}
-        <section className={styles.section}>
+        <section id="scope-priorities" className={styles.section}>
           <span className={styles.kicker}>Scope &amp; Priorities</span>
           <p className={styles.body}>
             The MVP was shaped around fast property setup, understandable scheduling, property centric checklist assignment, structured checklist management, and a dashboard that acts as a single source of truth.
@@ -189,8 +231,8 @@ export default function KlenzaaCaseStudy() {
         </section>
 
         {/* DASHBOARD ITERATIONS SECTION */}
-        <section className={styles.section}>
-          <span className={styles.kicker}>Dashboard</span>
+        <section id="dashboard-iterations" className={styles.section}>
+          <span className={styles.kicker}>Let&apos;s start with how the dashboard came to be...</span>
           <h2>Three versions, each one built to fix a specific problem in the version before it.</h2>
 
           <div className={styles.versionRowWrap}>
@@ -200,15 +242,15 @@ export default function KlenzaaCaseStudy() {
                 <span className={styles.vLabel}>Version 1</span>
                 <h3>A calendar grid, color coded by property</h3>
                 <p>Each property got its own color, plotted across a shared calendar view. It looked complete and communicated everything at a glance, in theory.</p>
-                <figure className={styles.figure}>
+                <p style={{ marginTop: '0.85rem', marginBottom: '1.25rem' }}>
+                  <span className={styles.broke}>What broke:</span> past a handful of properties, hosts couldn&apos;t remember which color belonged to which property.
+                </p>
+                <figure className={styles.figure} style={{ width: '80%', margin: '1rem auto 0' }}>
                   <MediaItem
-                    filename="dashboard-v1-color-coded.png"
+                    filename="dashboard-v1-color-coded_new.png"
                     altText="Version 1 dashboard color coded calendar grid"
                   />
                 </figure>
-                <p style={{ marginTop: '1rem' }}>
-                  <span className={styles.broke}>What broke:</span> past a handful of properties, hosts couldn&apos;t remember which color belonged to which property.
-                </p>
               </div>
 
               {/* VERSION 2 */}
@@ -216,15 +258,15 @@ export default function KlenzaaCaseStudy() {
                 <span className={styles.vLabel}>Version 2</span>
                 <h3>Each property becomes its own row</h3>
                 <p>Every property got a row, with its schedule laid out across the timeline. Reading the dashboard stopped requiring memorization.</p>
-                <figure className={styles.figure}>
+                <p style={{ marginTop: '0.85rem', marginBottom: '1.25rem' }}>
+                  <span className={styles.broke}>What was still unresolved:</span> Color for task type too? What about same day conflicts? How can I help users see updates and proof directly from the dashboard and not wander around?
+                </p>
+                <figure className={styles.figure} style={{ width: '80%', margin: '1rem auto 0' }}>
                   <MediaItem
-                    filename="dashboard-self-critique.png"
+                    filename="dashboard_version2_self _crtique.png"
                     altText="Version 2 of the dashboard, annotated with open questions"
                   />
                 </figure>
-                <p style={{ marginTop: '1rem' }}>
-                  <span className={styles.broke}>What was still unresolved:</span> Color for task type too? What about same day conflicts? How can I help users see updates and proof directly from the dashboard and not wander around?
-                </p>
               </div>
 
               {/* VERSION 3 */}
@@ -238,7 +280,7 @@ export default function KlenzaaCaseStudy() {
                   <li><strong>Live progress tracking:</strong> Designed the dashboard directly so hosts can view ongoing cleaning work in real time and verify image proof, solving the challenge of live progress tracking.</li>
                 </ul>
 
-                <figure style={{ marginTop: '1.25rem' }} className={styles.figure}>
+                <figure style={{ marginTop: '1.25rem', width: '64%', margin: '1.25rem auto 0' }} className={styles.figure}>
                   <MediaItem
                     filename="dashboard-final-walkthrough.mp4"
                     altText="Final Klenzaa dashboard, walked through end to end"
@@ -246,7 +288,7 @@ export default function KlenzaaCaseStudy() {
                 </figure>
 
                 <figure style={{ marginTop: '1.25rem' }} className={styles.figure}>
-                  <div style={{ width: '50%', margin: '0 auto' }}>
+                  <div style={{ width: '65%', margin: '0 auto', overflow: 'hidden', borderRadius: '12px' }}>
                     <MediaItem
                       filename="product-card.png"
                       altText="Klenzaa product card design"
@@ -259,7 +301,7 @@ export default function KlenzaaCaseStudy() {
         </section>
 
         {/* CHECKLISTS SECTION */}
-        <section className={styles.section}>
+        <section id="checklists" className={styles.section}>
           <span className={styles.kicker}>Checklists</span>
           <h2>The checklists have to work in a way that users can create separate checklists, edit them easily, and understand their modules so that when automated, the checklists are easily assigned to the properties.</h2>
 
@@ -274,7 +316,7 @@ export default function KlenzaaCaseStudy() {
               <div className={styles.decisionAnswer}>
                 <p className={styles.q}>Why organize checklist items into modules?</p>
                 <p className={styles.a}>
-                  Different properties require unique task combinations. Modular room blocks like Kitchen, Bedroom, and Bathroom—plus a General module—allow hosts to compose exact checklists per property rather than repeatedly editing one long master list.
+                  Different properties require unique task combinations. Modular room blocks like Kitchen, Bedroom, and Bathroom, plus a General module, allow hosts to compose exact checklists per property rather than repeatedly editing one long master list.
                 </p>
               </div>
               <div className={styles.decisionAnswer}>
@@ -296,26 +338,28 @@ export default function KlenzaaCaseStudy() {
             </figcaption>
           </figure>
 
-          <div className={styles.featureBlock}>
-            <h3>The harder problem underneath it</h3>
-            <p>If a host edits a checklist while looking at one scheduled clean, how do they know whether they changed today&apos;s job or every future job at every property?</p>
-            <p>
-              A warning label depends on someone reading it. So the interface removes the mistake instead. The default items on a scheduled clean can&apos;t be edited from that screen at all, since they&apos;re meant to stay consistent and automate going forward. A host can only add something extra for that one job. Changing the actual standard means opening the Checklists section on purpose, a different place for a different kind of edit.
-            </p>
-          </div>
+          <div className={styles.featureSplitWrap}>
+            <div className={styles.featureSplit}>
+              <div className={styles.featureBlock}>
+                <h3>The harder problem underneath it</h3>
+                <p>If a host edits a checklist on a single scheduled clean, how do we ensure future jobs across all properties aren&apos;t accidentally changed?</p>
+                <p>
+                  Instead of relying on warning labels, the interface prevents mistakes by default. Standard items are locked on scheduled cleans so hosts can only append one-off additions, keeping global automation intact.
+                </p>
+              </div>
 
-          <figure className={styles.figure}>
-            <div style={{ maxWidth: '680px', width: '100%', margin: '0 auto' }}>
-              <MediaItem
-                filename="checklist-additional-item.png"
-                altText="Adding a one off additional item to a scheduled clean checklist"
-              />
+              <figure className={styles.featureMedia}>
+                <MediaItem
+                  filename="checklist-additional-item.png"
+                  altText="Adding a one off additional item to a scheduled clean checklist"
+                />
+              </figure>
             </div>
-          </figure>
+          </div>
         </section>
 
         {/* PROPERTIES TAB SECTION */}
-        <section className={styles.section}>
+        <section id="properties-tab" className={styles.section}>
           <span className={styles.kicker}>Properties Tab</span>
           <h2>Properties &amp; Property Details Panel</h2>
           <p className={styles.body}>
@@ -330,16 +374,28 @@ export default function KlenzaaCaseStudy() {
         </section>
 
         {/* DESIGN SYSTEM SECTION */}
-        <section className={styles.section}>
-          <span className={styles.kicker}>Design System</span>
+        <section id="design-system" className={styles.section}>
+          <span className={styles.kicker}>Visual guide and components</span>
           <h2>The component library was kept small on purpose.</h2>
           <p className={styles.body}>
             Buttons, cards, status chips, side panels, nothing more. Building a bigger system ahead of real feedback is a bet on assumptions that haven&apos;t been tested yet. Klenzaa&apos;s component set stayed deliberately lean so it could evolve once real hosts and cleaners had used it, instead of locking in decisions before there was proof they were the right ones.
           </p>
+          <figure className={styles.figure} style={{ marginTop: '1.5rem' }}>
+            <MediaItem
+              filename="design-system.png"
+              altText="Klenzaa Design System visual guide"
+            />
+          </figure>
+          <figure className={styles.figure} style={{ marginTop: '1.5rem' }}>
+            <MediaItem
+              filename="final_component.png"
+              altText="Klenzaa Design System component library"
+            />
+          </figure>
         </section>
 
         {/* WHAT'S NEXT SECTION */}
-        <section className={styles.section}>
+        <section id="whats-next" className={styles.section}>
           <span className={styles.kicker}>What&apos;s Next</span>
           <h2>Property setup is manual today because automation needed a foundation first.</h2>
           <p className={styles.body}>
@@ -348,7 +404,7 @@ export default function KlenzaaCaseStudy() {
         </section>
 
         {/* SCOPE GRID SECTION */}
-        <section className={styles.section}>
+        <section id="scope" className={styles.section}>
           <span className={styles.kicker}>Scope</span>
           <h2>What I designed, and what stayed out of scope.</h2>
           <div className={styles.scopeGrid}>
@@ -359,7 +415,6 @@ export default function KlenzaaCaseStudy() {
                 <li>Scheduling</li>
                 <li>Role based checklists</li>
                 <li>Dashboard</li>
-                <li>Marketplace handoff</li>
               </ul>
             </div>
             <div className={`${styles.scopeCard} ${styles.scopeCardOut}`}>
@@ -374,16 +429,16 @@ export default function KlenzaaCaseStudy() {
         </section>
 
         {/* OUTCOME SECTION */}
-        <section className={styles.section}>
+        <section id="outcome" className={styles.section}>
           <span className={styles.kicker}>Outcome</span>
-          <h2>Klenzaa&apos;s current product runs on this design. I&apos;m no longer on the team.</h2>
+          <h2>Klenzaa&apos;s current product runs on this design.</h2>
           <p className={styles.body}>
             The live product uses this UI and these branding guidelines today. It&apos;s still evolving, and I don&apos;t have visibility into how real hosts or cleaners have responded since handoff. That&apos;s the honest state of it, not a guess dressed up as a metric.
           </p>
         </section>
 
         {/* REFLECTION SECTION */}
-        <section className={styles.section} style={{ marginBottom: 0 }}>
+        <section id="reflection" className={styles.section} style={{ marginBottom: 0 }}>
           <span className={styles.kicker}>Reflection</span>
           <h2>What changed in how I design</h2>
           <blockquote className={styles.quoteBlock}>

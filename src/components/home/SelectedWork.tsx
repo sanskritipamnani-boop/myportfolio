@@ -1,5 +1,6 @@
 import Container from '@/components/layout/Container';
 import ProjectPreview from './ProjectPreview';
+import MoreProjects from './MoreProjects';
 import { projects } from '@/data/projects';
 import styles from './SelectedWork.module.css';
 
@@ -18,12 +19,17 @@ export default function SelectedWork() {
 
       {/* Full screen project list without padding bounds */}
       <div className={styles.list} role="list">
-        {projects.map((project, i) => (
-          <div key={project.id} role="listitem" className={styles.listItem}>
-            <ProjectPreview project={project} index={i} />
-          </div>
-        ))}
+        {projects
+          .filter((p) => p.id !== 'whatsapp')
+          .map((project, i) => (
+            <div key={project.id} role="listitem" className={styles.listItem}>
+              <ProjectPreview project={project} index={i} />
+            </div>
+          ))}
       </div>
+
+      {/* More projects, ideas and solutions horizontal scroll section */}
+      <MoreProjects />
     </section>
   );
 }

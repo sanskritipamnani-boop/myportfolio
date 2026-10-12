@@ -1,13 +1,12 @@
 .section {
-  padding-block: var(--space-24);
+  padding-top: var(--space-12);
+  padding-bottom: var(--space-12);
   border-top: 1px solid var(--color-border);
 }
 
 .inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-16);
-  align-items: center;
+  display: block;
+  max-width: 640px;
 }
 
 .content {
@@ -54,37 +53,6 @@
 
 .moreLink:hover .arrow {
   transform: translateX(4px);
-}
-
-/* Portrait placeholder */
-.portrait {
-  aspect-ratio: 3 / 4;
-  background-color: var(--color-border-subtle);
-  border: 1px dashed var(--color-border);
-  border-radius: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 360px;
-  justify-self: end;
-}
-
-.portraitLabel {
-  font-size: var(--text-xs);
-  letter-spacing: var(--tracking-wider);
-  text-transform: uppercase;
-  color: var(--color-text-tertiary);
-}
-
-@media (max-width: 768px) {
-  .inner {
-    grid-template-columns: 1fr;
-  }
-  .portrait {
-    justify-self: start;
-    width: 60%;
-    max-width: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

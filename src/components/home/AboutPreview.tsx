@@ -12,21 +12,15 @@ export default function AboutPreview() {
               About
             </h2>
             <p className={styles.intro}>
-              Placeholder introduction about your background, approach, and the kind of work you care about.
-              Replace this with your actual bio when ready.
+              Product Experience Design student at NIFT Gandhinagar exploring how physical and digital worlds come together through interaction, understanding, and technology.
             </p>
             <p className={styles.role}>
-              Product Designer · Based in [City]
+              Product Experience Designer · Based in Gandhinagar, India
             </p>
             <Link href="/about" className={styles.moreLink} aria-label="More about me">
               <span>More About Me</span>
               <span className={styles.arrow} aria-hidden="true">→</span>
             </Link>
-          </div>
-
-          {/* Portrait / visual placeholder */}
-          <div className={styles.portrait} aria-hidden="true">
-            <span className={styles.portraitLabel}>[ Portrait ]</span>
           </div>
         </div>
       </Container>

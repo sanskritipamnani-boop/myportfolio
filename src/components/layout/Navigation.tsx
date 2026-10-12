@@ -3,11 +3,13 @@
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useTheme } from '@/context/ThemeContext';
 import Container from './Container';
 import styles from './Navigation.module.css';
 
 export default function Navigation() {
   const pathname = usePathname();
+  const { theme, toggleTheme } = useTheme();
 
   // Time & Weather state
   const [time, setTime] = useState('');
@@ -193,6 +195,21 @@ export default function Navigation() {
               >
                 Resume ↗
               </a>
+            </li>
+            <li>
+              <button
+                className={styles.themeToggleBtn}
+                onClick={toggleTheme}
+                aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+                title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              >
+                <span className={styles.toggleTrack}>
+                  {theme === 'dark' ? '🌙' : '☀️'}
+                </span>
+                <span className={styles.toggleLabel}>
+                  {theme === 'dark' ? 'Night' : 'Day'}
+                </span>
+              </button>
             </li>
           </ul>
 

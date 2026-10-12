@@ -3,8 +3,10 @@
 import { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
 import { DM_Mono } from 'next/font/google';
+import { useTheme } from '@/context/ThemeContext';
 import PixelFlowerGarden from './PixelFlowerGarden';
 import GrassVector from './GrassVector';
+import HeroBannerSvg from './HeroBannerSvg';
 import styles from './Hero.module.css';
 
 const dmMono = DM_Mono({
@@ -14,6 +16,7 @@ const dmMono = DM_Mono({
 });
 
 export default function Hero() {
+  const { theme } = useTheme();
   const [isHovered, setIsHovered] = useState(false);
 
   // Typewriter effect state for "hello welcome to"
@@ -119,17 +122,48 @@ export default function Hero() {
   const cloudSpring = useSpring(cloudBaseScale, { stiffness: 140, damping: 22, mass: 0.6 });
   const cloudScale = useTransform(cloudSpring, (s) => (isHovered ? s + 0.04 : s));
 
+  // Hide fixed hero when scrolled down past viewport fold so background grass never bleeds through
+  const heroVisibility = useTransform(scrollY, [0, 600, 750], ['visible', 'visible', 'hidden']);
+  const heroOpacity = useTransform(scrollY, [0, 600, 750], [1, 1, 0]);
+
+  // Scroll arrow opacity: fades out smoothly as user scrolls down
+  const scrollArrowOpacity = useTransform(scrollY, [0, 70], [1, 0]);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = scrollY.on('change', (latest) => {
+      setIsScrolled(latest > 50);
+    });
+    return () => unsubscribe();
+  }, [scrollY]);
+
+  const scrollToContent = () => {
+    const target = document.getElementById('work-play-section');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.scrollTo({
+        top: window.innerHeight - 60,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
-    <section 
+    <motion.section 
       className={styles.hero} 
       aria-label="Hero"
       onMouseEnter={() => setIsHovered(true)}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      style={{
+        opacity: heroOpacity,
+        visibility: heroVisibility,
+      }}
     >
       {/* Pixel clouds — positioned behind title with reverse 3D parallax tilt */}
       <motion.img
-        src="/cloudsnew.svg"
+        src={theme === 'dark' ? '/nightclouds.svg' : '/cloudsnew.svg'}
         alt="Pixel Clouds"
         className={styles.cloudsSvg}
         style={{ 
@@ -166,9 +200,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Group 16 SVG Banner Title */}
-          <motion.img
-            src="/Group 16.svg"
-            alt="Sanskriti's Space of Products, Interfaces, Experiments"
+          <motion.div
             className={styles.heroSvg}
             style={{
               x: isHovered ? tiltX : 0,
@@ -177,7 +209,10 @@ export default function Hero() {
               rotateY: isHovered ? rotateY : 0,
               transformPerspective: 800,
             }}
-          />
+            aria-label="Sanskriti's Space of Products, Interfaces, Experiments"
+          >
+            <HeroBannerSvg style={{ width: '100%', height: 'auto', display: 'block' }} />
+          </motion.div>
         </motion.div>
       </div>
       
@@ -186,6 +221,40 @@ export default function Hero() {
 
       {/* Positioned absolutely at the bottom of the entire full-width homescreen viewport */}
       <GrassVector />
-    </section>
+
+      {/* Small bouncing 'v' scroll indicator */}
+      <motion.div
+        className={styles.scrollIndicatorWrapper}
+        style={{
+          opacity: scrollArrowOpacity,
+          pointerEvents: isScrolled ? 'none' : 'auto',
+        }}
+      >
+        <button
+          type="button"
+          className={styles.scrollIndicatorButton}
+          onClick={scrollToContent}
+          aria-label="Scroll to content"
+        >
+          <svg
+            width="14"
+            height="8"
+            viewBox="0 0 14 8"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className={styles.scrollArrowIcon}
+            aria-hidden="true"
+          >
+            <path
+              d="M1.5 1.5L7 6.5L12.5 1.5"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+      </motion.div>
+    </motion.section>
   );
 }

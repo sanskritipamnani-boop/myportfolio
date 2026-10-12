@@ -1,7 +1,7 @@
 /* ============================================================
    GOOGLE FONTS IMPORT — must be first
    ============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=VT323&display=swap');
 
 /* ============================================================
    DESIGN TOKENS
@@ -75,6 +75,9 @@
   /* Panel */
   --panel-width: min(90vw, 1200px);
   --panel-width-mobile: 100vw;
+
+  /* Hero Section Colors */
+  --color-hero-green: #728F4F;
 }
 
 /* ============================================================
@@ -115,7 +118,7 @@ body {
   line-height: var(--leading-normal);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 /* Scroll lock — applied via JS when panel is open */
@@ -163,6 +166,22 @@ ul, ol {
   outline: 2px solid var(--color-text-primary);
   outline-offset: 3px;
   border-radius: 2px;
+}
+
+/* ============================================================
+   HOME SCREEN DARK MODE TOKENS (#0C162A)
+   ============================================================ */
+[data-theme='dark'] {
+  --color-bg: #0C162A;
+  --color-bg-panel: #14203A;
+  --color-text-primary: #F0F4F8;
+  --color-text-secondary: #94A3B8;
+  --color-text-tertiary: #64748B;
+  --color-border: #1E2D4A;
+  --color-border-subtle: #18253E;
+  --color-overlay: rgba(4, 8, 18, 0.88);
+  --color-hover-bg: #1A2844;
+  --color-hero-green: #9CD351;
 }
 
 

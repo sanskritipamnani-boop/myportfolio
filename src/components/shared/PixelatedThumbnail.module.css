@@ -4,6 +4,21 @@
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: var(--radius-lg, 12px);
+  background-color: var(--color-border-subtle, #f0ede6);
+}
+
+.baseImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  z-index: 1;
+  /* Crisp native rendering without blur or unnatural scaling */
+  image-rendering: auto;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .canvas {
@@ -14,13 +29,14 @@
   object-fit: cover;
   z-index: 2;
   pointer-events: none;
-  opacity: 1;
-  transition: opacity 0.3s ease-out;
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 
-.canvasDone {
-  opacity: 0;
-  pointer-events: none;
+.canvasActive {
+  opacity: 1;
 }
 
 .media {

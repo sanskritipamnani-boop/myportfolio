@@ -2,8 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import type { Project } from '@/data/projects';
-import ProjectHeader from './ProjectHeader';
-import ProjectRenderer from './ProjectRenderer';
+import ProjectCaseStudy from './ProjectCaseStudy';
 import styles from './ProjectSheet.module.css';
 
 type ProjectSheetProps = {
@@ -23,12 +22,18 @@ export default function ProjectSheet({
   const [renderedProject, setRenderedProject] = useState<Project | null>(project);
   const sheetRef = useRef<HTMLDivElement>(null);
 
-  // Keep renderedProject active during close transition
+  // Keep renderedProject active during close transition & reset scroll top
   useEffect(() => {
     if (project) {
       setRenderedProject(project);
     }
   }, [project]);
+
+  useEffect(() => {
+    if (sheetRef.current) {
+      sheetRef.current.scrollTop = 0;
+    }
+  }, [renderedProject?.slug]);
 
   // Manage open/close state animation, scroll lock, and homepage depth scale effect
   useEffect(() => {
@@ -103,13 +108,11 @@ export default function ProjectSheet({
         <div className={styles.handleBar} />
 
         <div className={styles.sheetContent}>
-          <ProjectHeader
+          <ProjectCaseStudy
             project={renderedProject}
             totalProjects={totalProjects}
             onClose={onClose}
           />
-
-          <ProjectRenderer project={renderedProject} />
         </div>
       </div>
     </>

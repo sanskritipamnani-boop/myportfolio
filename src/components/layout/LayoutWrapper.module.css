@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-x: clip;
   background-color: var(--color-bg); /* Default matches body background */
   transition: background-color var(--motion-panel) var(--ease-panel);
 }

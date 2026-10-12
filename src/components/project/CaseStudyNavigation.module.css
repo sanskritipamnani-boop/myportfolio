@@ -1,0 +1,44 @@
+.navContainer {
+  width: 100%;
+  max-width: 260px;
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.navItem {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  font-family: var(--font-body, -apple-system, BlinkMacSystemFont, 'Inter', sans-serif);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--color-text-tertiary, rgba(255, 255, 255, 0.45));
+  cursor: pointer;
+  line-height: 1.35;
+  transition: color 0.2s ease, font-weight 0.2s ease, opacity 0.2s ease;
+  opacity: 0.7;
+}
+
+.navItem:hover {
+  color: var(--color-text-primary, #ffffff);
+  opacity: 0.95;
+}
+
+.navItemActive {
+  color: var(--color-text-primary, #ffffff);
+  font-weight: 600;
+  opacity: 1;
+}
+
+/* Hide navigation tiles on tablet and mobile */
+@media (max-width: 900px) {
+  .navContainer {
+    display: none !important;
+  }
+}

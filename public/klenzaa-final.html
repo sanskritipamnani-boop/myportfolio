@@ -5,50 +5,64 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Designing Klenzaa</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #F6F7F4; --surface: #FFFFFF; --ink: #16302C; --ink-soft: #3C534E;
-    --teal: #2F6F6B; --teal-deep: #1D4744; --sage: #E4EEEA; --sage-line: #CFE0D9;
+    --bg: #ffffff; --surface: #FFFFFF; --ink: #16302C; --ink-soft: #3C534E;
+    --teal: #2F6F6B; --teal-deep: #1D4744; --sage: #EEF5F2; --sage-line: #DFEAE5;
     --amber: #C98A3D; --line: #DFE5E1;
   }
   * { box-sizing: border-box; }
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
   body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
-  .page { max-width: 740px; margin: 0 auto; padding: 5rem 1.5rem 6rem; }
-  h1, h2, h3 { font-family: 'Poppins', sans-serif; color: var(--teal-deep); margin: 0; }
+  .page { width: 100%; max-width: 100%; overflow-x: hidden; margin: 0 auto; padding: 1.5rem clamp(1.5rem, 3.5vw, 3rem) 0; }
+  h1 { font-family: 'Inter', sans-serif; font-weight: 700; color: var(--teal-deep); margin: 0; }
+  h2 { font-family: 'Inter', sans-serif; font-weight: 600; color: var(--teal-deep); margin: 0; }
+  h3 { font-family: 'Inter', sans-serif; font-weight: 600; color: var(--teal-deep); margin: 0; }
   img { display: block; width: 100%; border-radius: 10px; }
 
-  .hero { margin-bottom: 3rem; }
-  .hero .tag { font-size: 13px; color: var(--teal); font-weight: 500; margin: 0 0 0.75rem; }
-  .hero h1 { font-size: 42px; font-weight: 600; line-height: 1.18; letter-spacing: -0.01em; }
-  .hero .rule { width: 56px; height: 3px; background: var(--teal); border: none; margin: 1.5rem 0; }
-  .hero .lede { font-size: 18px; color: var(--ink-soft); max-width: 590px; margin: 0 0 2rem; }
+  .hero { margin-bottom: 2.5rem; }
+  .meta-grid { display: grid; grid-template-columns: 1fr 1.6fr 1.2fr 1.2fr; gap: 1.25rem; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 2.5rem; box-shadow: 0 2px 10px rgba(22, 48, 44, 0.04); }
+  .meta-item { display: flex; flex-direction: column; justify-content: flex-start; }
+  .meta-item .label { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--teal); margin: 0 0 6px 0; }
+  .meta-item .value { font-size: 14px; font-weight: 500; color: var(--ink); margin: 0; line-height: 1.45; }
 
-  .meta-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); margin-bottom: 2.5rem; }
-  .meta-item .label { font-size: 12px; color: var(--ink-soft); margin: 0 0 4px; }
-  .meta-item .value { font-size: 14px; font-weight: 500; color: var(--ink); margin: 0; line-height: 1.4; }
+  .hero-image { margin-top: 0; }
 
-  .hero-image { margin-top: 0.5rem; }
-
-  section { margin-bottom: 4rem; }
+  section { margin-bottom: 4.5rem; }
+  #reflection,
+  section:last-of-type {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  #reflection > *:last-child,
+  section:last-of-type > *:last-child,
+  .quote-block {
+    margin-bottom: 0 !important;
+  }
   .kicker { display: block; font-size: 13px; font-weight: 600; color: var(--teal); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
-  section h2 { font-size: 25px; font-weight: 600; line-height: 1.4; margin-bottom: 1.1rem; max-width: 630px; }
-  section > p.body { color: var(--ink-soft); max-width: 630px; }
+  section h2 { font-size: 25px; font-weight: 600; line-height: 1.4; margin-bottom: 1.1rem; max-width: 960px; }
+  section > p.body { color: var(--ink-soft); max-width: 960px; }
 
-  figure { margin: 1.5rem 0; }
+  figure { margin: 2.75rem 0; }
   figure img { border: 1px solid var(--line); }
   figcaption { font-size: 13px; color: var(--ink-soft); margin-top: 0.6rem; }
 
-  .card-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
+  .card-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.5rem; }
   .card { background: var(--sage); border: 1px solid var(--sage-line); border-radius: 10px; padding: 1.25rem 1.35rem; }
-  .card .card-num { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 13px; color: var(--teal); margin-bottom: 0.5rem; display: block; }
+  .card .card-num { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13px; color: var(--teal); margin-bottom: 0.5rem; display: block; }
   .card h3 { font-size: 15px; font-weight: 600; margin-bottom: 0.5rem; }
   .card p { font-size: 14px; color: var(--ink-soft); margin: 0; }
 
-  .priority-note { background: var(--surface); border-left: 3px solid var(--amber); border-radius: 0 10px 10px 0; padding: 1.25rem 1.5rem; margin-top: 1.5rem; font-size: 15px; color: var(--ink-soft); }
+  .priority-note { background: var(--surface); border-left: 3px solid var(--amber); border-radius: 0 10px 10px 0; padding: 1.25rem 1.5rem; margin-top: 2.5rem; font-size: 15px; color: var(--ink-soft); }
   .priority-note strong { color: var(--ink); }
 
-  .version-row-wrap { width: 100vw; position: relative; left: 50%; margin-left: -50vw; display: flex; justify-content: center; margin-top: 1.5rem; }
+  .version-row-wrap { width: 100%; display: flex; justify-content: center; margin-top: 3rem; }
   .version-row { max-width: 1160px; width: 100%; padding: 0 1.5rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.75rem; }
   .version-row .version-block:nth-child(3) { grid-column: 1 / -1; }
   .version-block {
@@ -61,34 +75,32 @@
     box-shadow: 0 24px 48px rgba(29, 71, 68, 0.18);
     z-index: 5;
   }
-  .version-block .v-label { display: inline-block; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 13px; color: var(--teal); background: var(--sage); padding: 0.3rem 0.8rem; border-radius: 100px; margin-bottom: 1.1rem; }
+  .version-block .v-label { display: inline-block; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13px; color: var(--teal); background: var(--sage); padding: 0.3rem 0.8rem; border-radius: 100px; margin-bottom: 1.1rem; }
   .version-block h3 { font-size: 19px; font-weight: 600; margin-bottom: 0.75rem; line-height: 1.3; }
   .version-block p { font-size: 15px; color: var(--ink-soft); margin: 0 0 0.65rem; line-height: 1.6; }
   .version-block p:last-child { margin-bottom: 0; }
   .broke { color: var(--amber); font-weight: 600; }
   .version-block .decision-answer { padding: 1.1rem 1.25rem; margin-top: 0.85rem; }
-  .v3-answers-wrap { width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; display: flex; justify-content: center; margin-top: 1.75rem; margin-bottom: 2.5rem; }
-  .v3-answers { max-width: 1160px; width: 100%; padding: 0 1.5rem; box-sizing: border-box; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; align-items: stretch; }
+  .v3-answers-wrap { width: 100%; display: flex; justify-content: center; margin-top: 3.5rem; margin-bottom: 3.5rem; }
+  .v3-answers { max-width: 1080px; width: 100%; padding: 0 1rem; box-sizing: border-box; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; align-items: stretch; }
   .v3-answers .decision-answer {
     margin-top: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    padding: 2rem 1.75rem;
-    border: 1px solid var(--line);
-    border-left: 4px solid var(--teal);
-    border-radius: 14px;
-    background: var(--surface);
-    box-shadow: 0 4px 16px rgba(22, 48, 44, 0.05);
+    padding: 1.25rem 1.35rem;
+    border: 1.5px dotted var(--teal);
+    border-radius: 8px;
+    background: transparent;
+    box-shadow: none;
     box-sizing: border-box;
-    min-height: 250px;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: background 0.2s ease, transform 0.2s ease;
   }
   .v3-answers .decision-answer:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 28px rgba(22, 48, 44, 0.09);
+    background: var(--surface);
+    transform: translateY(-2px);
   }
-  .v3-answers .decision-answer .q { font-size: 16px; font-weight: 600; line-height: 1.35; margin-bottom: 0.85rem; color: var(--teal-deep); }
+  .v3-answers .decision-answer .q { font-size: 15px; font-weight: 600; line-height: 1.35; margin-bottom: 0.4rem; color: var(--teal-deep); }
   .v3-answers .decision-answer .a { font-size: 14.5px; line-height: 1.65; color: var(--ink-soft); margin: 0; }
   .v3-bullet-list { margin: 1.25rem 0 1.5rem; padding-left: 1.25rem; color: var(--ink-soft); }
   .v3-bullet-list li { margin-bottom: 0.75rem; font-size: 15px; line-height: 1.6; }
@@ -98,16 +110,56 @@
   .placeholder-box .ph-title { font-weight: 600; font-size: 14px; margin-bottom: 0.4rem; }
   .placeholder-box .ph-note { font-size: 13px; color: var(--ink-soft); }
 
-  .decision-answer { background: var(--surface); border-left: 3px solid var(--teal); border-radius: 0 10px 10px 0; padding: 1.25rem 1.5rem; margin-top: 1rem; }
+  .decision-answer { background: var(--surface); border-left: 3px solid var(--teal); border-radius: 0 10px 10px 0; padding: 1.25rem 1.5rem; margin-top: 1.75rem; }
   .decision-answer .q { font-weight: 600; font-size: 14.5px; color: var(--teal-deep); margin-bottom: 0.4rem; }
   .decision-answer .a { font-size: 14.5px; color: var(--ink-soft); margin: 0; }
 
-  .feature-block { margin-top: 1.5rem; padding: 1.75rem 2rem; background: var(--surface); border-left: 3px solid var(--teal); border-radius: 0 10px 10px 0; }
+  .feature-split-wrap { width: 100%; display: flex; justify-content: center; margin-top: 3.5rem; margin-bottom: 3.5rem; }
+  .feature-split { max-width: 1040px; width: 100%; padding: 0 0.75rem; box-sizing: border-box; display: flex; gap: 1.5rem; align-items: stretch; justify-content: center; margin-top: 2rem; }
+  .feature-split .feature-block {
+    flex: 1 1 48%;
+    margin-top: 0;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1.5px dotted var(--teal);
+    border-radius: 8px;
+    background: transparent;
+    box-shadow: none;
+    padding: 1.5rem 1.75rem;
+    box-sizing: border-box;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .feature-split .feature-block:hover {
+    background: var(--surface);
+    transform: translateY(-2px);
+  }
+  .feature-split .feature-block h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    color: var(--teal-deep);
+  }
+  .feature-split .feature-block p {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0 0 0.75rem;
+  }
+  .feature-split .feature-block p:last-child {
+    margin-bottom: 0;
+  }
+  .feature-split .feature-media { flex: 1 1 52%; margin: 0; display: flex; align-items: center; justify-content: center; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 0.5rem; box-sizing: border-box; }
+  .feature-split .feature-media img { width: 100%; height: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; display: block; box-sizing: border-box; }
+  @media (max-width: 768px) { .feature-split { flex-direction: column; padding: 0 1rem; } }
+
+  .feature-block { margin-top: 2rem; padding: 1.75rem 2rem; background: var(--surface); border-left: 3px solid var(--teal); border-radius: 0 10px 10px 0; }
   .feature-block h3 { font-size: 16px; font-weight: 600; margin-bottom: 0.6rem; }
   .feature-block p { margin: 0 0 0.75rem; color: var(--ink-soft); font-size: 15px; }
   .feature-block p:last-child { margin-bottom: 0; }
 
-  .scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+  .scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2.5rem; }
   .scope-card { border-radius: 10px; padding: 1.5rem; font-size: 14px; }
   .scope-card.in { background: var(--sage); border: 1px solid var(--sage-line); }
   .scope-card.out { background: var(--surface); border: 1px solid var(--line); }
@@ -119,56 +171,206 @@
 
   .quote-block { border-left: 3px solid var(--amber); padding-left: 1.5rem; font-size: 18px; color: var(--ink); font-style: italic; max-width: 610px; line-height: 1.6; }
 
-  @media (max-width: 900px) {
-    .version-row { grid-template-columns: 1fr; }
-    .v3-answers { grid-template-columns: 1fr; }
-    .v3-answers .decision-answer { aspect-ratio: auto; }
+  .video-frame {
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    position: relative;
+  }
+  .video-frame video {
+    width: 100%;
+    display: block;
+    border-radius: 0 !important;
+    border: none !important;
+    transform: scale(1.05) translateY(-2%);
+    transform-origin: center top;
+  }
+  .video-frame.video-fit video,
+  .video-fit video {
+    transform: scale(1.03) translateY(-1.5%) !important;
+    border-radius: 8px !important;
   }
 
-  @media (max-width: 640px) {
-    .page { padding: 3rem 1.25rem 4rem; }
-    .hero h1 { font-size: 30px; }
-    .hero .lede { font-size: 16px; }
-    .meta-grid { grid-template-columns: repeat(2, 1fr); }
-    .card-row, .scope-grid { grid-template-columns: 1fr; }
+  .walkthrough-figure {
+    width: 82%;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 900px) {
+    .page {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 auto !important;
+      padding: 1.5rem 1rem 0 !important;
+      box-sizing: border-box;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(24px, 7vw, 30px);
+    }
+
+    .hero .lede {
+      font-size: 15px;
+    }
+
+    section h2 {
+      font-size: clamp(20px, 5.5vw, 24px);
+      line-height: 1.35;
+      margin-bottom: 0.85rem;
+    }
+
+    section > p.body {
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .meta-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 1rem 1.15rem;
+      margin-bottom: 2rem;
+    }
+
+    .card-row,
+    .scope-grid {
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+      margin-top: 1.75rem;
+    }
+
+    .card,
+    .scope-card {
+      padding: 1.1rem;
+    }
+
+    .priority-note {
+      padding: 1rem 1.15rem;
+      margin-top: 1.75rem;
+      font-size: 14px;
+    }
+
+    .quote-block {
+      font-size: 15.5px;
+      line-height: 1.6;
+      padding-left: 1rem;
+    }
+
+    figure {
+      margin: 1.75rem 0;
+    }
+
+    .version-row-wrap,
+    .v3-answers-wrap,
+    .feature-split-wrap {
+      width: 100% !important;
+      position: static !important;
+      left: auto !important;
+      right: auto !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .version-row {
+      padding: 0;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    .version-block {
+      padding: 1.5rem 1.15rem;
+      min-height: auto;
+    }
+
+    .version-block:hover {
+      transform: none;
+      box-shadow: 0 4px 16px rgba(29, 71, 68, 0.08);
+    }
+
+    .v3-answers {
+      padding: 0;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .v3-answers .decision-answer {
+      aspect-ratio: auto;
+    }
+
+    .feature-split {
+      flex-direction: column;
+      padding: 0;
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .feature-split .feature-block {
+      padding: 1.25rem 1.15rem;
+    }
+
+    /* Expand hardcoded inline width wrappers to full width on mobile */
+    figure div[style*="width: 50%"],
+    figure div[style*="width:50%"],
+    figure div[style*="width: 65%"],
+    figure div[style*="width:65%"],
+    figure[style*="width: 80%"],
+    figure[style*="width:80%"],
+    figure[style*="width: 64%"],
+    figure[style*="width:64%"] {
+      width: 100% !important;
+    }
+
+    .video-frame video {
+      transform: none !important;
+    }
+
+    .version-block h3 {
+      font-size: 17px;
+    }
+
+    .version-block p {
+      font-size: 14px;
+    }
+
+    .v3-bullet-list {
+      padding-left: 1rem;
+    }
+
+    .v3-bullet-list li {
+      font-size: 14px;
+    }
   }
 </style>
 </head>
 <body>
 <div class="page">
 
-  <div class="hero">
-    <p class="tag">Case study</p>
-    <h1>Designing Klenzaa</h1>
-    <hr class="rule">
-    <p class="lede">A host side MVP for a two sided STR cleaning marketplace, designed from scratch as the sole UX and UI designer on a freelance engagement.</p>
-    <div class="meta-grid">
-      <div class="meta-item"><p class="label">Role</p><p class="value">Sole UI/UX Designer</p></div>
-      <div class="meta-item"><p class="label">Client</p><p class="value">Clik Catalyst Agency &amp; Imparable Tech Pvt Ltd</p></div>
-      <div class="meta-item"><p class="label">Timeline</p><p class="value">Oct to Dec 2025, 3 months</p></div>
-      <div class="meta-item"><p class="label">Scope</p><p class="value">Host side product, end to end</p></div>
-    </div>
-  </div>
-
-  <section>
+  <section id="overview">
     <span class="kicker">Overview</span>
     <h2>Klenzaa needed a working MVP before it could become a business.</h2>
     <p class="body">Klenzaa is a <strong>two sided platform connecting STR hosts with cleaning professionals</strong> who handle turnovers between guests. There was no existing product when I started. The client had a validated business idea, target personas, and a business level competitor analysis already in place. <strong>My job was to design the MVP that would carry all of it.</strong> They pointed me toward tools like Turno and asked me to study what worked, so Klenzaa could improve on it.</p>
   </section>
 
-  <section>
+  <section id="competitive-research">
     <span class="kicker">Competitive Research</span>
     <h2>The client's research told us who Klenzaa was competing with. It didn't tell us what we can improve on.</h2>
     <p class="body">So I ran my own teardown, not at the business or positioning level, but at the interaction level: was the dashboard clear with minimal steps, did the tool offer real automation for checklists and scheduling, or did navigation quietly turn admin heavy. I compared Turno, Breezeway, TIDY, Properly, ResortCleaning, Cleanster, and HostHive against those three questions.</p>
-    <figure>
-      <div style="width: 90%; margin: 0 auto;">
+    <figure style="margin-top:1.25rem;">
+      <div style="width: 50%; margin: 0 auto;">
         <img src="/images/competitor-teardown.png" alt="UX teardown comparing Turno, Breezeway, TIDY, Properly and others">
       </div>
       <figcaption style="text-align: center;">My own pattern level teardown of seven competitor tools</figcaption>
     </figure>
   </section>
 
-  <section>
+  <section id="pain-points">
     <span class="kicker">Pain Points</span>
     <h2>Three problems came out of that teardown.</h2>
     <div class="card-row">
@@ -178,46 +380,61 @@
     </div>
   </section>
 
-  <section>
+  <section id="solutions">
     <span class="kicker">Solutions</span>
     <h2>How I solved those three core problems.</h2>
     <div class="card-row">
-      <div class="card"><span class="card-num">01</span><h3>Structured task handoff</h3><p>Designed property-centric task assignment with role-specific views for hosts and cleaners.</p></div>
+      <div class="card"><span class="card-num">01</span><h3>Structured task handoff</h3><p>Designed property-centric task assignment, which means a host assigns a cleaner and a checklist straight from a property panel or while setting it up, the host does not have to wander or get confused for assigning or handing off proper instructions.</p></div>
       <div class="card"><span class="card-num">02</span><h3>Live progress tracking</h3><p>Built a single-source dashboard so hosts see real-time status updates without manual check-ins.</p></div>
       <div class="card"><span class="card-num">03</span><h3>Standardized checklist modules</h3><p>Created modular, priority-tagged checklists to maintain consistent cleaning quality across properties.</p></div>
     </div>
 
     <div style="display: flex; flex-direction: column; gap: 2.25rem; margin-top: 2rem;">
-      <figure>
+      <figure class="walkthrough-figure">
+        <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 0.6rem; color: var(--teal-deep);">Sign Up Page Walkthrough</h3>
+        <div class="video-frame">
+          <video autoplay loop muted playsinline preload="auto">
+            <source src="/images/sign-up-page.mp4" type="video/mp4">
+          </video>
+        </div>
+      </figure>
+
+      <figure class="walkthrough-figure">
         <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 0.6rem; color: var(--teal-deep);">Dashboard Walkthrough</h3>
-        <video autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:10px; border:1px solid var(--line); display:block;">
-          <source src="/images/dashboard-final-walkthrough.mp4" type="video/mp4">
-        </video>
+        <div class="video-frame">
+          <video autoplay loop muted playsinline preload="auto">
+            <source src="/images/dashboard-final-walkthrough.mp4" type="video/mp4">
+          </video>
+        </div>
       </figure>
 
-      <figure>
+      <figure class="walkthrough-figure">
         <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 0.6rem; color: var(--teal-deep);">Checklists &amp; Modules Walkthrough</h3>
-        <video autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:10px; border:1px solid var(--line); display:block;">
-          <source src="/images/checklist-modules.mp4" type="video/mp4">
-        </video>
+        <div class="video-frame">
+          <video autoplay loop muted playsinline preload="auto">
+            <source src="/images/checklist-modules.mp4" type="video/mp4">
+          </video>
+        </div>
       </figure>
 
-      <figure>
+      <figure class="walkthrough-figure">
         <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 0.6rem; color: var(--teal-deep);">Properties &amp; Property Details Panel Walkthrough</h3>
-        <video autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:10px; border:1px solid var(--line); display:block;">
-          <source src="/images/property-panel.mp4" type="video/mp4">
-        </video>
+        <div class="video-frame video-fit">
+          <video autoplay loop muted playsinline preload="auto">
+            <source src="/images/property-panel.mp4" type="video/mp4">
+          </video>
+        </div>
       </figure>
     </div>
   </section>
 
-  <section>
+  <section id="scope-priorities">
     <span class="kicker">Scope &amp; Priorities</span>
     <p class="body">The MVP was shaped around fast property setup, understandable scheduling, property centric checklist assignment, structured checklist management, and a dashboard that acts as a single source of truth.</p>
   </section>
 
-  <section>
-    <span class="kicker">Dashboard</span>
+  <section id="dashboard-iterations">
+    <span class="kicker">Let's start with how the dashboard came to be...</span>
     <h2>Three versions, each one built to fix a specific problem in the version before it.</h2>
 
     <div class="version-row-wrap">
@@ -226,20 +443,20 @@
         <span class="v-label">Version 1</span>
         <h3>A calendar grid, color coded by property</h3>
         <p>Each property got its own color, plotted across a shared calendar view. It looked complete and communicated everything at a glance, in theory.</p>
-        <figure>
-          <img src="/images/dashboard-v1-color-coded.png" alt="Version 1 calendar grid color coded by property">
+        <p style="margin-top:0.85rem; margin-bottom:1.25rem;"><span class="broke">What broke:</span> past a handful of properties, hosts couldn't remember which color belonged to which property.</p>
+        <figure style="width: 80%; margin: 1rem auto 0;">
+          <img src="/images/dashboard-v1-color-coded_new.png" alt="Version 1 calendar grid color coded by property">
         </figure>
-        <p style="margin-top:1rem;"><span class="broke">What broke:</span> past a handful of properties, hosts couldn't remember which color belonged to which property.</p>
       </div>
 
       <div class="version-block">
         <span class="v-label">Version 2</span>
         <h3>Each property becomes its own row</h3>
         <p>Every property got a row, with its schedule laid out across the timeline. Reading the dashboard stopped requiring memorization.</p>
-        <figure>
-          <img src="/images/dashboard-self-critique.png" alt="Version 2 of the dashboard, annotated with open questions">
+        <p style="margin-top:0.85rem; margin-bottom:1.25rem;"><span class="broke">What was still unresolved:</span> Color for task type too? What about same day conflicts? How can I help users see updates and proof directly from the dashboard and not wander around?</p>
+        <figure style="width: 80%; margin: 1rem auto 0;">
+          <img src="/images/dashboard_version2_self _crtique.png" alt="Version 2 of the dashboard, annotated with open questions">
         </figure>
-        <p style="margin-top:1rem;"><span class="broke">What was still unresolved:</span> Color for task type too? What about same day conflicts? How can I help users see updates and proof directly from the dashboard and not wander around?</p>
       </div>
 
       <div class="version-block">
@@ -252,21 +469,25 @@
           <li><strong>Live progress tracking:</strong> Designed the dashboard directly so hosts can view ongoing cleaning work in real time and verify image proof, solving the challenge of live progress tracking.</li>
         </ul>
 
-        <figure style="margin-top:1.25rem;">
-          <video autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:10px; border:1px solid var(--line); display:block;">
-            <source src="/images/dashboard-final-walkthrough.mp4" type="video/mp4">
-          </video>
+        <figure style="margin-top:1.25rem; width: 64%; margin: 1.25rem auto 0;">
+          <div class="video-frame">
+            <video autoplay loop muted playsinline preload="auto">
+              <source src="/images/dashboard-final-walkthrough.mp4" type="video/mp4">
+            </video>
+          </div>
         </figure>
 
         <figure style="margin-top:1.25rem;">
-          <img src="/images/product-card.png" alt="Klenzaa product card design" style="width: 50%; margin: 0 auto; display: block;">
+          <div style="width: 65%; margin: 0 auto; overflow: hidden; border-radius: 12px;">
+            <img src="/images/product-card.png" alt="Klenzaa product card design">
+          </div>
         </figure>
       </div>
     </div>
     </div>
   </section>
 
-  <section>
+  <section id="checklists">
     <span class="kicker">Checklists</span>
     <h2>The checklists have to work in a way that users can create separate checklists, edit them easily, and understand their modules so that when automated, the checklists are easily assigned to the properties.</h2>
 
@@ -278,7 +499,7 @@
         </div>
         <div class="decision-answer">
           <p class="q">Why organize checklist items into modules?</p>
-          <p class="a">Different properties require unique task combinations. Modular room blocks like Kitchen, Bedroom, and Bathroom—plus a General module—allow hosts to compose exact checklists per property rather than repeatedly editing one long master list.</p>
+          <p class="a">Different properties require unique task combinations. Modular room blocks like Kitchen, Bedroom, and Bathroom, plus a General module, allow hosts to compose exact checklists per property rather than repeatedly editing one long master list.</p>
         </div>
         <div class="decision-answer">
           <p class="q">Why give individual items a priority tag?</p>
@@ -288,46 +509,58 @@
     </div>
 
     <figure>
-      <video autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:10px; border:1px solid var(--line); display:block;">
-        <source src="/images/checklist-modules.mp4" type="video/mp4">
-      </video>
+      <div class="video-frame">
+        <video autoplay loop muted playsinline preload="auto">
+          <source src="/images/checklist-modules.mp4" type="video/mp4">
+        </video>
+      </div>
       <figcaption>A cleaner's checklist, built from modules, with priority tags and recommended modules to add</figcaption>
     </figure>
 
-    <div class="feature-block">
-      <h3>The harder problem underneath it</h3>
-      <p>If a host edits a checklist while looking at one scheduled clean, how do they know whether they changed today's job or every future job at every property?</p>
-      <p>A warning label depends on someone reading it. So the interface removes the mistake instead. The default items on a scheduled clean can't be edited from that screen at all, since they're meant to stay consistent and automate going forward. A host can only add something extra for that one job. Changing the actual standard means opening the Checklists section on purpose, a different place for a different kind of edit.</p>
-    </div>
+    <div class="feature-split">
+      <div class="feature-block">
+        <h3>The harder problem underneath it</h3>
+        <p>If a host edits a checklist on a single scheduled clean, how do we ensure future jobs across all properties aren't accidentally changed?</p>
+        <p>Instead of relying on warning labels, the interface prevents mistakes by default. Standard items are locked on scheduled cleans so hosts can only append one-off additions, keeping global automation intact.</p>
+      </div>
 
-    <figure>
-      <img src="/images/checklist-additional-item.png" alt="Adding a one off additional item to a scheduled clean checklist" style="max-width: 680px; width: 100%; margin: 0 auto; display: block;">
-    </figure>
+      <figure class="feature-media">
+        <img src="/images/checklist-additional-item.png" alt="Adding a one off additional item to a scheduled clean checklist">
+      </figure>
+    </div>
   </section>
 
-  <section>
+  <section id="properties-tab">
     <span class="kicker">Properties</span>
     <h2>Properties &amp; Property Details Panel</h2>
     <figure>
-      <video autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:10px; border:1px solid var(--line); display:block;">
-        <source src="/images/property-panel.mp4" type="video/mp4">
-      </video>
+      <div class="video-frame video-fit">
+        <video autoplay loop muted playsinline preload="auto">
+          <source src="/images/property-panel.mp4" type="video/mp4">
+        </video>
+      </div>
     </figure>
   </section>
 
-  <section>
-    <span class="kicker">Design System</span>
+  <section id="design-system">
+    <span class="kicker">Visual guide and components</span>
     <h2>The component library was kept small on purpose.</h2>
     <p class="body">Buttons, cards, status chips, side panels, nothing more. Building a bigger system ahead of real feedback is a bet on assumptions that haven't been tested yet. Klenzaa's component set stayed deliberately lean so it could evolve once real hosts and cleaners had used it, instead of locking in decisions before there was proof they were the right ones.</p>
+    <figure style="margin-top: 1.5rem;">
+      <img src="/images/design-system.png" alt="Klenzaa Design System visual guide" style="width:100%; border-radius:10px; border:1px solid var(--line); display:block;">
+    </figure>
+    <figure style="margin-top: 1.5rem;">
+      <img src="/images/final_component.png" alt="Klenzaa Design System component library" style="width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); display: block;">
+    </figure>
   </section>
 
-  <section>
+  <section id="whats-next">
     <span class="kicker">What's Next</span>
     <h2>Property setup is manual today because automation needed a foundation first.</h2>
     <p class="body">The client's real long term goal is automated setup, pulling property data directly from Airbnb or Vrbo listings. Manual setup isn't a placeholder for that, it's the foundation it will sit on top of. Integration hooks for that pull already exist from this engagement, even though the automation itself sat outside the three month scope. If two more weeks opened up, this is where they would go, since it's the part furthest from where the product is actually headed.</p>
   </section>
 
-  <section>
+  <section id="scope">
     <span class="kicker">Scope</span>
     <h2>What I designed, and what stayed out of scope.</h2>
     <div class="scope-grid">
@@ -342,13 +575,13 @@
     </div>
   </section>
 
-  <section>
+  <section id="outcome">
     <span class="kicker">Outcome</span>
-    <h2>Klenzaa's current product runs on this design. I'm no longer on the team.</h2>
+    <h2>Klenzaa's current product runs on this design.</h2>
     <p class="body">The live product uses this UI and these branding guidelines today. It's still evolving, and I don't have visibility into how real hosts or cleaners have responded since handoff. That's the honest state of it, not a guess dressed up as a metric.</p>
   </section>
 
-  <section style="margin-bottom:0;">
+  <section id="reflection" style="margin-bottom:0;">
     <span class="kicker">Reflection</span>
     <h2>What changed in how I design</h2>
     <p class="quote-block">Before this project, most of my decisions were instinctive first, justified after. Klenzaa is where that flipped. Every element on a screen now needs a reason it exists, down to why a card is a certain size or why a color shows up here and not there.</p>

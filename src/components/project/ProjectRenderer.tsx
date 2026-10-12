@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Project, SectionType } from '@/data/projects';
 import Media from '@/components/shared/Media';
 import TextSection from '@/components/case-study/TextSection';
@@ -22,22 +22,12 @@ type ProjectRendererProps = {
 
 export default function ProjectRenderer({ project }: ProjectRendererProps) {
   const nextProject = getNextProject(project.slug);
+  const isPlanefold = project.slug.includes('planefold') || project.id === 'project-01';
+  const hasEmbed = project.sections.some((s) => s.type === 'embed');
+  const isFullWidth = isPlanefold || hasEmbed;
 
   return (
-    <div className={styles.renderer}>
-      {/* Hero media */}
-      {project.heroMedia && (
-        <div className={styles.hero}>
-          <div className={styles.heroInner}>
-            <Media
-              {...project.heroMedia}
-              priority
-              sizes="(max-width: 1024px) 90vw, 980px"
-            />
-          </div>
-        </div>
-      )}
-
+    <div className={`${styles.renderer} ${isFullWidth ? styles.planefoldRenderer : ''}`}>
       {/* Case study sections */}
       <div className={styles.sections}>
         {project.sections.map((section, i) => (
@@ -99,17 +89,32 @@ function SectionRenderer({ section }: { section: SectionType }) {
 
 function AutoResizingEmbed({ src, title }: { src: string; title?: string }) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const [iframeHeight, setIframeHeight] = useState('1200px');
+  const [iframeHeight, setIframeHeight] = useState('2400px');
 
-  const updateHeight = () => {
+  const updateHeight = useCallback(() => {
     const iframe = iframeRef.current;
-    if (iframe && iframe.contentWindow && iframe.contentWindow.document.body) {
-      const scrollHeight = iframe.contentWindow.document.body.scrollHeight;
-      if (scrollHeight > 100) {
-        setIframeHeight(`${scrollHeight + 20}px`);
+    if (iframe && iframe.contentWindow) {
+      try {
+        const doc = iframe.contentWindow.document;
+        if (doc && doc.body) {
+          const pageEl = (doc.querySelector('.page') || doc.body.firstElementChild || doc.body) as HTMLElement | null;
+          let calculatedHeight = 0;
+          if (pageEl) {
+            const rect = pageEl.getBoundingClientRect();
+            calculatedHeight = Math.ceil(Math.max(rect.height, pageEl.offsetHeight));
+          } else {
+            calculatedHeight = doc.body.scrollHeight;
+          }
+
+          if (calculatedHeight > 300) {
+            setIframeHeight(`${calculatedHeight}px`);
+          }
+        }
+      } catch (e) {
+        // Fallback for cross-origin
       }
     }
-  };
+  }, []);
 
   useEffect(() => {
     const iframe = iframeRef.current;
@@ -122,10 +127,15 @@ function AutoResizingEmbed({ src, title }: { src: string; title?: string }) {
           const doc = iframe.contentWindow.document;
           const observer = new ResizeObserver(() => updateHeight());
           if (doc.body) observer.observe(doc.body);
+          if (doc.documentElement) observer.observe(doc.documentElement);
+
+          const mediaEls = doc.querySelectorAll('img, video');
+          mediaEls.forEach((el) => {
+            el.addEventListener('load', updateHeight);
+            el.addEventListener('loadedmetadata', updateHeight);
+          });
         }
-      } catch (e) {
-        // Fallback for cross-origin if needed
-      }
+      } catch (e) {}
     };
 
     iframe.addEventListener('load', handleLoad);
@@ -134,13 +144,26 @@ function AutoResizingEmbed({ src, title }: { src: string; title?: string }) {
       handleLoad();
     }
 
+    const interval = setInterval(updateHeight, 300);
+    const timeout = setTimeout(() => clearInterval(interval), 6000);
+
     return () => {
       iframe.removeEventListener('load', handleLoad);
+      clearInterval(interval);
+      clearTimeout(timeout);
     };
-  }, [src]);
+  }, [src, updateHeight]);
 
   return (
-    <div style={{ width: '100%', margin: '0', overflow: 'hidden' }}>
+    <div
+      style={{
+        width: '100%',
+        maxWidth: '100%',
+        margin: '0',
+        padding: '0',
+        overflow: 'hidden',
+      }}
+    >
       <iframe
         ref={iframeRef}
         src={src}
@@ -148,12 +171,13 @@ function AutoResizingEmbed({ src, title }: { src: string; title?: string }) {
         scrolling="no"
         style={{
           width: '100%',
+          minWidth: '100%',
+          maxWidth: '100%',
           height: iframeHeight,
           border: 'none',
           backgroundColor: 'transparent',
           overflow: 'hidden',
           display: 'block',
-          transition: 'height 0.25s ease-out',
         }}
       />
     </div>

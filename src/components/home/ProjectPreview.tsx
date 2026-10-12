@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import PixelatedThumbnail from '@/components/shared/PixelatedThumbnail';
 import type { Project } from '@/data/projects';
 import styles from './ProjectPreview.module.css';
@@ -12,7 +13,7 @@ type ProjectPreviewProps = {
 };
 
 export default function ProjectPreview({ project, index }: ProjectPreviewProps) {
-  const isEven = index % 2 === 0;
+  const isProject01 = index === 0 || project.id === 'project-01' || project.slug.includes('planefold');
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [showCursorTip, setShowCursorTip] = useState(false);
 
@@ -32,10 +33,68 @@ export default function ProjectPreview({ project, index }: ProjectPreviewProps) 
 
   return (
     <article 
-      className={`${styles.project} ${isEven ? styles.even : styles.odd}`} 
+      className={styles.project} 
       id={`project-preview-${project.slug}`}
     >
-      {/* 1. Text Content Column */}
+      {/* 1. Image Visual Column Wrapper (Left) */}
+      <div className={styles.mediaColumnWrapper}>
+        {isProject01 && (
+          <motion.div
+            className={styles.peekingBeaverWrapper}
+            initial={{ x: -35, opacity: 0, scale: 0.85, rotate: 10 }}
+            whileInView={{ x: 26, opacity: 1, scale: 1, rotate: 0 }}
+            viewport={{ once: false, margin: '-40px' }}
+            transition={{
+              type: 'spring',
+              stiffness: 180,
+              damping: 17,
+              delay: 0.15,
+            }}
+          >
+            <img
+              src="/beaver-side.svg"
+              alt="Peeking Beaver"
+              className={styles.peekingBeaverImg}
+            />
+          </motion.div>
+        )}
+
+        <Link
+          href={`/work/${project.slug}`}
+          onClick={handleProjectClick}
+          className={styles.mediaLink}
+          aria-label={`Open ${project.title}`}
+          scroll={false}
+          onPointerMove={handlePointerMove}
+          onPointerEnter={() => setShowCursorTip(true)}
+          onPointerLeave={() => setShowCursorTip(false)}
+        >
+          <div className={styles.mediaWrapper}>
+            <PixelatedThumbnail
+              src={project.thumbnail.src}
+              alt={project.thumbnail.alt || project.title}
+              priority={index === 0}
+              className={styles.media}
+              objectPosition={project.thumbnail.objectPosition}
+              transform={project.thumbnail.transform}
+            />
+          </div>
+
+          {showCursorTip && (
+            <div
+              className={styles.cursorTip}
+              style={{
+                left: `${mousePos.x}px`,
+                top: `${mousePos.y}px`,
+              }}
+            >
+              view case study
+            </div>
+          )}
+        </Link>
+      </div>
+
+      {/* 2. Text Content Column (Right) */}
       <div className={styles.content}>
         <h3 className={styles.statement}>
           <Link href={`/work/${project.slug}`} onClick={handleProjectClick} className={styles.statementLink}>
@@ -53,39 +112,6 @@ export default function ProjectPreview({ project, index }: ProjectPreviewProps) 
           View Case Study <span className={styles.arrow}>→</span>
         </Link>
       </div>
-
-      {/* 2. Image Visual Column */}
-      <Link
-        href={`/work/${project.slug}`}
-        onClick={handleProjectClick}
-        className={styles.mediaLink}
-        aria-label={`Open ${project.title}`}
-        scroll={false}
-        onPointerMove={handlePointerMove}
-        onPointerEnter={() => setShowCursorTip(true)}
-        onPointerLeave={() => setShowCursorTip(false)}
-      >
-        <div className={styles.mediaWrapper}>
-          <PixelatedThumbnail
-            src={project.thumbnail.src}
-            alt={project.thumbnail.alt || project.title}
-            priority={index === 0}
-            className={styles.media}
-          />
-        </div>
-
-        {showCursorTip && (
-          <div
-            className={styles.cursorTip}
-            style={{
-              left: `${mousePos.x}px`,
-              top: `${mousePos.y}px`,
-            }}
-          >
-            view case study
-          </div>
-        )}
-      </Link>
     </article>
   );
 }

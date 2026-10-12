@@ -46,7 +46,9 @@ export default function PixelFlowerGarden() {
         target.closest('[class*="nav"]') ||
         target.closest('[class*="infoWidget"]') ||
         target.closest('[class*="heroSvg"]') ||
-        target.closest('[class*="typewriterHeading"]')
+        target.closest('[class*="typewriterHeading"]') ||
+        target.closest('[class*="mainGroupWrapper"]') ||
+        target.closest('[class*="heroGraphicContainer"]')
       ) {
         return;
       }
@@ -55,6 +57,20 @@ export default function PixelFlowerGarden() {
       const rect = parent.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
+
+      // Restrict planting strictly to the lower region (below Group 16 banner)
+      if (y < rect.height * 0.56) {
+        return;
+      }
+
+      // Check Group 16 banner bounding rect to ensure no flowers are planted on or above Group 16
+      const group16El = parent.querySelector('[class*="mainGroupWrapper"]') || parent.querySelector('[class*="heroGraphicContainer"]');
+      if (group16El) {
+        const gRect = group16El.getBoundingClientRect();
+        if (e.clientY <= gRect.bottom + 15) {
+          return;
+        }
+      }
 
       // Slightly vary height: random between 35px and 70px
       const minHeight = 35;
@@ -103,11 +119,24 @@ export default function PixelFlowerGarden() {
         target.closest('[class*="beaver"]') ||
         target.closest('[class*="logo"]') ||
         target.closest('[class*="nav"]') ||
-        target.closest('[class*="infoWidget"]');
+        target.closest('[class*="infoWidget"]') ||
+        target.closest('[class*="heroSvg"]') ||
+        target.closest('[class*="typewriterHeading"]') ||
+        target.closest('[class*="mainGroupWrapper"]') ||
+        target.closest('[class*="heroGraphicContainer"]');
 
-      const inZone = y >= rect.height * 0.5 && y <= rect.height;
+      let aboveGroup16 = false;
+      const group16El = parent.querySelector('[class*="mainGroupWrapper"]') || parent.querySelector('[class*="heroGraphicContainer"]');
+      if (group16El) {
+        const gRect = group16El.getBoundingClientRect();
+        if (e.clientY <= gRect.bottom + 15) {
+          aboveGroup16 = true;
+        }
+      }
 
-      if (inZone && !isInteractive) {
+      const inZone = y >= rect.height * 0.56 && y <= rect.height;
+
+      if (inZone && !isInteractive && !aboveGroup16) {
         setMousePos({ x, y });
         setShowTooltip(true);
       } else {
@@ -144,7 +173,14 @@ export default function PixelFlowerGarden() {
             top: `${mousePos.y}px` 
           }}
         >
-          add flower
+          <img 
+            src="/flower-cursor.svg" 
+            alt="" 
+            className="pixel-flower-tooltip-icon" 
+            width={18} 
+            height={18} 
+          />
+          <span>Plant a flower:)</span>
         </div>
       )}
 

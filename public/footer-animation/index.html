@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Let's build together</title>
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; height: 100%; background: #fdf6ec; }
+  body { display: flex; align-items: center; justify-content: center; overflow: hidden; }
+
+  /* Stage is the native scene size, so every sprite stays at its original pixel scale */
+  #stage { position: relative; width: 736px; height: 720px; cursor: pointer; }
+  .pixel { image-rendering: pixelated; image-rendering: crisp-edges; }
+
+  /* Layer 1: desk without the chair (back layer) */
+  #table { position: absolute; left: 0; top: 60px; width: 736px; height: 651px; }
+
+  /* Layer 2: her sitting pose (no chair in this image, 480x480). Her feet rest on the floor at y ~680. */
+  #sitting { position: absolute; left: 145px; top: 240px; width: 480px; height: 480px; }
+
+  /* Layer 2b: the chair, on its own, so it stays in the room after she stands up.
+     Its legs also rest on the floor at y ~680. */
+  #chair { position: absolute; left: 300px; top: 331px; width: 207px; height: 349px; }
+
+  /* Layer 3: walking frames (side view, facing right). Feet land on the floor at y ~640.
+     After the walk, the front-facing standing frame replaces them.
+     The wrapper holds the frame and the speech bubble, so the bubble moves with her. */
+  #walker { position: absolute; left: 160px; top: 215px; width: 480px; height: 488px; opacity: 0; }
+  /* The walk is one sprite sheet with the four aligned frames side by side (1920x488).
+     steps(4) jumps through the four frames, so each leg pose is shown in turn. */
+  #walkimg {
+    position: absolute; left: 0; top: 0; width: 480px; height: 488px;
+    background: url('walk%20sheet.png') 0 0 / 1920px 488px no-repeat;
+    animation: walkcycle 0.6s steps(4) infinite;
+  }
+  @keyframes walkcycle {
+    from { background-position: 0px 0px; }
+    to   { background-position: -1920px 0px; }
+  }
+
+  #bubble {
+    position: absolute;
+    left: 60px;
+    top: -85px;
+    width: 260px;
+    padding: 10px 14px;
+    background: #fff;
+    border: 4px solid #3b2a20;
+    border-radius: 6px;
+    box-shadow: 4px 4px 0 #3b2a20;
+    font-family: 'VT323', monospace;
+    font-size: 22px;
+    line-height: 1.1;
+    color: #3b2a20;
+    opacity: 0;
+    transform-origin: 50% 100%;
+  }
+  #bubble::after {
+    content: "";
+    position: absolute;
+    left: 165px;
+    bottom: -18px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 14px solid #3b2a20;
+  }
+  #cursor { display: inline-block; width: 9px; height: 18px; margin-left: 2px; background: #3b2a20; vertical-align: -3px; }
+  #hint {
+    position: absolute; left: 0; right: 0; bottom: -28px;
+    text-align: center; font-family: 'VT323', monospace; font-size: 20px; color: #a58a7a;
+  }
+</style>
+</head>
+<body>
+<div id="stage">
+  <img id="table" class="pixel" src="study%20table%20without%20chair.png" alt="Study table">
+
+  <img id="sitting" class="pixel" src="girl%20sitting.png" alt="Girl sitting">
+
+  <img id="chair" class="pixel" src="only%20chair.png" alt="Chair">
+
+  <div id="walker">
+    <div id="walkimg" class="pixel" role="img" aria-label="Girl walking"></div>
+    <div id="bubble"><span id="text"></span><span id="cursor"></span></div>
+  </div>
+
+  <div id="hint">click to replay</div>
+</div>
+
+<script>
+  const MESSAGE = "Hi, what are you waiting for? Let's talk and get on to building together!!";
+
+  // Walk cycle: the four side-view walking frames, played in order
+
+  // Front-facing standing frame, shown after the walk
+  const STANDING_FRAME = 'girl%20standing.png';
+
+  const sitting = document.getElementById('sitting');
+  const walker = document.getElementById('walker');
+  const walkimg = document.getElementById('walkimg');
+  const bubble = document.getElementById('bubble');
+  const text = document.getElementById('text');
+  const cursor = document.getElementById('cursor');
+  const stage = document.getElementById('stage');
+
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+  function fit() {
+    const s = Math.min(1, (innerWidth - 32) / 736, (innerHeight - 64) / 720);
+    stage.style.zoom = s;
+  }
+  addEventListener('resize', fit);
+  fit();
+
+  async function typeText(str, speed) {
+    text.textContent = '';
+    for (const ch of str) {
+      text.textContent += ch;
+      await sleep(speed);
+    }
+  }
+
+  async function run() {
+    // 1. Sitting in the chair, gentle idle bob
+    await sleep(900);
+    await sitting.animate(
+      [{ transform: 'translateY(0)' }, { transform: 'translateY(-3px)' }, { transform: 'translateY(0)' }],
+      { duration: 400, easing: 'ease-in-out' }
+    ).finished;
+
+    // 2. Stand up: swap to the first walking frame at the same spot
+    sitting.style.opacity = 0;
+    walker.style.opacity = 1;
+    await sleep(250);
+
+    // 3. Walk to the right side. The walk cycle plays on the sprite sheet (CSS steps(4), 0.6s per step cycle)
+    await walker.animate(
+      [{ left: '160px' }, { left: '340px' }],
+      { duration: 2400, easing: 'linear', fill: 'forwards' }
+    ).finished;
+
+    // 4. She stops and turns to face the viewer: swap to the front-facing standing frame.
+    //    It is scaled up to match the walking frames' figure height and placed on the same floor line.
+    walker.getAnimations().forEach(a => a.cancel());
+    walker.style.left = '333px';
+    walker.style.top = '231px';
+    walker.style.width = '476px';
+    walker.style.height = '476px';
+    walkimg.style.animation = 'none';
+    walkimg.style.width = '100%';
+    walkimg.style.height = '100%';
+    walkimg.style.background = "url('" + STANDING_FRAME + "') center / contain no-repeat";
+    await sleep(500);
+
+    // 5. The speech bubble pops in, and the message types out
+    await bubble.animate(
+      [{ opacity: 0, transform: 'scale(0.6)' }, { opacity: 1, transform: 'scale(1)' }],
+      { duration: 200, fill: 'forwards', easing: 'ease-out' }
+    ).finished;
+    await typeText(MESSAGE, 45);
+    cursor.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 500, iterations: Infinity, direction: 'alternate' });
+  }
+
+  stage.addEventListener('click', () => location.reload());
+  run();
+</script>
+</body>
+</html>

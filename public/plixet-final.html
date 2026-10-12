@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:5000/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Designing Product strategy, visual direction and website design for Planefold’s new product line.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #2b2118;
+      --blue: #1d4b78;
+      --blue-light: #2f6fa6;
+      --orange: #e07a2e;
+      --brown: #6b5d4f;
+      --cream: #f3eada;
+      --line: #e9e1d2;
+      --paper: #fff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      color: var(--brown);
+      background: var(--paper);
+      font-family: Inter, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .page {
+      width: min(850px, 100%);
+      max-width: 100%;
+      overflow-x: hidden;
+      margin: 0 auto;
+      padding: 60px 24px 0px;
+    }
+
+    .stack {
+      display: grid;
+      gap: 34px;
+    }
+
+    section { min-width: 0; }
+    section:last-of-type {
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+    }
+    section:last-of-type > *:last-child,
+    .reflection-grid,
+    .reflection-grid > *:last-child,
+    .reflection-grid p {
+      margin-bottom: 0 !important;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+    p { margin-bottom: 0; }
+
+    h1 {
+      max-width: 850px;
+      margin-bottom: 12px;
+      color: var(--blue);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 1.25;
+    }
+
+    h2 {
+      max-width: 850px;
+      margin-bottom: 16px;
+      color: var(--blue);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 1.4;
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      color: var(--blue);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .eyebrow {
+      margin-bottom: 12px;
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .lead {
+      max-width: 850px;
+      font-size: 17px;
+    }
+
+    .copy { max-width: 850px; }
+
+    .separator {
+      width: 56px;
+      height: 4px;
+      margin: 8px 0 12px;
+      border-radius: 4px;
+      background: var(--orange);
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+    }
+
+    .meta span {
+      display: block;
+      font-size: 12px;
+    }
+
+    .meta strong {
+      display: block;
+      margin-top: 4px;
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .media {
+      position: relative;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      min-height: 168px;
+      padding: 24px;
+      color: var(--blue);
+      background: var(--cream);
+      border: 1px solid #e7d9be;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .media::before,
+    .media::after {
+      position: absolute;
+      width: 130%;
+      height: 1px;
+      background: rgba(29,75,120,.17);
+      content: "";
+    }
+
+    .media::before { transform: rotate(24deg); }
+    .media::after { transform: rotate(-24deg); }
+
+    .media:has(img),
+    .media:has(video) {
+      padding: 0;
+      background: transparent;
+      border: none;
+    }
+
+    .media:has(img)::before,
+    .media:has(img)::after,
+    .media:has(video)::before,
+    .media:has(video)::after {
+      display: none !important;
+    }
+
+    .media img,
+    .media video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      position: relative;
+      z-index: 2;
+      background: transparent;
+    }
+
+    .media.contain-fit img,
+    .media.contain-fit video {
+      object-fit: contain;
+      background: transparent;
+    }
+
+    .media.auto-height {
+      min-height: auto;
+      height: auto;
+      padding: 0;
+      background: transparent;
+      border: none;
+    }
+
+    .media.auto-height img,
+    .media.auto-height video {
+      height: auto;
+      object-fit: contain;
+      background: transparent;
+    }
+
+    .media.portrait-large {
+      min-height: 220px;
+      padding: 0;
+      background: transparent;
+      border: none;
+      overflow: visible;
+      margin: 50px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .media.portrait-large img {
+      width: 100%;
+      height: auto;
+      transform: scale(1.48);
+      transform-origin: center;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .media.crop-edges video,
+    .media.crop-edges img {
+      transform: scale(1.06);
+      transform-origin: center;
+      object-fit: cover;
+    }
+
+    .media > span {
+      position: relative;
+      z-index: 1;
+      max-width: 520px;
+      padding: 5px 12px;
+      background: var(--cream);
+      font-size: 13px;
+    }
+
+    .hero-media {
+      min-height: 394px;
+      border-radius: 0;
+    }
+
+    .media.small { min-height: 202px; }
+    .media.tall { min-height: 508px; }
+    .media.flow { min-height: 744px; }
+    .media.full {
+      min-height: 1052px;
+      border-radius: 0;
+    }
+
+    .note {
+      padding: 20px 24px;
+      color: var(--ink);
+      background: transparent;
+      border: 1.5px dotted var(--orange);
+      border-radius: 8px;
+      font-size: 14.5px;
+      line-height: 1.75;
+    }
+
+    .feature-board {
+      padding: 0;
+      color: inherit;
+      background: transparent;
+    }
+
+    .board-head,
+    .feature-board .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .board-head { margin-bottom: 24px; }
+
+    .board-head p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--brown);
+    }
+
+    .board-head strong {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      color: var(--orange);
+    }
+
+    blockquote {
+      max-width: 520px;
+      margin: 32px auto 36px;
+      font-size: 22px;
+      line-height: 1.5;
+      text-align: center;
+      color: var(--blue);
+      font-style: italic;
+    }
+
+    .triptych {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+
+    .triptych .media {
+      min-height: 245px;
+      border-radius: 8px;
+    }
+
+    .highlight {
+      padding: 16px 8px;
+      color: var(--brown);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .highlight small {
+      display: block;
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .highlight h3 {
+      color: var(--blue);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 66px;
+    }
+
+    .two-col.equal { gap: 32px; }
+
+    .card {
+      padding: 24px;
+      background: #fbf8f2;
+    }
+
+    .card p {
+      font-size: 14.5px;
+      line-height: 1.7;
+    }
+
+    .research-questions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .research-questions .label {
+      color: #b8b8b8;
+      font-size: 12px;
+    }
+
+    .research-questions h3 {
+      color: #333;
+      font-size: 24px;
+    }
+
+    .research-questions ul {
+      margin: 0;
+      padding: 0;
+      color: #333;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.9;
+      list-style: none;
+    }
+
+    .research-map {
+      display: grid;
+      grid-template-columns: 1fr 182px 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 0 18px;
+      min-height: 257px;
+      color: #faf9f6;
+      background: #222;
+    }
+
+    .research-map .tile {
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      font-size: 15px;
+      line-height: 1.25;
+    }
+
+    .research-map .portrait {
+      grid-column: 2;
+      grid-row: 1 / 3;
+      border-radius: 0;
+      background: transparent;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 10px;
+    }
+
+    .media-grid .wide {
+      grid-column: 1 / 3;
+      min-height: 341px;
+    }
+
+    .media-grid .media {
+      min-height: 260px;
+      border-radius: 0;
+    }
+
+    .insights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px 66px;
+      padding: 28px 24px 0;
+    }
+
+    .diagram {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      align-items: center;
+      min-height: 270px;
+      padding: 26px;
+      color: #111;
+      background: #faf7f0;
+      text-align: center;
+    }
+
+    .diagram span {
+      padding: 16px;
+      border: 1px solid #a9a093;
+      border-radius: 50%;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+    }
+
+    .goal-map {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr 1fr;
+      gap: 24px;
+      min-height: 508px;
+      align-items: center;
+      padding: 26px;
+      color: #111;
+      background: #f7e6d0;
+    }
+
+    .goal-map h3 {
+      color: #333;
+      font-size: 19px;
+      text-align: center;
+    }
+
+    .goal-map ul {
+      display: grid;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+      font-size: 11px;
+      list-style: none;
+      text-align: center;
+    }
+
+    .goal-map li {
+      padding: 13px;
+      border: 1px solid #c79061;
+      border-radius: 999px;
+      background: rgba(255,255,255,.42);
+    }
+
+    .goal-map .center {
+      padding: 24px 14px;
+      color: #502610;
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+      border: 1px dashed #c79061;
+      border-radius: 50%;
+    }
+
+    .decision {
+      padding: 40px 28px;
+      background: #fbf7ef;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+
+    .decision .subhead {
+      color: var(--blue-light);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .decision h3 { font-size: 18px; }
+    .decision p + p { margin-top: 10px; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin: 26px 0 30px;
+      text-align: center;
+    }
+
+    .steps strong {
+      display: block;
+      color: var(--orange);
+      font-size: 18px;
+    }
+
+    .steps span {
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .scope-grid,
+    .reflection-grid {
+      display: grid;
+      gap: 54px;
+    }
+
+    .scope-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .reflection-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .scope-grid ul {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 14px;
+    }
+
+    .reflection-grid p {
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .confidential {
+      padding: 14px 8px;
+      border: 1px solid var(--line);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .closing {
+      color: var(--blue);
+      font-family: 'Inter', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .characters-wrap {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 8px;
+      margin-bottom: -30px;
+    }
+
+    /* Video compatibility and container fixes */
+    .media.has-video,
+    .media:has(video) {
+      padding: 0 !important;
+      background: transparent !important;
+      border: none !important;
+    }
+
+    .media.has-video::before,
+    .media.has-video::after,
+    .media:has(video)::before,
+    .media:has(video)::after {
+      display: none !important;
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .media.card-3-large {
+      min-height: 310px !important;
+      height: 310px !important;
+      border-radius: 12px !important;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Responsive layout rules (<= 640px) */
+    @media (max-width: 640px) {
+      .page {
+        padding: 24px 16px 0px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        box-sizing: border-box;
+      }
+
+      .stack {
+        gap: 28px;
+      }
+
+      h1 {
+        font-size: clamp(26px, 7vw, 34px);
+        line-height: 1.25;
+      }
+
+      h2 {
+        font-size: clamp(20px, 5.5vw, 24px);
+        line-height: 1.35;
+      }
+
+      .lead {
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      .copy {
+        font-size: 15px;
+        line-height: 1.65;
+      }
+
+      blockquote {
+        font-size: 18px;
+        line-height: 1.5;
+        margin: 24px auto;
+        padding: 0 8px;
+      }
+
+      .meta,
+      .two-col,
+      .research-questions,
+      .insights,
+      .scope-grid,
+      .reflection-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .meta {
+        margin-top: 20px;
+        padding-top: 18px;
+      }
+
+      .insights {
+        padding: 16px 0 0;
+        gap: 24px;
+      }
+
+      /* Stacking feature-board split cards into 1 column in Text then Media order */
+      .board-head {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+
+      .feature-board .split {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .feature-board .split > *:nth-child(1) { order: 1; }
+      .feature-board .split > *:nth-child(2) { order: 2; }
+      .feature-board .split > *:nth-child(4) { order: 3; } /* Highlight 2 before Media 2 */
+      .feature-board .split > *:nth-child(3) { order: 4; } /* Media 2 after Highlight 2 */
+      .feature-board .split > *:nth-child(5) { order: 5; }
+      .feature-board .split > *:nth-child(6) { order: 6; }
+
+      .highlight {
+        padding: 12px 4px 4px;
+      }
+
+      /* Triptych stacked cleanly into 1 column on phone */
+      .triptych {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin-bottom: 24px;
+      }
+
+      .triptych .media {
+        min-height: 220px;
+      }
+
+      /* Diagram stacked into 1 column */
+      .diagram {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 18px 14px;
+        min-height: auto;
+      }
+
+      .diagram span {
+        border-radius: 8px;
+        padding: 12px 14px;
+      }
+
+      /* Media grid stacked into 1 column */
+      .media-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .media-grid .wide {
+        grid-column: 1;
+        min-height: auto;
+      }
+
+      /* Steps stacked with clean numbered list cards */
+      .steps {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin: 20px 0 24px;
+        text-align: left;
+      }
+
+      .steps > div {
+        display: flex;
+        align-items: baseline;
+        gap: 14px;
+        padding: 10px 14px;
+        background: #fbf8f2;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+      }
+
+      .steps strong {
+        font-size: 18px;
+        min-width: 20px;
+        line-height: 1;
+      }
+
+      .steps span {
+        font-size: 13.5px;
+        line-height: 1.5;
+      }
+
+      /* Research map stacked */
+      .research-map {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+
+      .research-map .portrait {
+        grid-column: 1;
+        grid-row: auto;
+        min-height: 240px;
+      }
+
+      .goal-map {
+        grid-template-columns: 1fr;
+        padding: 20px 14px;
+        min-height: auto;
+      }
+
+      /* General Media mobile sizing */
+      .media {
+        padding: 16px;
+      }
+
+      .media.small,
+      .media.tall,
+      .media.flow,
+      .media.full,
+      .hero-media {
+        min-height: auto;
+      }
+
+      .media[style*="min-height"] {
+        min-height: auto !important;
+      }
+
+      .media:has(video),
+      .media.has-video {
+        min-height: 210px !important;
+      }
+
+      .media.card-3-large {
+        min-height: 240px !important;
+        height: auto !important;
+      }
+
+      /* Reset oversized scaled image on phone */
+      .media.portrait-large {
+        margin: 20px 0;
+        min-height: auto;
+      }
+
+      .media.portrait-large img {
+        transform: none;
+        width: 100%;
+      }
+
+      .media.crop-edges video,
+      .media.crop-edges img {
+        transform: none;
+      }
+
+      .note {
+        padding: 16px;
+        font-size: 14px;
+        margin: 20px 0 !important;
+      }
+
+      .decision {
+        padding: 24px 16px;
+      }
+
+      .card {
+        padding: 18px 16px;
+      }
+
+      .characters-wrap {
+        justify-content: center;
+        margin-top: 16px;
+        margin-bottom: 0;
+      }
+
+      .characters-wrap img {
+        max-width: 100% !important;
+      }
+
+      .closing {
+        font-size: 20px;
+      }
+    }
+
+  </style>
+<style id="_goober"> .go1475592160{height:0;}.go1671063245{height:auto;}.go1888806478{display:flex;flex-wrap:wrap;flex-grow:1;}@media (min-width:600px){.go1888806478{flex-grow:initial;min-width:288px;}}.go167266335{background-color:#313131;font-size:0.875rem;line-height:1.43;letter-spacing:0.01071em;color:#fff;align-items:center;padding:6px 16px;border-radius:4px;box-shadow:0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);}.go3162094071{padding-left:20px;}.go3844575157{background-color:#313131;}.go1725278324{background-color:#43a047;}.go3651055292{background-color:#d32f2f;}.go4215275574{background-color:#ff9800;}.go1930647212{background-color:#2196f3;}.go946087465{display:flex;align-items:center;padding:8px 0;}.go703367398{display:flex;align-items:center;margin-left:auto;padding-left:16px;margin-right:-8px;}.go3963613292{width:100%;position:relative;transform:translateX(0);top:0;right:0;bottom:0;left:0;min-width:288px;}.go1141946668{box-sizing:border-box;display:flex;max-height:100%;position:fixed;z-index:1400;height:auto;width:auto;transition:top 300ms ease 0ms,right 300ms ease 0ms,bottom 300ms ease 0ms,left 300ms ease 0ms,max-width 300ms ease 0ms;pointer-events:none;max-width:calc(100% - 40px);}.go1141946668 .notistack-CollapseWrapper{padding:6px 0px;transition:padding 300ms ease 0ms;}@media (max-width:599.95px){.go1141946668{width:100%;max-width:calc(100% - 32px);}}.go3868796639 .notistack-CollapseWrapper{padding:2px 0px;}.go3118922589{top:14px;flex-direction:column;}.go1453831412{bottom:14px;flex-direction:column-reverse;}.go4027089540{left:20px;}@media (min-width:600px){.go4027089540{align-items:flex-start;}}@media (max-width:599.95px){.go4027089540{left:16px;}}.go2989568495{right:20px;}@media (min-width:600px){.go2989568495{align-items:flex-end;}}@media (max-width:599.95px){.go2989568495{right:16px;}}.go4034260886{left:50%;transform:translateX(-50%);}@media (min-width:600px){.go4034260886{align-items:center;}}</style></head>
+
+<body>
+  <main class="page stack">
+    <section>
+      <p class="eyebrow">Industry internship, June to July 2026</p>
+      <div class="separator"></div>
+
+      <p class="lead">
+        An 8 week UX design internship at Planefold, taking a construction
+        toy system through product positioning, packaging direction, and a
+        website redesign.
+      </p>
+
+    </section>
+
+    <section>
+      <p class="eyebrow">Overview</p>
+
+      <h2>
+        Plixet was one product turning into a product family, and the
+        website had to catch up.
+      </h2>
+
+      <p class="copy">
+        Planefold is a design led toy company. Their first product, Snapbits,
+        blends construction with puzzles, built from magnetic 3D blocks
+        inspired by the Soma puzzle. During my 8 weeks there, Plixet was
+        evolving from a single existing set into a broader family with a new,
+        younger line. My work spanned understanding the market, defining how
+        the two lines should be positioned, shaping packaging and activity
+        content, and redesigning the website end to end in Figma.
+      </p>
+    </section>
+
+    <section class="feature-board">
+      <div class="media" style="min-height:387px">
+        <img src="/plixet-media/responisve-website-overview.png" alt="Responsive website overview">
+      </div>
+
+      <div class="triptych">
+        <div class="media">
+          <video autoplay loop muted playsinline id="triptych1-video" preload="auto" style="width:100%;height:100%;object-fit:cover;border-radius:10px;" onplay="this.playbackRate = 0.55;">
+    <source src="/plixet-media/triptych1.mp4" type="video/mp4">
+  </video>
+        </div>
+        <div class="media">
+          <video autoplay loop muted playsinline preload="auto" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+    <source src="/plixet-media/triptych2.mp4" type="video/mp4">
+  </video>
+        </div>
+        <div class="media">
+          <img src="/plixet-media/triptych3.png" alt="Mobile screen">
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="highlight">
+          <small>HIGHLIGHT 1</small>
+          <h3>Bring the build to life.</h3>
+          <p>
+            A 3D interaction shows the Junior kit beyond static product imagery
+            and communicates the open-ended nature of the set.
+          </p>
+        </div>
+        <div class="media small">
+          <video autoplay loop muted playsinline preload="auto" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+    <source src="/plixet-media/product-card-1.mp4" type="video/mp4">
+  </video>
+        </div>
+
+        <div class="media small">
+          <img src="/plixet-media/product-card-2.png" alt="Product card 2">
+        </div>
+        <div class="highlight">
+          <small>HIGHLIGHT 2</small>
+          <h3>Make the product easy to understand.</h3>
+          <p>
+            The product card brings key information, age guidance and material
+            details into one clear structure.
+          </p>
+        </div>
+
+        <div class="highlight">
+          <small>HIGHLIGHT 3</small>
+          <h3>Turn the community into part of the experience.</h3>
+          <p>
+            A playful gallery brings together Snapbits creations and
+            user-generated builds.
+          </p>
+        </div>
+        <div class="media small crop-edges card-3-large">
+          <video autoplay loop muted playsinline preload="auto" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+    <source src="/plixet-media/product-card-3.mp4" type="video/mp4">
+  </video>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <p class="eyebrow">The real challenge</p>
+
+      <h2>
+        The existing product and the new one were about to compete for the
+        same kids.
+      </h2>
+
+      <p class="copy">
+        The existing Plixet set was positioned for children around 6 to 7 and
+        up. The new line was being built for younger children. On paper, that
+        read as a clean age based split.
+      </p>
+
+      <p class="note" style="margin:26px 0">
+        A key fact my mentor gave me early on: in practice, many buyers and
+        users of the existing set were already closer to 5 to 6 years old.
+        The two audiences already overlapped before the younger line even
+        launched, which meant age alone could never be the thing that told
+        the two products apart.
+      </p>
+
+      <p class="copy">
+        The actual challenge became: how do you position and communicate a
+        new younger line alongside an existing one, without the two clashing,
+        competing, or making each other feel redundant.
+      </p>
+
+      <div class="media auto-height" style="margin-top:28px">
+        <img src="/plixet-media/below-text.png" alt="Challenge breakdown">
+      </div>
+    </section>
+
+    <section class="research-questions">
+      <div>
+        <span class="label">Research</span>
+        <h3>The questions I started with</h3>
+      </div>
+
+      <ul>
+        <li>What actually changes as children grow?</li>
+        <li>Do younger children only want creative builds?</li>
+        <li>Do 5–7 year olds enjoy puzzles too?</li>
+        <li>Do older children still enjoy imaginative building?</li>
+        <li>How do we make the older set not feel like a “kids' toy”?</li>
+        <li>Can guided challenges and open-ended creation coexist?</li>
+      </ul>
+    </section>
+
+    <div class="media portrait-large">
+      <img src="/plixet-media/portrait-image-placeholder.png" alt="Research map questions">
+    </div>
+
+    <section>
+      <p class="eyebrow">Research</p>
+
+      <h2>
+        Once age stopped being reliable, four things came out of the research
+        that explained why.
+      </h2>
+
+      <p class="copy">
+        I studied how construction toy brands communicate age, challenge, and
+        long term value, comparing the construction toy market, magnetic
+        building systems, and how other brands used imagery, language, and age
+        cues. The starting questions were plain: what actually changes as
+        children grow, do younger kids only want creative builds, do older kids
+        still enjoy imaginative building, can guided challenges and open ended
+        creation coexist at all.
+      </p>
+    </section>
+
+    <div class="media" style="min-height:341px">
+      <img src="/plixet-media/Research-board-image-placeholder.png" alt="Research board">
+    </div>
+
+    <section>
+      <p class="eyebrow">Major insights</p>
+
+      <div class="insights">
+        <div>
+          <h3>Play evolves, it doesn't switch</h3>
+          <p>
+            Creative and challenge led play can coexist. As children grow,
+            the need for complexity and progression gets stronger, it doesn't
+            replace imagination.
+          </p>
+        </div>
+
+        <div>
+          <h3>Parents need the system, not the age label</h3>
+          <p>
+            Buyers needed clarity on what actually changed between the two
+            experiences, not just a number on the box.
+          </p>
+        </div>
+
+        <div>
+          <h3>Play motivation was the clearer differentiator</h3>
+          <p>
+            The real distinction was less “younger vs older” and more about why
+            a child plays at all, expression and imagination versus problem
+            solving and mastery.
+          </p>
+        </div>
+
+        <div>
+          <h3>The outcomes communicate the difficulty</h3>
+          <p>
+            Simpler, recognisable outcomes make play feel accessible, while
+            more complex and impressive builds communicate greater challenge.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <p class="eyebrow">The reframe</p>
+
+      <h2>
+        I turned a given fact into a product split: Create and Challenge.
+      </h2>
+
+      <p class="copy">
+        Instead of treating the two sets independently, I helped build a
+        shared product language around why a child plays, not how old they are.
+      </p>
+
+      <div class="two-col" style="margin-top:34px">
+        <div class="card">
+          <h3 style="color:#9169ad">CREATE</h3>
+          <p>
+            Build, remix, invent. Designed for younger, open ended play,
+            focused on imagination and self expression. The experience moves
+            from building a given character, to remixing its parts, to
+            eventually creating something entirely new.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="color:#2f6fa6">CHALLENGE</h3>
+          <p>
+            Designed for older, progression led play. Encourages problem
+            solving, persistence, and mastery through puzzles and missions,
+            protecting the product from feeling too young or simplistic.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <p class="eyebrow">Website, constraint first</p>
+
+      <h2>
+        The existing website wasn't a normal ecommerce page, and the redesign
+        had to respect that.
+      </h2>
+
+      <p class="copy">
+        Planefold's site uses scroll driven storytelling, common in immersive
+        Three.js sites: a 3D layer animates the blocks, an HTML layer carries
+        text and product info, and scrolling moves both together like a
+        sequence of full screen scenes. Because scroll was already doing
+        double duty controlling the 3D animation, adding new content meant
+        coordinating a new 3D state each time, not just adding a section.
+      </p>
+
+      <div class="media auto-height" style="margin:24px 0">
+        <img src="/plixet-media/keywords.png" alt="Website keywords and constraints">
+      </div>
+
+      <p class="copy">
+        The primary audience, parents, needed to quickly tell the two
+        experiences apart, understand which suited their child, and see the
+        product's value before buying. That created a direct tension: the
+        business side wanted a site that was clear and easy to shop, while the
+        design side wanted to keep the immersive, interaction led feel.
+      </p>
+    </section>
+
+    <div class="media" style="min-height:320px">
+      <img src="/plixet-media/goals.png" alt="Business and design goals">
+    </div>
+
+    <section>
+      <p class="eyebrow">
+        The journey of discussions, questions and iterations that shaped the strategy.
+      </p>
+
+      <p class="eyebrow">Decision one</p>
+
+      <h2>
+        Showing both products side by side got rejected after mentor feedback.
+      </h2>
+
+      <div class="decision">
+        <p class="subhead">Homepage discovery</p>
+
+        <h3>Side by side choice, or scroll driven reveal?</h3>
+
+        <p>
+          <strong>Rejected:</strong> show both products side by side and let
+          the buyer choose which to look at first. This asked the user to
+          choose before they understood what actually made the products
+          different.
+        </p>
+
+        <p>
+          <strong>Chosen:</strong> reveal the products one at a time through
+          scroll, each with its own Learn More entry point. Each product gets
+          its own visual space and both stay inside one continuous homepage
+          journey.
+        </p>
+
+        <div class="media flow" style="margin-top:26px">
+          <img src="/plixet-media/Homepage-decision-flow-image-placeholder.png" alt="Homepage decision flow">
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <p class="eyebrow">Decision two</p>
+
+      <h2>
+        A sliding panel let the site be easy to shop without breaking the
+        immersive feel.
+      </h2>
+
+      <div class="decision">
+        <p class="subhead">Product detail navigation</p>
+
+        <h3>
+          How should “Learn More” work without leaving the homepage experience?
+        </h3>
+
+        <p>
+          Users shouldn't get lost, shouldn't wait too long, should find
+          everything about both products easily, and should be able to move
+          between the two without friction.
+        </p>
+
+        <div class="media contain-fit" style="margin:24px 0">
+          <img src="/plixet-media/panel-state-1.png" alt="Product panel state">
+        </div>
+
+        <p>
+          <strong>Chosen:</strong> Each product page opens as a panel that
+          slides up from the bottom. The homepage stays underneath the whole
+          time, allowing users to explore the product and return to the same
+          point by closing the panel.
+        </p>
+
+        <p>
+          <strong>Why this worked</strong><br>
+          Preserved the user’s position on the homepage<br>
+          Created a smooth transition between overview and detail<br>
+          Made switching between the two products easier<br>
+          Avoided unnecessary page reloads<br>
+          Gave every product a shareable and direct link
+        </p>
+
+        <div class="media tall contain-fit" style="margin-top:26px">
+          <img src="/plixet-media/decision-panel-interaction.png" alt="Product panel interaction">
+        </div>
+      </div>
+    </section>
+
+    <div class="media full contain-fit">
+      <img src="/plixet-media/website-fullflow.png" alt="Full website flow">
+    </div>
+
+    <section class="feature-board" style="background:#fff">
+      <div class="board-head">
+        <strong>WEBSITE FLOW</strong>
+        <span></span>
+      </div>
+
+      <div class="media" style="min-height:434px">
+        <video autoplay loop muted playsinline controls preload="auto" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+    <source src="/plixet-media/websiteflowvideo.mp4" type="video/mp4">
+  </video>
+      </div>
+    </section>
+
+    <section>
+      <p class="eyebrow">Design system</p>
+
+      <h2>
+        Typography and color came from the product itself, not a generic system.
+      </h2>
+
+      <p class="copy">
+        Montserrat carries the interface and UI text, built on fluid,
+        responsive type foundations. A bolder display face carries the brand
+        moments, like the Play, Create, and Challenge wordmarks. The core
+        palette comes directly from the physical Snapbits magnetic blocks.
+      </p>
+
+      <p class="copy" style="margin-top:16px">
+        The component library followed a simple hierarchy: a filled primary
+        button for high priority actions, an outlined secondary button for
+        supporting actions, and a minimal tertiary style for navigation.
+      </p>
+
+      <div class="media auto-height" style="margin-top:24px">
+        <img src="/plixet-media/spacing.png" alt="Spacing system specifications">
+      </div>
+
+      <div class="media auto-height" style="margin-top:20px">
+        <img src="/plixet-media/button.png" alt="Button component hierarchy">
+      </div>
+
+      <p class="confidential" style="margin-top:20px">
+        I am not allowed to showcase the final design foundations and system at a public page so
+        please reach out to know more about it!!
+      </p>
+    </section>
+
+    <section>
+      <p class="eyebrow">Junior line, creative play</p>
+
+      <h2>
+        The younger experience was built to progress from recreating to inventing.
+      </h2>
+
+      <p class="copy">
+        For the Junior set, I illustrated age appropriate themes for children
+        3 to 7, simple recognisable builds like animals and objects, and themed
+        play worlds such as dinosaurs and fantasy.
+      </p>
+
+      <div class="steps">
+        <div>
+          <strong>1</strong>
+          <span>Recreating a given character</span>
+        </div>
+
+        <div>
+          <strong>2</strong>
+          <span>Changing or remixing its parts</span>
+        </div>
+
+        <div>
+          <strong>3</strong>
+          <span>Inventing a completely new character</span>
+        </div>
+
+        <div>
+          <strong>4</strong>
+          <span>Naming it and imagining its story</span>
+        </div>
+      </div>
+
+      <div class="media" style="min-height:487px">
+        <img src="/plixet-media/junioractivitycards.png" alt="Junior activity card concepts">
+      </div>
+
+      <p style="margin:12px 0 24px;text-align:center;font-size:13px">
+        Junior activity card concepts, showing the recreate to invent progression
+      </p>
+
+      <div class="media" style="min-height:540px">
+        <video autoplay loop muted playsinline controls preload="auto" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+    <source src="/plixet-media/junior-activity-video.mp4" type="video/mp4">
+  </video>
+      </div>
+    </section>
+
+    <section>
+      <p class="eyebrow">Scope</p>
+
+      <h2>
+        I designed the website end to end in Figma. Build and illustration sat
+        outside this.
+      </h2>
+
+      <div class="scope-grid" style="margin-top:28px">
+        <div>
+          <h3>Designed end to end, in Figma</h3>
+
+          <ul>
+            <li>Market and competitor research</li>
+            <li>Create vs Challenge positioning</li>
+            <li>Website IA, wireframes, and UI</li>
+            <li>Homepage and product panel decisions</li>
+            <li>Design system: type, color, components</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Outside this scope</h3>
+
+          <ul>
+            <li>Front end development and build</li>
+            <li>Final illustration execution</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <p class="eyebrow">Outcome</p>
+
+      <h2>Design and handoff are done. Launch is still ahead.</h2>
+
+      <p class="copy">
+        Positioning, packaging direction, and the redesigned website were
+        designed and handed off by the end of the internship. As of now, the
+        Junior line and the new website haven't launched and this is still a
+        work in progress on Planefold's side.
+      </p>
+    </section>
+
+    <p class="closing">
+      That’s it out here. As the project contains proprietary information,
+      I’ve only been able to showcase certain parts of my work here. I’d be
+      happy to walk you through the rest of the project and my contributions
+      separately.
+    </p>
+
+    <div class="characters-wrap">
+      <img src="/plixet-media/characters.png" alt="Plixet characters" style="max-width: 520px; width: 100%; height: auto; object-fit: contain;">
+    </div>
+
+    <section>
+      <p class="eyebrow">Reflection</p>
+
+      <h2>Three things this internship actually changed</h2>
+
+      <div class="reflection-grid" style="margin-top:26px">
+        <div>
+          <h3>Design must balance users and business</h3>
+
+          <p>
+            The sliding product panel is a concrete example of one interaction
+            satisfying a business goal and a design goal at the same time,
+            instead of picking one.
+          </p>
+        </div>
+
+        <div>
+          <h3>Design improves through discussion</h3>
+
+          <p>
+            The audience overlap insight that reframed the whole project came
+            from my mentor. The side by side homepage version got rejected
+            because of her feedback. Sharing work early made both turns possible.
+          </p>
+        </div>
+
+        <div>
+          <h3>Research is an ongoing process</h3>
+
+          <p>
+            Research didn't end once the brief was understood. Continuously
+            asking the right questions mattered more than rushing toward a
+            polished result.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top: 54px;">
+      <p class="eyebrow">Other things explored</p>
+
+      <h2>What other things I learned and explored there</h2>
+
+      <div class="reflection-grid" style="margin-top: 26px;">
+        <div>
+          <h3>Three.js</h3>
+
+          <p>
+            Explored Three.js for rendering interactive 3D product previews and WebGL scenes, bringing tactile physical products to life on the web.
+          </p>
+        </div>
+
+        <div>
+          <h3>WebGL</h3>
+
+          <p>
+            Dived into WebGL graphics, shader effects, and performance optimizations to ensure smooth, hardware-accelerated animations across browsers.
+          </p>
+        </div>
+
+        <div>
+          <h3>Coding</h3>
+
+          <p>
+            Bridged design and engineering by building interactive web prototypes, scroll-driven interactions, and custom front-end components.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox Modal for Image Expansion -->
+  <div id="image-lightbox" style="display: none; position: fixed; inset: 0px; z-index: 9999; background: rgba(18, 14, 11, 0.88); backdrop-filter: blur(8px); place-items: center; padding: 24px; cursor: zoom-out;" onclick="this.style.display='none'">
+    <img id="lightbox-img" src="/plixet-media/decision-panel-interaction.png" alt="Enlarged view" style="max-width: 95vw; max-height: 92vh; object-fit: contain; border-radius: 8px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15);">
+    <span style="position: absolute; top: 20px; right: 24px; color: #fff; font-size: 28px; font-weight: 300; line-height: 1; user-select: none;">✕</span>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const v = document.getElementById('triptych1-video');
+      if (v) {
+        v.playbackRate = 0.55;
+        v.addEventListener('play', () => { v.playbackRate = 0.55; });
+      }
+
+      // Lightbox click handler
+      const lightbox = document.getElementById('image-lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      document.querySelectorAll('.media img').forEach(img => {
+        img.addEventListener('click', (e) => {
+          lightboxImg.src = img.src;
+          lightbox.style.display = 'grid';
+          e.stopPropagation();
+        });
+      });
+    });
+  </script>
+
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const videos = document.querySelectorAll('video');
+      videos.forEach(function(v) {
+        v.muted = true;
+        v.playsInline = true;
+        const parentMedia = v.closest('.media');
+        if (parentMedia) {
+          parentMedia.classList.add('has-video');
+        }
+        const playPromise = v.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(function(err) {
+            console.log('Video autoplay prevented, retrying on interaction:', err);
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

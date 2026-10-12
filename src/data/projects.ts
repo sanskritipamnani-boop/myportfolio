@@ -3,11 +3,14 @@
 // ============================================================
 
 export type MediaType = {
-  type: 'image' | 'video';
+  type: 'image' | 'video' | 'lottie';
   src: string;
   alt?: string;
   poster?: string;
   aspectRatio?: '16/9' | '4/3' | '1/1' | '4/5' | 'full';
+  objectPosition?: string;
+  transform?: string;
+  transformOrigin?: string;
 };
 
 export type SectionType =
@@ -22,6 +25,15 @@ export type SectionType =
   | { type: 'process'; steps: { label: string; description: string }[] }
   | { type: 'embed'; src: string; title?: string; height?: string };
 
+export type ProjectMetaType = {
+  role?: string;
+  client?: string;
+  timeline?: string;
+  scope?: string;
+  team?: string;
+  skills?: string[];
+};
+
 export type Project = {
   id: string;
   slug: string;
@@ -32,6 +44,7 @@ export type Project = {
   categories: string[];
   thumbnail: MediaType;
   heroMedia?: MediaType;
+  meta?: ProjectMetaType;
   sections: SectionType[];
 };
 
@@ -45,72 +58,34 @@ export const projects: Project[] = [
     slug: 'project-01',
     number: '01',
     title: 'Planefold',
-    description: 'A short placeholder description for this project. This text will be replaced with your final copy.',
+    description: "Designing Product strategy, visual direction and website design for Planefold’s new product line.",
     year: '2026',
-    categories: ['Product Design', 'UX Research', 'Systems'],
+    categories: ['Internship', 'Website Design', 'Design System'],
     thumbnail: {
       type: 'image',
-      src: '/planefold.png',
-      alt: 'Planefold thumbnail',
+      src: '/images/planefold-thumbnail.png',
+      alt: 'Planefold project cover thumbnail',
       aspectRatio: '16/9',
+      objectPosition: 'center center',
     },
     heroMedia: {
-      type: 'image',
-      src: '/planefold.png',
-      alt: 'Planefold hero',
+      type: 'video',
+      src: '/images/planefold-animation.mp4',
+      alt: 'Planefold hero video',
       aspectRatio: '16/9',
+      objectPosition: 'center 75%',
+    },
+    meta: {
+      role: 'Product Designer',
+      client: 'Planefold',
+      timeline: '2026',
+      scope: 'Website Design, Research, Visual Design',
     },
     sections: [
       {
-        type: 'text',
-        heading: 'Context',
-        body: 'Placeholder context for Project 01. This section describes the background and the problem space. Replace with your actual case study copy when ready.',
-      },
-      {
-        type: 'full-media',
-        media: {
-          type: 'image',
-          src: '/placeholder-02.jpg',
-          alt: 'Project 01 — full width image',
-          aspectRatio: '16/9',
-        },
-        caption: 'A placeholder caption for this image.',
-      },
-      {
-        type: 'insight',
-        label: 'Key Insight',
-        text: 'Placeholder insight. A short, punchy statement that captures the core finding or opportunity.',
-      },
-      {
-        type: 'text-media',
-        heading: 'Process',
-        body: 'Placeholder process description. This explains the approach taken to solve the problem. Replace this with your actual methodology and decision-making rationale.',
-        media: {
-          type: 'image',
-          src: '/placeholder-03.jpg',
-          alt: 'Project 01 — process image',
-          aspectRatio: '1/1',
-        },
-        mediaPosition: 'right',
-      },
-      {
-        type: 'gallery',
-        images: [
-          { type: 'image', src: '/placeholder-02.jpg', alt: 'Gallery image 1', aspectRatio: '4/3' },
-          { type: 'image', src: '/placeholder-03.jpg', alt: 'Gallery image 2', aspectRatio: '4/3' },
-          { type: 'image', src: '/placeholder-01.jpg', alt: 'Gallery image 3', aspectRatio: '4/3' },
-        ],
-        columns: 3,
-      },
-      {
-        type: 'quote',
-        text: '"Placeholder quote. A key statement, user feedback, or reflection that captures something important about this project."',
-        attribution: '— Placeholder attribution',
-      },
-      {
-        type: 'text',
-        heading: 'Reflection',
-        body: 'Placeholder reflection. What you learned, what would be done differently, and what impact the project had.',
+        type: 'embed',
+        src: '/plixet-final.html',
+        title: "Designing Product strategy, visual direction and website design for Planefold’s new product line.",
       },
     ],
   },
@@ -119,14 +94,26 @@ export const projects: Project[] = [
     slug: 'project-02',
     number: '02',
     title: 'Klenzaa',
-    description: 'Klenzaa Brand Identity and Interactive Case Study.',
+    description: 'Designing the host side MVP for Klenzaa, a two sided STR cleaning marketplace',
     year: '2025',
-    categories: ['Brand Identity', 'Visual Design'],
+    categories: ['Freelance', 'Dashboard', '0 to 1'],
     thumbnail: {
       type: 'image',
-      src: '/images/tablet.png',
-      alt: 'Klenzaa thumbnail',
+      src: '/images/klenzaa-thumbnail.png',
+      alt: 'Klenzaa project cover thumbnail',
       aspectRatio: '16/9',
+    },
+    heroMedia: {
+      type: 'lottie',
+      src: '/images/klenzaaheromedia.json',
+      alt: 'Klenzaa hero animation',
+      aspectRatio: '16/9',
+    },
+    meta: {
+      role: 'Sole UI/UX Designer',
+      client: 'Clik Catalyst Agency & Imparable Tech Pvt Ltd',
+      timeline: 'Oct to Dec 2025, 3 months',
+      scope: 'Host side product, end to end',
     },
     sections: [
       {
@@ -141,59 +128,59 @@ export const projects: Project[] = [
     id: 'project-03',
     slug: 'project-03',
     number: '03',
-    title: 'Project 03',
-    description: 'Third placeholder project. A short summary of the work and its focus area.',
-    year: '2024',
-    categories: ['Interaction Design', 'Prototyping'],
+    title: 'Saheli',
+    description: 'Designing Saheli: a platform women can actually say yes to.',
+    year: '2026',
+    categories: ['UX/UI Design', 'Self Project', 'Mobile App'],
     thumbnail: {
       type: 'image',
-      src: '/placeholder-03.jpg',
-      alt: 'Project 03 thumbnail',
+      src: '/images/saheli-thumbnail.png',
+      alt: 'Saheli project cover thumbnail',
       aspectRatio: '16/9',
+      objectPosition: 'center center',
     },
     heroMedia: {
+      type: 'video',
+      src: '/images/heromediasaheli.mp4',
+      alt: 'Saheli hero animation',
+      aspectRatio: '16/9',
+      objectPosition: 'center top',
+      transform: 'scale(1.10)',
+      transformOrigin: 'center top',
+    },
+    meta: {
+      role: 'UX/UI Designer, Solo',
+      client: 'Academic',
+      timeline: '4 months',
+      scope: 'Semester Project',
+    },
+    sections: [
+      {
+        type: 'embed',
+        src: '/saheli-final.html',
+        title: 'Designing Saheli: a platform women can actually say yes to',
+      },
+    ],
+  },
+  {
+    id: 'whatsapp',
+    slug: 'whatsapp',
+    number: '04',
+    title: 'WhatsApp Redesign',
+    description: 'Case study exploration for WhatsApp.',
+    year: '2024',
+    categories: ['Product Design', 'UI/UX', 'Mobile App'],
+    thumbnail: {
       type: 'image',
-      src: '/placeholder-03.jpg',
-      alt: 'Project 03 hero',
+      src: '/images/Group 1.png',
+      alt: 'WhatsApp Case Study',
       aspectRatio: '16/9',
     },
     sections: [
       {
-        type: 'text',
-        heading: 'Overview',
-        body: 'Placeholder overview for Project 03.',
-      },
-      {
-        type: 'text-media',
-        heading: 'Research',
-        body: 'Placeholder research description. What was investigated, who was spoken to, what patterns emerged.',
-        media: {
-          type: 'image',
-          src: '/placeholder-01.jpg',
-          alt: 'Project 03 — research image',
-          aspectRatio: '4/3',
-        },
-        mediaPosition: 'left',
-      },
-      {
-        type: 'quote',
-        text: '"A placeholder quote for Project 03."',
-        attribution: '— Placeholder',
-      },
-      {
-        type: 'full-media',
-        media: {
-          type: 'image',
-          src: '/placeholder-02.jpg',
-          alt: 'Project 03 — final image',
-          aspectRatio: '16/9',
-        },
-        caption: 'Placeholder caption.',
-      },
-      {
-        type: 'text',
-        heading: 'Reflection',
-        body: 'Placeholder reflection for Project 03.',
+        type: 'embed',
+        src: '/whatsapp-final.html',
+        title: 'WhatsApp Case Study',
       },
     ],
   },
@@ -217,36 +204,70 @@ export type PlaygroundItem = {
   title: string;
   category: string;
   description?: string;
-  media: MediaType;
+  media?: MediaType;
+  embedUrl?: string;
   link?: string;
+  aspectRatio?: string;
 };
 
 export const playgroundItems: PlaygroundItem[] = [
   {
     id: 'exp-01',
-    title: 'Experiment 01',
-    category: 'Motion',
-    description: 'A short description of this experiment.',
-    media: { type: 'image', src: '/placeholder-03.jpg', alt: 'Experiment 01', aspectRatio: '1/1' },
+    title: 'Ripple Image Effect',
+    category: 'Interactive / WebGL',
+    description: 'An interactive liquid ripple distortion effect built with VS Code, its AI Agent and custom shaders.',
+    media: {
+      type: 'video',
+      src: '/images/exp-01.mp4',
+      alt: 'Ripple Image Effect video preview',
+      aspectRatio: '16/9',
+    },
+    embedUrl: 'https://ripple-image-effect.vercel.app/',
+    link: 'https://ripple-image-effect.vercel.app/',
+    aspectRatio: '16/9',
   },
   {
     id: 'exp-02',
-    title: 'Experiment 02',
-    category: 'Typography',
-    description: 'Exploring typographic layouts.',
-    media: { type: 'image', src: '/placeholder-02.jpg', alt: 'Experiment 02', aspectRatio: '4/3' },
+    title: 'Kinetic Typography',
+    category: 'Typography & Motion',
+    description: 'Experimental kinetic typography and animated text exploration.',
+    media: {
+      type: 'video',
+      src: '/images/animation-typo.mp4',
+      alt: 'Kinetic Typography animation video',
+      aspectRatio: '16/9',
+    },
+    aspectRatio: '16/9',
   },
   {
     id: 'exp-03',
-    title: 'Experiment 03',
-    category: 'Interaction',
-    media: { type: 'image', src: '/placeholder-01.jpg', alt: 'Experiment 03', aspectRatio: '16/9' },
+    title: 'Calendar Exploration',
+    category: 'Interactive / UI Component',
+    description: 'Stroll turns my endless online rabbit holes into a visual scrapbook, making it easier to revisit, connect, and continue explorations.(with time stamps!!)',
+    media: {
+      type: 'image',
+      src: '/images/exp-04.png',
+      alt: 'Calendar Exploration preview',
+      aspectRatio: '16/9',
+    },
+    embedUrl: 'https://exploration-calender.vercel.app/',
+    link: 'https://exploration-calender.vercel.app/',
+    aspectRatio: '16/9',
   },
   {
     id: 'exp-04',
-    title: 'Experiment 04',
-    category: 'Visual',
-    description: 'A visual exploration.',
-    media: { type: 'image', src: '/placeholder-03.jpg', alt: 'Experiment 04', aspectRatio: '4/3' },
+    title: '3D World of Mine',
+    category: 'Interactive / 3D & WebGL',
+    description:
+      'This is a work in progress and I am still working and exploring on it!\nBuilt with Three.js, React Three Fiber, and custom GLSL shaders to explore interactive storytelling in the browser.\nTell me what you think!',
+    media: {
+      type: 'video',
+      src: '/images/3dworld.mp4',
+      alt: '3D World of Mine video preview',
+      aspectRatio: '16/9',
+    },
+    embedUrl: 'https://3dworldofmine.vercel.app/',
+    link: 'https://3dworldofmine.vercel.app/',
+    aspectRatio: '16/9',
   },
 ];

@@ -1,9 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useTheme } from '@/context/ThemeContext';
 import styles from './GrassVector.module.css';
 
 export default function GrassVector() {
+  const { theme } = useTheme();
   const [isLeft, setIsLeft] = useState(false);
   const [isPopped, setIsPopped] = useState(false);
   const [showBubble, setShowBubble] = useState(false);
@@ -66,13 +68,13 @@ export default function GrassVector() {
         style={{ marginLeft: isLeft ? '-150px' : '150px' }}
       >
         <img
-          src="/BEAVER.svg"
+          src="/BEAVER.png"
           alt="Friendly Beaver"
           className={styles.beaver}
         />
       </div>
 
-      {/* Render pixelgrass.svg statically as a clean illustration image tag */}
+      {/* Render pixelgrass.svg for both light and dark mode */}
       <img
         src="/pixelgrass.svg"
         alt=""
