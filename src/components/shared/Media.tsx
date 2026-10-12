@@ -55,23 +55,22 @@ export default function Media({
   const mediaTransformOrigin = transformOrigin || undefined;
   const videoObjectFit = 'cover';
 
-  // Pause video when out of viewport (performance & scroll-triggered play)
+  // Lazy-load and play video only when approaching/inside viewport
   useEffect(() => {
-    if (type !== 'video' || !videoRef.current || !autoplay) return;
+    if (type !== 'video' || !videoRef.current) return;
     const el = videoRef.current;
-    
-    // Explicitly pause video until scrolled into viewport
-    el.pause();
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.play().catch(() => {});
+          if (autoplay) {
+            el.play().catch(() => {});
+          }
         } else {
           el.pause();
         }
       },
-      { threshold: 0.15 }
+      { rootMargin: '200px 0px', threshold: 0.05 }
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -156,7 +155,7 @@ export default function Media({
             transform: mediaTransform || 'none',
             transformOrigin: mediaTransformOrigin || undefined,
           }}
-          preload={autoplay ? 'auto' : 'none'}
+          preload={priority ? 'metadata' : 'none'}
         />
       )}
     </div>
