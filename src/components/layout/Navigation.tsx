@@ -141,7 +141,7 @@ export default function Navigation() {
         <nav className={styles.nav} aria-label="Main navigation">
           {/* Logo / Name */}
           <Link href="/" className={styles.logo} aria-label="Home">
-            Your Name
+            sanskriti&apos;s portfolio
           </Link>
 
           {/* Real-time India Time & Gandhinagar Weather Widget */}

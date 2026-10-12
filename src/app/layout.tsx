@@ -4,14 +4,14 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Your Name — Design Portfolio',
-    template: '%s | Your Name',
+    default: 'Sanskriti Pamnani — Design Portfolio',
+    template: '%s | Sanskriti Pamnani',
   },
   description: 'Product designer focused on interaction, systems, and the space between.',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    siteName: 'Your Name Portfolio',
+    siteName: 'Sanskriti Pamnani Portfolio',
   },
 };
 
