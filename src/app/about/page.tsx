@@ -35,13 +35,6 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Contact */}
-          <footer className={styles.contact}>
-            <span className={`label ${styles.contactLabel}`}>Get in touch</span>
-            <a href="mailto:sanskriti28052005@gmail.com" className={styles.email}>
-              sanskriti28052005@gmail.com
-            </a>
-          </footer>
         </div>
       </Container>
     </article>
