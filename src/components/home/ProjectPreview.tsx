@@ -88,7 +88,7 @@ export default function ProjectPreview({ project, index }: ProjectPreviewProps) 
                 top: `${mousePos.y}px`,
               }}
             >
-              view case study
+              View case study ↗
             </div>
           )}
         </Link>

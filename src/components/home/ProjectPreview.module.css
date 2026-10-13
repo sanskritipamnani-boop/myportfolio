@@ -225,21 +225,21 @@
 
 .cursorTip {
   position: absolute;
-  transform: translate(12px, 12px); /* Offset from cursor */
-  background-color: var(--color-bg-panel);
-  border: 1px solid var(--color-text-primary);
-  padding: 2px 5px;
-  border-radius: 3px;
+  transform: translate(14px, 14px); /* Offset from cursor */
+  background-color: #728F4F;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 8px 16px;
+  border-radius: 9999px;
   font-family: var(--font-sans);
-  font-size: 8px; /* Very tiny note */
+  font-size: 12px;
   font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-text-primary);
+  letter-spacing: 0.03em;
   pointer-events: none; /* Make sure it doesn't block clicks */
   z-index: 100;
-  box-shadow: 2px 2px 0 var(--color-text-primary); /* Retro block shadow */
+  box-shadow: 0 6px 18px rgba(114, 143, 79, 0.4);
   white-space: nowrap;
+  will-change: transform;
 }
 
 @media (max-width: 768px) {
