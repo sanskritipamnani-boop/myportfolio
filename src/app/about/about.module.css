@@ -60,7 +60,7 @@
   animation: wipeRightToLeft 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* Three colors: #E8F5D8 (soft green), #FAEEDA (soft cream/peach), #F4D5D5 (soft rose/pink) */
+/* Highlight color variants */
 .highlightGreen {
   background-image: linear-gradient(to left, #E8F5D8, #E8F5D8);
 }
@@ -73,13 +73,52 @@
   background-image: linear-gradient(to left, #F4D5D5, #F4D5D5);
 }
 
+.highlightYellow {
+  background-image: linear-gradient(to left, #FAEEDA, #FAEEDA);
+}
+
+/* Interactive hover pop trigger container */
+.popTrigger {
+  cursor: pointer;
+  display: inline;
+}
+
+.popIconWrapper {
+  position: absolute;
+  top: -42px;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px) scale(0.6);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 50;
+  transition: opacity 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12));
+}
+
+.popIcon {
+  display: block;
+  width: auto;
+  height: 38px;
+  object-fit: contain;
+}
+
+/* Hover reveal effect */
+.popTrigger:hover .popIconWrapper {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
 /* Staggered line-by-line delays */
+.delay0 {
+  animation-delay: 0.15s;
+}
+
 .delay1 {
-  animation-delay: 0.35s;
+  animation-delay: 0.45s;
 }
 
 .delay2 {
-  animation-delay: 0.75s;
+  animation-delay: 0.8s;
 }
 
 .delay3 {
@@ -87,7 +126,7 @@
 }
 
 .delay4 {
-  animation-delay: 1.55s;
+  animation-delay: 1.5s;
 }
 
 @keyframes wipeRightToLeft {
