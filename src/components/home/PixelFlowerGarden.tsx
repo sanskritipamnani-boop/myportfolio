@@ -160,52 +160,62 @@ export default function PixelFlowerGarden() {
   }, [isMobile]);
 
   return (
-    <div 
-      ref={containerRef} 
-      className="pixel-flower-garden" 
-      aria-hidden="true"
-    >
+    <>
+      {/* 1. Flowers layer — sits behind the grass vector (z-index 2) */}
+      <div 
+        ref={containerRef} 
+        className="pixel-flower-garden" 
+        aria-hidden="true"
+      >
+        {flowers.map((flower) => (
+          <div
+            key={flower.id}
+            className="pixel-flower"
+            style={{
+              left: `${flower.x}px`,
+              top: `${flower.y}px`,
+              height: `${flower.height}px`,
+              transform: `translate(-50%, -100%) rotate(${flower.rotation}deg)`,
+            }}
+          >
+            {/* Stem growing animation */}
+            <div className="pixel-flower-stem">
+              {/* Symmetrical pixel leaves */}
+              <div className="pixel-flower-leaf-left" />
+              <div className="pixel-flower-leaf-right" />
+            </div>
+
+            {/* Symmetrical pixelated head clusters */}
+            <div className={`pixel-flower-head pixel-flower-head-v${flower.variant}`} />
+          </div>
+        ))}
+      </div>
+
+      {/* 2. Cursor tooltip layer — sits in front of the grass vector so the button is always visible */}
       {showTooltip && !isMobile && (
         <div 
-          className="pixel-flower-tooltip"
-          style={{ 
-            left: `${mousePos.x}px`, 
-            top: `${mousePos.y}px` 
-          }}
+          className="pixel-flower-tooltip-container"
+          aria-hidden="true"
         >
-          <img 
-            src="/flower-cursor.svg" 
-            alt="" 
-            className="pixel-flower-tooltip-icon" 
-            width={18} 
-            height={18} 
-          />
-          <span>Plant a flower:)</span>
+          <div 
+            className="pixel-flower-tooltip"
+            style={{ 
+              left: `${mousePos.x}px`, 
+              top: `${mousePos.y}px` 
+            }}
+          >
+            <img 
+              src="/flower-cursor.svg" 
+              alt="" 
+              className="pixel-flower-tooltip-icon" 
+              width={18} 
+              height={18} 
+            />
+            <span>Plant a flower:)</span>
+          </div>
         </div>
       )}
-
-      {flowers.map((flower) => (
-        <div
-          key={flower.id}
-          className="pixel-flower"
-          style={{
-            left: `${flower.x}px`,
-            top: `${flower.y}px`,
-            height: `${flower.height}px`,
-            transform: `translate(-50%, -100%) rotate(${flower.rotation}deg)`,
-          }}
-        >
-          {/* Stem growing animation */}
-          <div className="pixel-flower-stem">
-            {/* Symmetrical pixel leaves */}
-            <div className="pixel-flower-leaf-left" />
-            <div className="pixel-flower-leaf-right" />
-          </div>
-
-          {/* Symmetrical pixelated head clusters */}
-          <div className={`pixel-flower-head pixel-flower-head-v${flower.variant}`} />
-        </div>
-      ))}
-    </div>
+    </>
   );
 }
+

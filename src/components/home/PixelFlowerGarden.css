@@ -9,7 +9,18 @@
   width: 100%;
   height: 100%;
   pointer-events: none; /* Let all mouse/scroll inputs pass through */
-  z-index: 20; /* Sits in front of the grass vector (z-index 10) and hero content */
+  z-index: 2; /* Sits behind the grass vector (z-index 10) so flowers sprout from behind the grass */
+  overflow: hidden;
+}
+
+.pixel-flower-tooltip-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Let all mouse/scroll inputs pass through */
+  z-index: 30; /* In front of grass vector (z-index 10) so cursor tooltip button is always visible */
   overflow: hidden;
 }
 
