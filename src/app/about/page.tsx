@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Container from '@/components/layout/Container';
 import styles from './about.module.css';
 
@@ -32,20 +31,6 @@ export default function AboutPage() {
                 Other than that, I like making toys, playing games, reading, and travelling!
               </p>
             </div>
-
-            <aside className={styles.sidebar}>
-              {/* Portrait */}
-              <div className={styles.portrait}>
-                <Image
-                  src="/images/passport.png"
-                  alt="Sanskriti Pamnani"
-                  width={380}
-                  height={380}
-                  className={styles.portraitImg}
-                  priority
-                />
-              </div>
-            </aside>
           </div>
 
           {/* Contact */}
