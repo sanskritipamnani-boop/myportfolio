@@ -33,21 +33,21 @@
 /* Body: text */
 .body {
   display: block;
-  max-width: 1200px;
+  max-width: 100%;
 }
 
 .contentRow {
   display: flex;
   align-items: flex-end; /* Moves meee.svg to the bottom */
   justify-content: space-between;
-  gap: clamp(var(--space-6), 4vw, var(--space-12));
+  gap: clamp(var(--space-6), 3vw, var(--space-10));
 }
 
 .text {
   display: grid;
   gap: clamp(var(--space-4), 2.5vh, var(--space-6));
   flex: 1;
-  max-width: 860px;
+  max-width: 740px;
 }
 
 .text p {
@@ -60,18 +60,21 @@
 
 .sideGraphicWrapper {
   flex-shrink: 0;
-  width: clamp(240px, 24vw, 320px); /* Increased size of meee.svg */
+  width: clamp(340px, 35vw, 500px);
+  max-height: 70vh;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: flex-end;
-  padding-bottom: var(--space-2);
+  padding-bottom: 0;
 }
 
 .sideGraphic {
   width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
   height: auto;
   display: block;
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.08));
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.08));
 }
 
 @media (max-width: 860px) {
@@ -84,11 +87,12 @@
     align-items: center;
   }
   .sideGraphicWrapper {
-    width: 220px;
+    width: clamp(240px, 65vw, 360px);
     max-width: 100%;
     margin-top: var(--space-6);
   }
 }
+
 
 .highlight {
   position: relative;
