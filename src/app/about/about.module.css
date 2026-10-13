@@ -28,13 +28,13 @@
 /* Body: text */
 .body {
   display: block;
-  max-width: 720px;
+  max-width: 960px;
 }
 
 .introGraphic {
   margin-bottom: var(--space-8);
   width: 100%;
-  max-width: 720px;
+  max-width: 960px;
 }
 
 .introGraphicImg {
@@ -57,13 +57,57 @@
 }
 
 .highlight {
-  background-color: #EFECE6;
+  position: relative;
+  display: inline;
   color: var(--color-text-primary);
-  padding: 0.15em 0.4em;
-  border-radius: 4px;
   font-weight: 400;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
+  padding: 0.12em 0.35em;
+  border-radius: 3px;
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  background-position: right center; /* Wipes strictly from right to left */
+  animation: wipeRightToLeft 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Three colors: #E8F5D8 (soft green), #FAEEDA (soft cream/peach), #F4D5D5 (soft rose/pink) */
+.highlightGreen {
+  background-image: linear-gradient(to left, #E8F5D8, #E8F5D8);
+}
+
+.highlightPeach {
+  background-image: linear-gradient(to left, #FAEEDA, #FAEEDA);
+}
+
+.highlightPink {
+  background-image: linear-gradient(to left, #F4D5D5, #F4D5D5);
+}
+
+/* Staggered line-by-line delays */
+.delay1 {
+  animation-delay: 0.35s;
+}
+
+.delay2 {
+  animation-delay: 0.75s;
+}
+
+.delay3 {
+  animation-delay: 1.15s;
+}
+
+.delay4 {
+  animation-delay: 1.55s;
+}
+
+@keyframes wipeRightToLeft {
+  0% {
+    background-size: 0% 100%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
 }
 
 /* Sidebar */

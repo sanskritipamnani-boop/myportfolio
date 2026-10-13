@@ -31,10 +31,10 @@ export default function AboutPage() {
 
             <div className={styles.text}>
               <p>
-                Hello! My name is Sanskriti, and I’m currently studying Product Experience Design at NIFT, Gandhinagar. I work <mark className={styles.highlight}>across research, product and UX thinking, visual design, and prototyping</mark>, and I also enjoy <mark className={styles.highlight}>experimenting with code and AI</mark> as tools to explore ideas and bring them to life. In my last internship, I gained experience in <mark className={styles.highlight}>product strategy, visual &amp; art direction, and website design.</mark>
+                Hello! My name is Sanskriti, and I’m currently studying Product Experience Design at NIFT, Gandhinagar. I work <mark className={`${styles.highlight} ${styles.highlightGreen} ${styles.delay1}`}>across research, product and UX thinking, visual design, and prototyping</mark>, and I also enjoy <mark className={`${styles.highlight} ${styles.highlightPeach} ${styles.delay2}`}>experimenting with code and AI</mark> as tools to explore ideas and bring them to life. In my last internship, I gained experience in <mark className={`${styles.highlight} ${styles.highlightPink} ${styles.delay3}`}>product strategy, visual &amp; art direction, and website design.</mark>
               </p>
               <p>
-                I’m drawn to work that explores how physical and digital experiences come together <mark className={styles.highlight}>through interaction, understanding, and technology.</mark> I’ve always been curious about the little things people do, the choices they make, and the problems they work around. Design gives me a way to turn that curiosity into something tangible, whether it’s a digital product, a physical object, or an experience.
+                I’m drawn to work that explores how physical and digital experiences come together <mark className={`${styles.highlight} ${styles.highlightGreen} ${styles.delay4}`}>through interaction, understanding, and technology.</mark> I’ve always been curious about the little things people do, the choices they make, and the problems they work around. Design gives me a way to turn that curiosity into something tangible, whether it’s a digital product, a physical object, or an experience.
               </p>
               <p>
                 I’m now looking for opportunities where I can learn from real-world projects, contribute to a design team, and continue developing my approach as a product designer.

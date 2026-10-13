@@ -13,6 +13,14 @@ export const metadata: Metadata = {
     locale: 'en_US',
     siteName: 'Sanskriti Pamnani Portfolio',
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon.png', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/favicon.png',
+  },
 };
 
 export const viewport: Viewport = {
