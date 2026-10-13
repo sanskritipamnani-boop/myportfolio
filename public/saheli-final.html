@@ -519,109 +519,28 @@
   </section>
 
   <section id="hmw-section">
-    <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.75rem;">
-      <div>
-        <span class="section-eyebrow" style="margin-bottom: 0.5rem;">HMW's &amp; Ideation</span>
-        <h2 style="margin-bottom: 0;">How Might We &amp; Ideation</h2>
+    <details class="accordion-item" style="border: 1px solid var(--line); border-radius: 14px; background: #FFFFFF; overflow: hidden; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);">
+      <summary class="accordion-summary" style="padding: 1.25rem 1.5rem; cursor: pointer; display: flex; align-items: center; justify-content: space-between;">
+        <div>
+          <span class="section-eyebrow" style="margin-bottom: 0.35rem; display: block;">HMW's &amp; Ideation</span>
+          <h2 style="margin: 0; font-size: clamp(20px, 4.5vw, 26px); color: var(--navy);">How Might We &amp; Ideation</h2>
+        </div>
+        <span class="accordion-icon" aria-hidden="true" style="width: 28px; height: 28px; font-size: 20px;">+</span>
+      </summary>
+      <div class="accordion-content" style="padding: 0 1.5rem 1.5rem; border-top: 1px solid var(--line);">
+        <div style="display: flex; flex-direction: column; gap: 2rem; margin-top: 1.5rem; width: 100%;">
+          <figure style="margin: 0; width: 100%;">
+            <img src="/images/finance.png" alt="HMW Finance Ideation" style="width: 100%; height: auto; border-radius: 10px; display: block;" />
+          </figure>
+          <figure style="margin: 0; width: 100%;">
+            <img src="/images/skillgap.png" alt="HMW Skill Gap Ideation" style="width: 100%; height: auto; border-radius: 10px; display: block;" />
+          </figure>
+          <figure style="margin: 0; width: 100%;">
+            <img src="/images/safety.png" alt="HMW Safety Ideation" style="width: 100%; height: auto; border-radius: 10px; display: block;" />
+          </figure>
+        </div>
       </div>
-      <button type="button" id="toggle-all-hmws" class="accordion-toggle-all">
-        <span id="toggle-all-text">Expand all</span>
-        <span id="toggle-all-icon" class="accordion-icon" style="width: 20px; height: 20px; font-size: 13px;">+</span>
-      </button>
-    </div>
-    <p class="body" style="margin-bottom: 1.5rem;">Early opportunity statements (How Might We) and whiteboard ideation sketches exploring flexibility, skill gaps, and safety.</p>
-
-    <div class="accordion-group">
-      <!-- Item 1: Flexibility -->
-      <details class="accordion-item">
-        <summary class="accordion-summary">
-          <div class="accordion-header-content">
-            <span class="accordion-badge">HMW 01</span>
-            <span class="accordion-title">Flexibility: Managing home load and work</span>
-          </div>
-          <span class="accordion-icon" aria-hidden="true">+</span>
-        </summary>
-        <div class="accordion-content">
-          <p style="margin: 0 0 1rem; color: var(--ink-soft); font-size: 14.5px; line-height: 1.65;">
-            Exploring home-based work modes, micro-tasks (1–2 hours), and weekly routine planning to help women balance home responsibilities with consistent earnings.
-          </p>
-          <figure style="margin: 0; width: 100%;">
-            <img src="/images/finance.png" alt="HMW Finance Ideation - Flexibility and managing home load" style="width: 100%; height: auto; border-radius: 10px; display: block;" />
-          </figure>
-        </div>
-      </details>
-
-      <!-- Item 2: Skills Gap -->
-      <details class="accordion-item">
-        <summary class="accordion-summary">
-          <div class="accordion-header-content">
-            <span class="accordion-badge">HMW 02</span>
-            <span class="accordion-title">Skills gap: Having skills but don't know what to do or find work</span>
-          </div>
-          <span class="accordion-icon" aria-hidden="true">+</span>
-        </summary>
-        <div class="accordion-content">
-          <p style="margin: 0 0 1rem; color: var(--ink-soft); font-size: 14.5px; line-height: 1.65;">
-            Turning informal household skills into bookable services, voice-first onboarding, and micro skill-building content to build confidence and discover nearby demand.
-          </p>
-          <figure style="margin: 0; width: 100%;">
-            <img src="/images/skillgap.png" alt="HMW Skill Gap Ideation - Having skills but discovering work" style="width: 100%; height: auto; border-radius: 10px; display: block;" />
-          </figure>
-        </div>
-      </details>
-
-      <!-- Item 3: Safety Fears -->
-      <details class="accordion-item">
-        <summary class="accordion-summary">
-          <div class="accordion-header-content">
-            <span class="accordion-badge">HMW 03</span>
-            <span class="accordion-title">Safety fears: Restricting job type and limiting earning potential</span>
-          </div>
-          <span class="accordion-icon" aria-hidden="true">+</span>
-        </summary>
-        <div class="accordion-content">
-          <p style="margin: 0 0 1rem; color: var(--ink-soft); font-size: 14.5px; line-height: 1.65;">
-            Designing live location sharing with trusted contacts, itinerary check-ins, nearby job filtering, and a community trust layer so women feel protected when taking on gigs.
-          </p>
-          <figure style="margin: 0; width: 100%;">
-            <img src="/images/safety.png" alt="HMW Safety Ideation - Safety fears and community trust" style="width: 100%; height: auto; border-radius: 10px; display: block;" />
-          </figure>
-        </div>
-      </details>
-    </div>
-
-    <script>
-      (function() {
-        var toggleBtn = document.getElementById('toggle-all-hmws');
-        var toggleText = document.getElementById('toggle-all-text');
-        var toggleIcon = document.getElementById('toggle-all-icon');
-        var section = document.getElementById('hmw-section');
-        if (!section || !toggleBtn) return;
-        var items = section.querySelectorAll('.accordion-item');
-
-        function updateToggleBtnState() {
-          var allOpen = Array.from(items).every(function(el) { return el.hasAttribute('open'); });
-          toggleText.textContent = allOpen ? 'Collapse all' : 'Expand all';
-          toggleIcon.textContent = allOpen ? '−' : '+';
-        }
-
-        toggleBtn.addEventListener('click', function() {
-          var anyClosed = Array.from(items).some(function(el) { return !el.hasAttribute('open'); });
-          items.forEach(function(el) {
-            if (anyClosed) {
-              el.setAttribute('open', '');
-            } else {
-              el.removeAttribute('open');
-            }
-          });
-          updateToggleBtnState();
-        });
-
-        items.forEach(function(el) {
-          el.addEventListener('toggle', updateToggleBtnState);
-        });
-      })();
-    </script>
+    </details>
   </section>
 
   <section>
