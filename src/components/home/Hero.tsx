@@ -216,11 +216,11 @@ export default function Hero() {
         </motion.div>
       </div>
       
-      {/* Absolute overlay that manages interactive pixel-flowers on click */}
-      <PixelFlowerGarden />
-
       {/* Positioned absolutely at the bottom of the entire full-width homescreen viewport */}
       <GrassVector />
+
+      {/* Absolute overlay that manages interactive pixel-flowers and cursor tooltip */}
+      <PixelFlowerGarden />
 
       {/* Small bouncing 'v' scroll indicator */}
       <motion.div
