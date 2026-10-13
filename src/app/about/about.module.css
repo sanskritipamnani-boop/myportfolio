@@ -28,43 +28,32 @@
 /* Body: text */
 .body {
   display: block;
-  max-width: 960px;
-}
-
-.introGraphic {
-  margin-bottom: var(--space-8);
-  width: 100%;
-  max-width: 960px;
-}
-
-.introGraphicImg {
-  width: 100%;
-  height: auto;
-  display: block;
+  max-width: 820px;
 }
 
 .text {
   display: grid;
-  gap: var(--space-6);
+  gap: var(--space-8);
 }
 
 .text p {
-  font-size: var(--text-base);
-  font-weight: 300;
-  color: var(--color-text-secondary);
-  line-height: var(--leading-relaxed);
-  max-width: 60ch;
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.25rem);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  line-height: 1.75;
+  max-width: 65ch;
 }
 
 .highlight {
   position: relative;
   display: inline;
   color: var(--color-text-primary);
-  font-weight: 400;
+  font-weight: 500;
+  background-color: transparent; /* Explicitly override browser default yellow <mark> background */
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
   padding: 0.12em 0.35em;
-  border-radius: 3px;
+  border-radius: 4px;
   background-repeat: no-repeat;
   background-size: 0% 100%;
   background-position: right center; /* Wipes strictly from right to left */
