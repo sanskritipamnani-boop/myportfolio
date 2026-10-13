@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Container from '@/components/layout/Container';
 import styles from './about.module.css';
 
@@ -17,6 +18,17 @@ export default function AboutPage() {
           </header>
 
           <div className={styles.body}>
+            <div className={styles.introGraphic}>
+              <Image
+                src="/images/about-me.svg"
+                alt="About Sanskriti — Product & Experience Designer"
+                width={1024}
+                height={394}
+                className={styles.introGraphicImg}
+                priority
+              />
+            </div>
+
             <div className={styles.text}>
               <p>
                 Hello! My name is Sanskriti, and I’m currently studying Product Experience Design at NIFT, Gandhinagar. I work <mark className={styles.highlight}>across research, product and UX thinking, visual design, and prototyping</mark>, and I also enjoy <mark className={styles.highlight}>experimenting with code and AI</mark> as tools to explore ideas and bring them to life. In my last internship, I gained experience in <mark className={styles.highlight}>product strategy, visual &amp; art direction, and website design.</mark>

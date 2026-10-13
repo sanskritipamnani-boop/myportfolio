@@ -31,6 +31,18 @@
   max-width: 720px;
 }
 
+.introGraphic {
+  margin-bottom: var(--space-8);
+  width: 100%;
+  max-width: 720px;
+}
+
+.introGraphicImg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .text {
   display: grid;
   gap: var(--space-6);
