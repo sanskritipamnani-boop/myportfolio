@@ -1,5 +1,6 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import { ThemeProvider } from '@/context/ThemeContext';
 import Navigation from './Navigation';
 import Footer from './Footer';
@@ -10,6 +11,9 @@ type LayoutWrapperProps = {
 };
 
 export default function LayoutWrapper({ children }: LayoutWrapperProps) {
+  const pathname = usePathname();
+  const isAboutPage = pathname === '/about';
+
   return (
     <ThemeProvider>
       <div className={styles.viewport}>
@@ -19,7 +23,7 @@ export default function LayoutWrapper({ children }: LayoutWrapperProps) {
           <main id="main-content">
             {children}
           </main>
-          <Footer />
+          {!isAboutPage && <Footer />}
         </div>
       </div>
     </ThemeProvider>
