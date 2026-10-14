@@ -19,6 +19,9 @@
 
 # production
 /build
+planefold-standalone-bundle/
+public/plixet-media/
+public/plixet-final-full-backup.html
 
 # misc
 .DS_Store

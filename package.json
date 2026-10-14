@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "bundle:planefold": "node scripts/bundle-planefold.js"
   },
   "dependencies": {
     "framer-motion": "^13.0.0",
