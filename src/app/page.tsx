@@ -38,11 +38,21 @@ export default function HomePage({ initialSlug }: HomePageProps) {
       }
     };
 
+    const handleCloseEvent = () => {
+      setActiveProjectSlug(null);
+      if (window.location.pathname !== '/') {
+        window.history.pushState(null, '', '/');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     window.addEventListener('open-project-sheet' as any, handleOpenProject);
+    window.addEventListener('close-project-sheet', handleCloseEvent);
     window.addEventListener('popstate', handlePopState);
 
     return () => {
       window.removeEventListener('open-project-sheet' as any, handleOpenProject);
+      window.removeEventListener('close-project-sheet', handleCloseEvent);
       window.removeEventListener('popstate', handlePopState);
     };
   }, []);

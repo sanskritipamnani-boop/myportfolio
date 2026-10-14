@@ -135,12 +135,40 @@ export default function Navigation() {
   const timeStr = timeParts ? timeParts[1] : time;
   const amPmStr = timeParts ? timeParts[2] : '';
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    // Close mobile menu if open
+    const nav = document.querySelector(`.${styles.links}`);
+    if (nav) nav.classList.remove(styles.linksOpen);
+    const toggle = document.getElementById('nav-toggle');
+    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+
+    // Dispatch custom event to close any active project sheet
+    window.dispatchEvent(new CustomEvent('close-project-sheet'));
+
+    // Reset body overflow lock
+    document.body.style.overflow = '';
+
+    // If already on homepage, smooth-scroll to top and remove hash
+    if (pathname === '/' || window.location.pathname === '/') {
+      e.preventDefault();
+      if (window.location.hash) {
+        window.history.pushState(null, '', '/');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <header className={styles.header} role="banner">
       <Container>
         <nav className={styles.nav} aria-label="Main navigation">
           {/* Logo / Name */}
-          <Link href="/" className={styles.logo} aria-label="Home">
+          <Link
+            href="/"
+            className={styles.logo}
+            aria-label="Home"
+            onClick={handleLogoClick}
+          >
             sanskriti&apos;s portfolio
           </Link>
 
