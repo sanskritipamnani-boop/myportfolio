@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import { Analytics } from '@vercel/analytics/next';
 import LayoutWrapper from '@/components/layout/LayoutWrapper';
 import './globals.css';
 
@@ -40,6 +41,7 @@ export default function RootLayout({
         <LayoutWrapper>
           {children}
         </LayoutWrapper>
+        <Analytics />
       </body>
     </html>
   );
