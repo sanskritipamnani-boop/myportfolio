@@ -47,7 +47,7 @@ export default function GrassVector() {
       {showBubble && (
         <div
           className={styles.speechBubble}
-          style={{ marginLeft: isLeft ? '-150px' : '150px' }}
+          style={{ marginLeft: isLeft ? '-150px' : '300px' }}
           onClick={handleDismiss}
         >
           click click
@@ -58,14 +58,14 @@ export default function GrassVector() {
       {/* Invisible click target overlay that sits in front of the grass to intercept clicks */}
       <div
         className={`${styles.beaverClickTarget} ${isPopped ? styles.popped : ''}`}
-        style={{ marginLeft: isLeft ? '-150px' : '150px' }}
+        style={{ marginLeft: isLeft ? '-150px' : '300px' }}
         onClick={handleBeaverClick}
       />
 
       {/* Beaver popup wrapper sitting behind the grass paths with toggled left/right offset on click */}
       <div
         className={`${styles.beaverWrapper} ${isPopped ? styles.popped : ''}`}
-        style={{ marginLeft: isLeft ? '-150px' : '150px' }}
+        style={{ marginLeft: isLeft ? '-150px' : '300px' }}
       >
         <img
           src="/BEAVER.png"
