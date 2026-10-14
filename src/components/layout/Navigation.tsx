@@ -187,7 +187,7 @@ export default function Navigation() {
             </li>
             <li>
               <a
-                href="#"
+                href="https://drive.google.com/file/d/1pvLGtrscgCApKi-8btsHKJBHEODJ1nyn/view?usp=sharing"
                 className={`${styles.navLink} ${styles.resumeLink}`}
                 aria-label="Resume (external link)"
                 target="_blank"
