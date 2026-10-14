@@ -185,7 +185,7 @@ export default function KlenzaaCaseStudy() {
                 Sign Up Page Walkthrough
               </h3>
               <MediaItem
-                filename="sign up page.mp4"
+                filename="sign-up-page.mp4"
                 altText="Sign Up Page Walkthrough"
               />
             </figure>
