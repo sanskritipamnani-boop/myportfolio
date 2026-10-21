@@ -215,7 +215,7 @@ export default function Navigation() {
             </li>
             <li>
               <a
-                href="https://drive.google.com/file/d/1pvLGtrscgCApKi-8btsHKJBHEODJ1nyn/view?usp=sharing"
+                href="https://drive.google.com/file/d/1Q-QMa_miUBoO3LrVxOyMptMGHGh9_yl0/view?usp=sharing"
                 className={`${styles.navLink} ${styles.resumeLink}`}
                 aria-label="Resume (external link)"
                 target="_blank"

@@ -36,8 +36,8 @@ export default function AboutPage() {
 
               <div className={styles.sideGraphicWrapper}>
                 <img
-                  src="/images/meee.svg"
-                  alt="Sanskriti illustration"
+                  src="/images/image_sans.png"
+                  alt="Sanskriti Pamnani"
                   className={styles.sideGraphic}
                 />
               </div>

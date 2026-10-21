@@ -53,7 +53,7 @@ export default function Footer() {
                 LinkedIn ↗
               </a>
               <a
-                href="https://drive.google.com/file/d/1pvLGtrscgCApKi-8btsHKJBHEODJ1nyn/view?usp=sharing"
+                href="https://drive.google.com/file/d/1Q-QMa_miUBoO3LrVxOyMptMGHGh9_yl0/view?usp=sharing"
                 className={styles.contactLink}
                 target="_blank"
                 rel="noopener noreferrer"
