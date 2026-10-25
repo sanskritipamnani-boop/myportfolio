@@ -94,7 +94,7 @@ export const projects: Project[] = [
     slug: 'project-02',
     number: '02',
     title: 'Klenzaa',
-    description: 'Designing the host side MVP for Klenzaa, a two sided STR cleaning marketplace',
+    description: 'Designed the host-side MVP for Klenzaa, a marketplace that connects vacation-rental hosts with cleaners.',
     year: '2025',
     categories: ['Freelance', 'Dashboard', '0 to 1'],
     thumbnail: {
@@ -119,7 +119,7 @@ export const projects: Project[] = [
       {
         type: 'embed',
         src: '/klenzaa-final.html',
-        title: 'Designing Klenzaa',
+        title: 'Designed the host-side MVP for Klenzaa, a marketplace that connects vacation-rental hosts with cleaners.',
         height: '900px',
       },
     ],
@@ -129,9 +129,9 @@ export const projects: Project[] = [
     slug: 'project-03',
     number: '03',
     title: 'Saheli',
-    description: 'Designing Saheli: a platform women can actually say yes to.',
+    description: "Designed a gig-work app for women, where the hard part isn't finding jobs, it's deciding to start.",
     year: '2026',
-    categories: ['UX/UI Design', 'Self Project', 'Mobile App'],
+    categories: ['Self-initiated', 'Mobile App', 'Social Impact'],
     thumbnail: {
       type: 'image',
       src: '/images/saheli-thumbnail.png',
@@ -158,7 +158,7 @@ export const projects: Project[] = [
       {
         type: 'embed',
         src: '/saheli-final.html',
-        title: 'Designing Saheli: a platform women can actually say yes to',
+        title: "Designed a gig-work app for women, where the hard part isn't finding jobs, it's deciding to start.",
       },
     ],
   },
