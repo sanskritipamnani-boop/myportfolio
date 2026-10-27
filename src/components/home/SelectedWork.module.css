@@ -7,21 +7,10 @@
 
 .header {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: flex-start;
+  text-align: left;
   margin-bottom: var(--space-8); /* 32px spacing before the projects list begins */
   width: 100%;
-}
-
-.subline {
-  margin: 0.65rem 0 0;
-  font-size: var(--text-sm);
-  color: var(--color-text-secondary);
-  font-weight: 400;
-  line-height: 1.55;
-  text-align: center;
 }
 
 /* Single line heading style styling */
@@ -33,7 +22,7 @@
   margin: 0;
   line-height: var(--leading-none);
   color: var(--color-text-primary);
-  text-align: center; /* Symmetrical centering aligned with projects */
+  text-align: left;
 }
 
 .sectionLabel {

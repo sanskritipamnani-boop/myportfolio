@@ -14,10 +14,6 @@ export default function SelectedWork() {
             <span className={`label ${styles.sectionLabel}`}>Selected Work</span>
             <span className={styles.introInline}> — A curated selection of case studies, design systems, and digital products.</span>
           </h2>
-          <p className={styles.subline}>
-            Previously: Product design intern at Planefold, Freelance designer for Klenzaa.<br />
-            Fourth year B.Des at NIFT Gandhinagar
-          </p>
         </header>
       </Container>
 
