@@ -208,3 +208,9 @@
     transform: translate(-50%, -100%) scale(1) !important;
   }
 }
+
+@media (hover: none), (pointer: coarse) {
+  .pixel-flower-tooltip {
+    display: none !important;
+  }
+}

@@ -141,14 +141,36 @@
   }
 }
 
+@media (max-width: 1200px) {
+  .grassContainer {
+    bottom: -110px;
+  }
+
+  .grassSvg {
+    width: 94%;
+    min-width: 960px;
+    max-width: 1200px;
+  }
+}
+
+@media (max-height: 820px) {
+  .grassContainer {
+    bottom: -115px;
+  }
+
+  .grassSvg {
+    max-height: 25vh;
+  }
+}
+
 @media (max-width: 768px) {
   .grassContainer {
-    bottom: -90px;
+    bottom: -75px;
   }
 
   .grassSvg {
     width: 100%;
-    min-width: 900px;
+    min-width: 640px;
     max-width: none;
   }
 
@@ -162,7 +184,18 @@
   }
 }
 
-/* Hide beaver completely on phone breakpoint only (keep on desktop and tablet/iPad) */
+/* Hide beaver on screens where it appears above the grass (iPads, mini laptops, and short/small viewports) */
+@media (max-width: 1200px), (max-height: 820px) {
+  .beaverWrapper,
+  .beaverClickTarget,
+  .speechBubble {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+  }
+}
+
+/* Hide beaver completely on phone breakpoint */
 @media (max-width: 640px) {
   .beaverWrapper,
   .beaverClickTarget,

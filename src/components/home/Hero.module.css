@@ -15,12 +15,12 @@
 
 .heroGraphicContainer {
   width: 100%;
-  max-width: 1120px;
+  max-width: 1080px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateY(30px); /* Moved down */
+  transform: translateY(0);
   box-sizing: border-box;
 }
 
@@ -35,13 +35,13 @@
 }
 
 .typewriterHeading {
-  font-size: clamp(22px, 3.2vw, 36px);
+  font-size: clamp(18px, 2.4vw, 32px);
   text-align: center;
   color: #F3C583;
   font-family: 'DM Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  margin-top: 48px;                   /* Positioned more down */
-  margin-bottom: 16px;                /* Exactly 16px gap to Group 16 */
-  min-height: 48px;
+  margin-top: clamp(10px, 2vh, 28px);
+  margin-bottom: clamp(6px, 1.2vh, 14px);
+  min-height: clamp(26px, 3.5vh, 40px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,22 +69,23 @@
 
 .cloudsSvg {
   position: absolute;
-  top: calc(12% - 34px);              /* Positioned above title graphic */
+  top: clamp(8px, 4vh, 36px);
   left: 0;
   right: 0;
-  margin: 0 auto;                     /* True horizontal centre */
-  width: 70%;
-  max-width: 900px;
+  margin: 0 auto;
+  width: clamp(340px, 58vw, 840px);
+  max-height: 28vh;
   height: auto;
   pointer-events: none;
-  z-index: 0;                         /* Behind title graphic */
+  z-index: 0;
   display: block;
 }
 
 .heroSvg {
   position: relative;
-  width: 102%;
-  max-width: 1140px;
+  width: 94%;
+  max-width: 1000px;
+  max-height: 40vh;
   height: auto;
   object-fit: contain;
   display: block;
@@ -92,14 +93,55 @@
   margin: 0 auto;
 }
 
-@media (max-width: 1024px) {
-  .hero {
-    padding-inline: var(--container-padding);
+@media (max-width: 1200px) {
+  .heroGraphicContainer {
+    transform: translateY(-12px);
+    max-width: 840px;
   }
 
   .cloudsSvg {
-    width: 80%;
-    max-width: none;
+    top: clamp(6px, 3vh, 24px);
+    width: clamp(300px, 64vw, 680px);
+    max-height: 24vh;
+  }
+
+  .heroSvg {
+    width: 92%;
+    max-width: 800px;
+    max-height: 35vh;
+  }
+
+  .typewriterHeading {
+    font-size: clamp(16px, 2vw, 24px);
+    margin-top: 10px;
+    margin-bottom: 8px;
+    min-height: 28px;
+  }
+}
+
+@media (max-width: 900px) {
+  .heroGraphicContainer {
+    transform: translateY(-16px);
+    max-width: 680px;
+  }
+
+  .heroSvg {
+    width: 94%;
+    max-width: 640px;
+    max-height: 30vh;
+  }
+
+  .cloudsSvg {
+    top: clamp(6px, 2.5vh, 20px);
+    width: 85%;
+    max-height: 22vh;
+  }
+
+  .typewriterHeading {
+    font-size: clamp(15px, 2.8vw, 22px);
+    margin-top: 8px;
+    margin-bottom: 6px;
+    min-height: 26px;
   }
 }
 
@@ -112,30 +154,73 @@
   }
 
   .heroGraphicContainer {
-    transform: translateY(-10px);
+    transform: translateY(-18px);
+    max-width: 100%;
   }
 
   .cloudsSvg {
-    top: 18%;
-    width: 95%;
-    max-width: none;
+    top: clamp(6px, 2vh, 18px);
+    width: 92%;
+    max-height: 20vh;
   }
 
   .heroSvg {
-    width: 100%;
-    max-height: 216px;
+    width: 96%;
+    max-width: 480px;
+    max-height: 22vh;
   }
 
   .typewriterHeading {
-    margin-bottom: 10px;
-    min-height: 32px;
+    font-size: clamp(14px, 3.8vw, 19px);
+    margin-top: 6px;
+    margin-bottom: 6px;
+    min-height: 24px;
+  }
+}
+
+@media (max-height: 820px) {
+  .heroGraphicContainer {
+    transform: translateY(-18px);
+  }
+
+  .cloudsSvg {
+    top: clamp(4px, 2vh, 18px);
+    max-height: 20vh;
+  }
+
+  .heroSvg {
+    max-height: 30vh;
+    max-width: 720px;
+  }
+
+  .typewriterHeading {
+    font-size: clamp(14px, 2.4vh, 20px);
+    margin-top: 6px;
+    margin-bottom: 6px;
+    min-height: 24px;
+  }
+}
+
+@media (max-height: 700px) {
+  .heroGraphicContainer {
+    transform: translateY(-24px);
+  }
+
+  .heroSvg {
+    max-height: 26vh;
+    max-width: 600px;
+  }
+
+  .cloudsSvg {
+    top: 4px;
+    max-height: 18vh;
   }
 }
 
 /* Scroll indicator */
 .scrollIndicatorWrapper {
   position: absolute;
-  bottom: 24px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 25;
@@ -208,18 +293,18 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px), (max-height: 820px) {
   .scrollIndicatorWrapper {
-    bottom: 20px;
+    bottom: 12px;
   }
 
   .scrollIndicatorButton {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
   }
 
   .scrollArrowIcon {
-    width: 12px;
-    height: 7px;
+    width: 11px;
+    height: 6px;
   }
 }
