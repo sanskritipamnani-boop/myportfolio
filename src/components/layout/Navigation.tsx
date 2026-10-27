@@ -185,17 +185,16 @@ export default function Navigation() {
 
   return (
     <header className={styles.header} role="banner">
-      <Container>
-        <nav className={styles.nav} aria-label="Main navigation">
-          {/* Logo / Name */}
-          <Link
-            href="/"
-            className={styles.logo}
-            aria-label="Home"
-            onClick={handleLogoClick}
-          >
-            sanskriti&apos;s portfolio
-          </Link>
+      <nav className={styles.nav} aria-label="Main navigation">
+        {/* Logo / Name */}
+        <Link
+          href="/"
+          className={styles.logo}
+          aria-label="Home"
+          onClick={handleLogoClick}
+        >
+          sanskriti&apos;s portfolio
+        </Link>
 
           {/* Real-time India Time & Gandhinagar Weather Widget */}
           {time && (
@@ -292,7 +291,6 @@ export default function Navigation() {
             <span className={styles.hamburger} aria-hidden="true" />
           </button>
         </nav>
-      </Container>
     </header>
   );
 }
