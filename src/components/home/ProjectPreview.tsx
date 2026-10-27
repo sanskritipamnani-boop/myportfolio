@@ -103,8 +103,6 @@ export default function ProjectPreview({ project, index }: ProjectPreviewProps) 
         </h3>
         
         <div className={styles.meta}>
-          <span className={styles.year}>{project.year}</span>
-          <span className={styles.pipe}>|</span>
           <span className={styles.categories}>{project.categories.join(', ')}</span>
         </div>
 

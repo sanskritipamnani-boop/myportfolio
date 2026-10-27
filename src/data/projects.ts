@@ -94,7 +94,7 @@ export const projects: Project[] = [
     slug: 'project-02',
     number: '02',
     title: 'Klenzaa',
-    description: 'Designed the host-side MVP for Klenzaa, a marketplace that connects vacation-rental hosts with cleaners.',
+    description: 'Designed the host side MVP of Klenzaa, a marketplace to a platform that manages and connects vacation rentals with cleaners',
     year: '2025',
     categories: ['Freelance', 'Dashboard', '0 to 1'],
     thumbnail: {
@@ -119,7 +119,7 @@ export const projects: Project[] = [
       {
         type: 'embed',
         src: '/klenzaa-final.html',
-        title: 'Designed the host-side MVP for Klenzaa, a marketplace that connects vacation-rental hosts with cleaners.',
+        title: 'Designed the host side MVP of Klenzaa, a marketplace to a platform that manages and connects vacation rentals with cleaners',
         height: '900px',
       },
     ],
@@ -131,7 +131,7 @@ export const projects: Project[] = [
     title: 'Saheli',
     description: "Designed a gig-work app for women, where the hard part isn't finding jobs, it's deciding to start.",
     year: '2026',
-    categories: ['Self-initiated', 'Mobile App', 'Social Impact'],
+    categories: ['Academic', 'Mobile App', 'Social Impact'],
     thumbnail: {
       type: 'image',
       src: '/images/saheli-thumbnail.png',
@@ -166,7 +166,7 @@ export const projects: Project[] = [
     id: 'whatsapp',
     slug: 'whatsapp',
     number: '04',
-    title: 'WhatsApp Redesign',
+    title: 'WhatsApp Feature Concept',
     description: 'Case study exploration for WhatsApp.',
     year: '2024',
     categories: ['Product Design', 'UI/UX', 'Mobile App'],
@@ -180,7 +180,7 @@ export const projects: Project[] = [
       {
         type: 'embed',
         src: '/whatsapp-final.html',
-        title: 'WhatsApp Case Study',
+        title: 'WhatsApp Feature Concept',
       },
     ],
   },

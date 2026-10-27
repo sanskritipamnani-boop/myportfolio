@@ -118,6 +118,31 @@ export default function Navigation() {
   };
 
   const scrollToSection = useCallback((id: string) => {
+    // Close mobile menu if open
+    const nav = document.querySelector(`.${styles.links}`);
+    if (nav) nav.classList.remove(styles.linksOpen);
+    const toggle = document.getElementById('nav-toggle');
+    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+
+    // Close any open project sheet
+    window.dispatchEvent(new CustomEvent('close-project-sheet'));
+    document.body.style.overflow = '';
+
+    if (id === 'contact') {
+      if (pathname !== '/') {
+        window.location.href = '/#contact';
+        return;
+      }
+      window.location.hash = 'contact';
+      const el = document.getElementById('contact');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      }
+      return;
+    }
+
     if (pathname !== '/') {
       window.location.href = `/#${id}`;
       return;
@@ -212,6 +237,15 @@ export default function Navigation() {
               <Link href="/about" className={styles.navLink}>
                 About
               </Link>
+            </li>
+            <li>
+              <button
+                className={styles.navLink}
+                onClick={() => scrollToSection('contact')}
+                aria-label="Scroll to Contact"
+              >
+                Contact
+              </button>
             </li>
             <li>
               <a

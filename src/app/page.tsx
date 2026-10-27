@@ -64,7 +64,7 @@ export default function HomePage({ initialSlug }: HomePageProps) {
     }
   };
 
-  // Listen to hash change to switch tabs automatically
+  // Listen to hash change to switch tabs automatically or scroll to contact
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash;
@@ -72,6 +72,15 @@ export default function HomePage({ initialSlug }: HomePageProps) {
         setActiveTab('play');
       } else if (hash === '#work') {
         setActiveTab('work');
+      } else if (hash === '#contact') {
+        setTimeout(() => {
+          const footer = document.getElementById('contact');
+          if (footer) {
+            footer.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+          }
+        }, 150);
       }
     };
 

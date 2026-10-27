@@ -14,7 +14,7 @@ export default function CaseStudyHeader({
   totalProjects,
   onClose,
 }: CaseStudyHeaderProps) {
-  const categoryYearLabel = `${project.categories.join(' • ')} • ${project.year}`.toUpperCase();
+  const categoryYearLabel = project.categories.join(' • ').toUpperCase();
 
   return (
     <header className={styles.header}>

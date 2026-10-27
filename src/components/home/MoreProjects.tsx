@@ -35,7 +35,7 @@ const MORE_PROJECTS: MoreProjectItem[] = [
   },
   {
     id: 'whatsapp',
-    title: 'WhatsApp Redesign',
+    title: 'WhatsApp Feature Concept',
     category: 'Product Design & Mobile App',
     image: '/images/Group 1.png',
     mediaType: 'image',

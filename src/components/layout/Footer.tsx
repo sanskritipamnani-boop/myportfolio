@@ -28,7 +28,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className={styles.footer} role="contentinfo">
+    <footer className={styles.footer} role="contentinfo" id="contact">
       <Container>
         <div className={styles.inner}>
           <div className={styles.cta}>
