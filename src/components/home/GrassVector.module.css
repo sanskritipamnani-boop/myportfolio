@@ -143,11 +143,11 @@
 
 @media (max-width: 1200px) {
   .grassContainer {
-    bottom: -110px;
+    bottom: -75px;
   }
 
   .grassSvg {
-    width: 94%;
+    width: 95%;
     min-width: 960px;
     max-width: 1200px;
   }
@@ -155,17 +155,19 @@
 
 @media (max-height: 820px) {
   .grassContainer {
-    bottom: -115px;
+    bottom: -65px;
   }
+}
 
-  .grassSvg {
-    max-height: 25vh;
+@media (max-height: 650px) {
+  .grassContainer {
+    bottom: -50px;
   }
 }
 
 @media (max-width: 768px) {
   .grassContainer {
-    bottom: -75px;
+    bottom: -50px;
   }
 
   .grassSvg {
