@@ -20,7 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateY(-4px);
+  transform: translateY(18px);
   box-sizing: border-box;
 }
 
@@ -69,12 +69,12 @@
 
 .cloudsSvg {
   position: absolute;
-  top: clamp(10px, 4.5vh, 36px);
+  top: clamp(8px, 3.5vh, 26px);
   left: 0;
   right: 0;
   margin: 0 auto;
   width: clamp(420px, 68vw, 940px);
-  max-height: 34vh;
+  max-height: 32vh;
   height: auto;
   pointer-events: none;
   z-index: 0;
@@ -94,7 +94,7 @@
 
 @media (max-width: 900px) {
   .heroGraphicContainer {
-    transform: translateY(-14px);
+    transform: translateY(4px);
     max-width: 760px;
   }
 
@@ -126,7 +126,7 @@
   }
 
   .heroGraphicContainer {
-    transform: translateY(-16px);
+    transform: translateY(0px);
     max-width: 100%;
   }
 
@@ -151,7 +151,7 @@
 
 @media (max-height: 600px) {
   .heroGraphicContainer {
-    transform: translateY(-20px);
+    transform: translateY(-8px);
   }
 
   .cloudsSvg {
