@@ -106,8 +106,16 @@ export default function KlenzaaCaseStudy() {
           <span className={styles.kicker}>Overview</span>
           <h2>Klenzaa needed a working MVP before it could become a business.</h2>
           <p className={styles.body}>
-            Klenzaa is a <strong>two sided platform connecting STR hosts with cleaning professionals</strong> who handle turnovers between guests. There was no existing product when I started. The client had a validated business idea, target personas, and a business level competitor analysis already in place. <strong>My job was to design the MVP that would carry all of it.</strong> They pointed me toward tools like Turno and asked me to study what worked, so Klenzaa could improve on it.
+            Klenzaa is a <strong>two sided platform connecting STR (Short-term Rentals) hosts with cleaning professionals</strong> who handle turnovers between guests. There was no existing product when I started. The client had a validated business idea, target personas, and a business level competitor analysis already in place. <strong>My job was to design the MVP that would carry all of it.</strong> They pointed me toward tools like Turno and asked me to study what worked, so Klenzaa could improve on it.
           </p>
+          <div style={{ marginTop: '1.5rem' }}>
+            <h3 style={{ fontSize: '18px', fontWeight: 600, color: 'var(--teal-deep)', marginBottom: '0.5rem' }}>
+              Problem it solves
+            </h3>
+            <p className={styles.body}>
+              Managing cleaning schedules and payments for vacation rentals across multiple booking platforms is inefficient and time-consuming for hosts. Coordinating with cleaners, tracking availability, and processing payments manually leads to errors, delays, and increased administrative overhead.
+            </p>
+          </div>
         </section>
 
         {/* COMPETITIVE RESEARCH SECTION */}
